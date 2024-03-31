@@ -1,0 +1,19 @@
+.footer {
+    background: linear-gradient(to right, $accent, $accent-light);
+
+    &__copyright,
+    &__item,
+    &__socials {
+        color: $white;
+    }
+
+    &__item {
+        .active {
+            @include active-item();
+        }
+
+        &:hover {
+            color: $secondary-light;
+        }
+    }
+}

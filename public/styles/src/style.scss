@@ -1,0 +1,30 @@
+@mixin flex-row() {
+    display: flex;
+    flex-direction: row;
+}
+
+@mixin flex-column() {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin active-item {
+    color: $secondary-light !important;
+    border-bottom: 1px solid $secondary;
+}
+
+$accent: #3498db;
+$accent-light: #6dd5fa;
+$secondary: #ff6f61;
+$secondary-light: #ff968e;
+$white: #fdfdfd;
+$grey: #e1e1e1;
+$dark-grey: #4e4e4e;
+$dark: #111111;
+
+@import "templates/general.scss";
+@import "templates/header.scss";
+@import "templates/about.scss";
+@import "templates/prompts.scss";
+@import "templates/footer.scss";
+@import "templates/scroll-top.scss"
