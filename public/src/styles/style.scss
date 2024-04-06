@@ -13,14 +13,33 @@
     border-bottom: 1px solid $secondary;
 }
 
+@mixin form-control() {
+    border: 1px solid $dark-grey-1;
+    border-radius: 8px;
+    padding: 8px 12px;
+    background-color: $white;
+    color: $accent;
+    transition: all 0.4s ease-out;
+
+    &:focus {
+        border-color: transparent !important;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem $accent;
+        background-color: $accent-light-1;
+    }
+}
+
 $accent: #3498db;
 $accent-light: #6dd5fa;
+$accent-light-1: #e0f7ff;
 $secondary: #ff6f61;
-$secondary-light: #ff968e;
+$secondary-light: #ffc6c2;
 $white: #fdfdfd;
 $grey: #e1e1e1;
 $dark-grey: #4e4e4e;
+$dark-grey-1: #a7a7a7;
 $dark: #111111;
+$grey-transparent: rgba(54, 54, 54, 0.605);
 
 @import "templates/general.scss";
 @import "templates/header.scss";

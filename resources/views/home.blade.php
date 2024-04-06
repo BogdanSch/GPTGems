@@ -11,7 +11,7 @@
                     <p class="about__description">Welcome to GPTGems! We're an open-source platform using AI to spark
                         creativity and meaningful conversations. Join us to explore engaging prompts, practice communication
                         skills, and connect with others!</p>
-                    <a class="btn btn-outline-primary" href="#prompts">Discover latest prompts!</a>
+                    <a class="btn btn-outline-primary" href="#prompts">Discover the latest prompts!</a>
                 </div>
             </div>
         </div>
@@ -22,8 +22,13 @@
                 <h2 class="prompts__title text-center">Discover all the latest prompts</h2>
                 <form class="prompts__form mt-5" action="/search-prompts" method="get">
                     @csrf
-                    <input type="text" placeholder="Search for a tag or a username" name="search"
-                        class="prompts__form-search form-control">
+                    <div class="input-group">
+                        <input type="search" placeholder="Search for a tag or a username" name="search"
+                            class="prompts__form-search form-control" id="promptsSearch">
+                        <button type="submit" class="btn btn-primary input-group-text" data-mdb-ripple-init>
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
                 </form>
                 <div class="prompts__data">
                     <h3 class="prompts__sub-title text-center mt-5">Latest prompts sorted by: <span

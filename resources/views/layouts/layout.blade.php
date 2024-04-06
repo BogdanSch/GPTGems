@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="{{ asset('styles/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('dist/styles/style.css') }}">
 </head>
 
 <body>
@@ -32,7 +32,7 @@
                         <li><a href="/prompts" class="header__item nav-link px-2">Prompts</a></li>
                         <li><a href="/contact-us" class="header__item nav-link px-2">Contact</a></li>
                     </nav>
-                    <div class="header__menu col-md-3 text-end">
+                    <div class="header__menu col-md-3">
                         @auth
                             <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -63,8 +63,25 @@
             <div class="container">
                 <div class="footer__wrap d-flex flex-wrap justify-content-between align-items-center py-3 mt-4">
                     <p class="footer__copyright col-md-4 mb-0">© <?php echo (new DateTime())->format('Y'); ?> RoCreator, Inc</p>
-                    <div class="footer__socials col-md-4 d-flex flex-wrap justify-content-center">
-                        Nothing yet...
+                    <div class="footer__socials col-md-4">
+                        <div class="footer__socials-item">
+                            <a href="https://t.me/+voC6fujFeLE4ZDQy" target="_blank" class="footer__socials-link">
+                                <i class="bi bi-telegram"></i></a>
+                        </div>
+                        <div class="footer__socials-item">
+                            <a href="https://www.instagram.com/bohsvity_777/" target="_blank"
+                                class="footer__socials-link">
+                                <i class="bi bi-instagram"></i></a>
+                        </div>
+                        <div class="footer__socials-item">
+                            <a href="https://www.facebook.com/profile.php?id=100027446175865" target="_blank"
+                                class="footer__socials-link">
+                                <i class="bi bi-facebook"></i></a>
+                        </div>
+                        <div class="footer__socials-item">
+                            <a href="https://github.com/BogdanSch" target="_blank" class="footer__socials-link">
+                                <i class="bi bi-github"></i></a>
+                        </div>
                     </div>
                     <nav class="footer__list nav col-md-4 justify-content-end">
                         <li class="footer__item"><a href="/" class="footer__item nav-link px-2 active">Home</a>
@@ -100,9 +117,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
-    <script src="{{ asset('scripts/lib/jquery-3.7.1.js') }}"></script>
-    <script src="{{ asset('scripts/menu-links.js') }}"></script>
-    <script src="{{ asset('scripts/scroll-top.js') }}"></script>
+    <script src="{{ asset('dist/scripts/lib/jquery-3.7.1.js') }}"></script>
+    <script src="{{ asset('dist/scripts/header.js') }}"></script>
+    <script src="{{ asset('dist/scripts/scroll-top.js') }}"></script>
 </body>
 
 </html>

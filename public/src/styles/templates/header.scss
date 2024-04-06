@@ -1,6 +1,14 @@
 .header {
     padding: 40px 0;
     background: linear-gradient(to right, $accent, $accent-light);
+    min-width: 100% !important;
+
+    &.sticky{
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10000;
+    }
 
     &__logo {
         a {
@@ -38,5 +46,13 @@
         &:hover {
             color: $secondary-light;
         }
+    }
+    &__menu{
+        @include flex-row();
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        column-gap: 10px;
+        row-gap: 4px;
     }
 }

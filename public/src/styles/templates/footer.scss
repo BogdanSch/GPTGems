@@ -1,0 +1,58 @@
+.footer {
+    background: linear-gradient(to right, $accent, $accent-light);
+
+    &__copyright,
+    &__item,
+    &__socials {
+        color: $white;
+    }
+
+    &__socials {
+        @include flex-row();
+        justify-content: center;
+        align-items: center;
+        column-gap: 12px;
+        flex-wrap: wrap;
+
+        // &-item{
+        //     max-width: 12rem;
+        // }
+        &-link {
+            i {
+                color: $white;
+                font-size: 32px;
+                transition: all 0.4s ease-in;
+            }
+
+            &:hover {
+                i {
+                    color: $secondary-light;
+                }
+            }
+        }
+    }
+
+    &__item {
+        .active {
+            @include active-item();
+        }
+
+        &:hover {
+            color: $secondary-light;
+        }
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .footer {
+        &__socials {
+            column-gap: 10px;
+
+            &-link {
+                i {
+                    font-size: 24px;
+                }
+            }
+        }
+    }
+}

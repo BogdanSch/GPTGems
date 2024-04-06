@@ -9,6 +9,12 @@ body {
     font-family: "Poppins", sans-serif;
 }
 
+.main {
+    flex: 1;
+    @include flex-column();
+    justify-content: center;
+}
+
 h1 {
     font-weight: 800;
     font-size: 48px;
@@ -35,17 +41,23 @@ p {
     padding: 16px 32px;
 
     &-primary {
-        background-color: $accent !important;
+        background-color: $secondary !important;
+        border: none;
 
-        &:hover {
+        &:hover,
+        &:active,
+        &:active {
             background-color: $secondary !important;
         }
     }
 
     &-outline-primary {
-        border: 1px solid $secondary !important;
+        border: 2px solid $secondary !important;
+        color: $dark-grey;
 
-        &:hover {
+        &:hover,
+        &:active,
+        &:active {
             border: 1px solid $secondary !important;
             background-color: $secondary !important;
             color: $white;
@@ -53,7 +65,18 @@ p {
     }
 }
 
+input.form-control,
+textarea.form-control {
+    @include form-control();
+}
+
 .text-content {
     max-width: 60%;
     margin: 0 auto;
+}
+
+@media screen and (max-width: 900px) {
+    .btn {
+        padding: 12px 24px;
+    }
 }
