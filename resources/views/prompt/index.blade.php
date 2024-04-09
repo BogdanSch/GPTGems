@@ -1,21 +1,8 @@
 @extends('layouts.layout')
 
-@section('title', 'Home')
+@section('title', 'Latest Prompts')
 
 @section('main_content')
-    <section class="about">
-        <div class="container">
-            <div class="about__wrap">
-                <div class="text-content text-center">
-                    <h1 class="about__title">Discover & Share <span class="mark">AI-Powered Prompts</span></h1>
-                    <p class="about__description">Welcome to GPTGems! We're an open-source platform using AI to spark
-                        creativity and meaningful conversations. Join us to explore engaging prompts, practice communication
-                        skills, and connect with others!</p>
-                    <a class="btn btn-outline-primary" href="#prompts">Discover the latest prompts!</a>
-                </div>
-            </div>
-        </div>
-    </section>
     <section class="prompts" id="prompts">
         <div class="container">
             <div class="prompts__wrap">
@@ -60,10 +47,7 @@
                             </a>
                         @endforeach
                     </ul>
-                    <div class="prompts__buttons text-center mt-5 mb-5">
-                        <a class="btn btn-outline-primary" href="{{ route('prompts.index') }}">Discover all the latest
-                            prompts!</a>
-                    </div>
+                    {{ $prompts->links() }}
                 </div>
             </div>
         </div>

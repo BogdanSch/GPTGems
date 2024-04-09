@@ -12,9 +12,9 @@ return new class extends Migration {
     {
         Schema::create('prompts', function (Blueprint $table) {
             $table->id();
+            $table->longText("prompt_content");
+            $table->foreignId("prompt_author_id")->constrained("users");
             $table->timestamps();
-            $table->text("prompt_content");
-            $table->foreignId("prompt_author_id")->constrained();
         });
     }
 

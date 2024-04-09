@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>GPTGems UA - @yield('title')</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('dist/images/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('dist/images/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('dist/images/favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('dist/images/favicon/site.webmanifest') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
@@ -57,6 +61,11 @@
             </div>
         </header>
         <main class="main">
+            @session('message')
+                <div class="alert alert-success mt-2" role="alert">
+                    {{ session('message') }}
+                </div>
+            @endsession
             @yield('main_content')
         </main>
         <footer class="footer">
@@ -87,7 +96,8 @@
                         <li class="footer__item"><a href="/" class="footer__item nav-link px-2 active">Home</a>
                         </li>
                         <li class="footer__item"><a href="/about" class="footer__item nav-link px-2">About</a></li>
-                        <li class="footer__item"><a href="/prompts" class="footer__item nav-link px-2">Prompts</a></li>
+                        <li class="footer__item"><a href="/prompts" class="footer__item nav-link px-2">Prompts</a>
+                        </li>
                         <li class="footer__item"><a href="/contact-us" class="footer__item nav-link px-2">Contact</a>
                         </li>
                     </nav>
