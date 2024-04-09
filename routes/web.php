@@ -19,11 +19,11 @@ Route::get('/', [HomeController::class, "index"])->name("home");
 
 Route::get('/about', function () {
     return view('about');
-});
+})->name("about");
 
 Route::get('/contact', function () {
     return view('contact');
-});
+})->name("contact");
 
 // Route::get('/prompts', [PromptController::class, "index"])->name("prompt.index");
 // Route::get('/prompts/create', [PromptController::class, "create"])->name("prompt.create");

@@ -20,8 +20,7 @@
     <div class="wrapper" id="start">
         <header class="header">
             <div class="container">
-                <div
-                    class="header__wrap d-flex flex-wrap align-items-center justify-content-center justify-content-md-between">
+                <div class="header__wrap">
                     <div class="header__logo col-md-3 mb-2 mb-md-0">
                         <a href="/" class="link-body-emphasis text-decoration-none">
                             <svg>
@@ -30,13 +29,17 @@
                             GPTGems
                         </a>
                     </div>
-                    <nav class="header__list nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                        <li><a href="/" class="header__item nav-link px-2 active">Home</a></li>
-                        <li><a href="/about" class="header__item nav-link px-2">About</a></li>
-                        <li><a href="/prompts" class="header__item nav-link px-2">Prompts</a></li>
-                        <li><a href="/contact-us" class="header__item nav-link px-2">Contact</a></li>
-                    </nav>
-                    <div class="header__menu col-md-3">
+                    <div class="header__burger">
+                        <span></span>
+                    </div>
+                    <div class="header__menu">
+                        <nav class="header__list nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                            <li><a href="/" class="header__item nav-link px-2 active">Home</a></li>
+                            <li><a href="{{ route('about') }}" class="header__item nav-link px-2">About</a></li>
+                            <li><a href="{{ route('prompts.index') }}" class="header__item nav-link px-2">Prompts</a>
+                            </li>
+                            <li><a href="{{ route('contact') }}" class="header__item nav-link px-2">Contact</a></li>
+                        </nav>
                         @auth
                             <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -95,10 +98,13 @@
                     <nav class="footer__list nav col-md-4 justify-content-end">
                         <li class="footer__item"><a href="/" class="footer__item nav-link px-2 active">Home</a>
                         </li>
-                        <li class="footer__item"><a href="/about" class="footer__item nav-link px-2">About</a></li>
-                        <li class="footer__item"><a href="/prompts" class="footer__item nav-link px-2">Prompts</a>
+                        <li class="footer__item"><a href="{{ route('about') }}"
+                                class="footer__item nav-link px-2">About</a></li>
+                        <li class="footer__item"><a href="{{ route('prompts.index') }}"
+                                class="footer__item nav-link px-2">Prompts</a>
                         </li>
-                        <li class="footer__item"><a href="/contact-us" class="footer__item nav-link px-2">Contact</a>
+                        <li class="footer__item"><a href="{{ route('contact') }}"
+                                class="footer__item nav-link px-2">Contact</a>
                         </li>
                     </nav>
                 </div>

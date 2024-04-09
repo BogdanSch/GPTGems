@@ -3,15 +3,22 @@
 
 .wrapper {
     overflow: hidden;
+    @include flex-column();
+    min-height: 100vh;
 }
 
 body {
     font-family: "Poppins", sans-serif;
+
+    &.lock {
+        overflow: hidden;
+    }
 }
 
 .main {
     flex: 1;
     @include flex-column();
+    // align-items: center;
     justify-content: center;
 }
 
