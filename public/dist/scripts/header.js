@@ -18,12 +18,17 @@
     });
 
     function handleLinks(links, currentPage) {
-        links.each(function (link) {
-            let elementHref = $(this).attr("href").split("./").pop();
-
+        links.each(function () {
+            const link = $(this);
+            const elementHref = link.attr("href").split("/").pop();
+            console.log(currentPage === elementHref);
+            console.log(link);
             if (currentPage === elementHref) {
-                $(this).addClass("active");
-                return;
+                link.addClass("active");
+            } else {
+                if (link.hasClass("active")) {
+                    link.removeClass("active");
+                }
             }
         });
     }
@@ -36,8 +41,8 @@
     const allFooterLinks = $(".footer__item a");
 
     if (indexPage.includes(currentPage)) {
-        $(".header__item a").first().addClass("active");
-        $(".footer__item a").first().addClass("active");
+        $(".header__list .header__item a").first().addClass("active");
+        $(".footer__list .footer__item a").first().addClass("active");
     } else {
         handleLinks(allHeaderLinks, currentPage);
         handleLinks(allFooterLinks, currentPage);

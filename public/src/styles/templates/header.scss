@@ -31,27 +31,30 @@
                 width: 28px;
                 height: 28px;
                 fill: $white;
+                transition: all 0.6s ease;
             }
 
             &:hover {
                 color: $secondary-light !important;
 
                 svg {
-                    fill: $secondary-light;
+                    fill: $secondary-light !important;
                 }
             }
         }
     }
 
     &__item {
-        color: $white;
+        a {
+            color: $white;
 
-        &.active {
-            @include active-item();
-        }
+            &.active {
+                @include active-item();
+            }
 
-        &:hover {
-            color: $secondary-light;
+            &:hover {
+                color: $secondary-light;
+            }
         }
     }
 

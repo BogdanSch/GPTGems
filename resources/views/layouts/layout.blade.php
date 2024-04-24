@@ -34,11 +34,13 @@
                     </div>
                     <div class="header__menu">
                         <nav class="header__list nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                            <li><a href="/" class="header__item nav-link px-2 active">Home</a></li>
-                            <li><a href="{{ route('about') }}" class="header__item nav-link px-2">About</a></li>
-                            <li><a href="{{ route('prompts.index') }}" class="header__item nav-link px-2">Prompts</a>
+                            <li class="header__item"><a href="/" class="nav-link px-2 active">Home</a></li>
+                            <li class="header__item"><a href="{{ route('about') }}" class="nav-link px-2">About</a></li>
+                            <li class="header__item"><a href="{{ route('prompts.index') }}"
+                                    class="nav-link px-2">Prompts</a>
                             </li>
-                            <li><a href="{{ route('contact') }}" class="header__item nav-link px-2">Contact</a></li>
+                            <li class="header__item"><a href="{{ route('contact') }}" class="nav-link px-2">Contact</a>
+                            </li>
                         </nav>
                         @auth
                             <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
@@ -71,9 +73,9 @@
             @endsession
             @yield('main_content')
         </main>
-        <footer class="footer">
+        <footer class="footer mt-4">
             <div class="container">
-                <div class="footer__wrap d-flex flex-wrap justify-content-between align-items-center py-3 mt-4">
+                <div class="footer__wrap d-flex flex-wrap justify-content-between align-items-center py-4">
                     <p class="footer__copyright col-md-4 mb-0">© <?php echo (new DateTime())->format('Y'); ?> RoCreator, Inc</p>
                     <div class="footer__socials col-md-4">
                         <div class="footer__socials-item">
