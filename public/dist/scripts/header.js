@@ -1,6 +1,6 @@
-(function ($, undefined) {
-    const headerOffset = 20;
+const headerOffset = 30;
 
+(function ($, undefined) {
     $(window).on("scroll", function () {
         const header = $(".header");
         if (window.scrollY >= headerOffset) {
