@@ -37,16 +37,18 @@
                         </ul>
                         <div class="prompts__pagination mt-5">
                             @if ($prompts->previousPageUrl())
-                                <a href="{{ $prompts->previousPageUrl() }}" class="btn btn-outline-pagination">Previous</a>
+                                <a href="{{ $prompts->previousPageUrl() }}{{ isset($search) ? '&search=' . urlencode($search) : '' }}"
+                                    class="btn btn-outline-pagination">Previous</a>
                             @endif
 
                             @for ($i = 1; $i <= $prompts->lastPage(); $i++)
-                                <a href="{{ $prompts->url($i) }}"
+                                <a href="{{ $prompts->url($i) }}{{ isset($search) ? '&search=' . urlencode($search) : '' }}"
                                     class="pagination__link {{ $prompts->currentPage() == $i ? 'active' : '' }}">{{ $i }}</a>
                             @endfor
 
                             @if ($prompts->nextPageUrl())
-                                <a href="{{ $prompts->nextPageUrl() }}" class="btn btn-outline-pagination">Next</a>
+                                <a href="{{ $prompts->nextPageUrl() }}{{ isset($search) ? '&search=' . urlencode($search) : '' }}"
+                                    class="btn btn-outline-pagination">Next</a>
                             @endif
                         </div>
                     @else

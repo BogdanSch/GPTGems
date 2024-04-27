@@ -81,7 +81,12 @@ class PromptController extends Controller
     public function search(Request $request)
     {
         $search = $request->input('search');
-        $prompts = Prompt::where('prompt_content', 'like', "%$search%")->orderBy("created_at", "desc")->paginate(10);
+        $prompts = Prompt::where('prompt_content', 'like', "%$search%")
+            ->orWhereHas('user', function ($query) use ($search) {
+                $query->where('name', 'like', "%$search%");
+            })
+            ->orderBy("created_at", "desc")
+            ->paginate(10);
         return view("prompt.index", ["prompts" => $prompts, "search" => $search]);
     }
 }
