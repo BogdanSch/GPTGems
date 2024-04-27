@@ -17,6 +17,7 @@ class PromptFactory extends Factory
     public function definition(): array
     {
         return [
+            "prompt_title" => fake()->realText(20),
             "prompt_content" => fake()->realText(300),
             "prompt_author_id" => 1,
         ];
