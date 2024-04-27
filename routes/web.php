@@ -33,3 +33,4 @@ Route::get('/contact', function () {
 // Route::put('/prompts/{id}', [PromptController::class, "update"])->name("prompt.update");
 // Route::delete('/prompts/{id}', [PromptController::class, "destroy"])->name("prompt.destroy");
 Route::resource("prompts", PromptController::class);
+Route::get('/search-prompts', [PromptController::class, "search"])->name('prompts.search');

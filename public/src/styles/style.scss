@@ -9,7 +9,7 @@
 }
 
 @mixin active-item {
-    color: $secondary !important;
+    color: $secondary-light !important;
     border-bottom: 1px solid $secondary;
 }
 
@@ -30,6 +30,7 @@
 }
 
 $accent: #3498db;
+$accent-dark: #106197;
 $accent-light: #6dd5fa;
 $accent-light-1: #e0f7ff;
 $secondary: #ff6f61;

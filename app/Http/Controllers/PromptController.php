@@ -75,4 +75,13 @@ class PromptController extends Controller
         $prompt->delete();
         return to_route("prompts.index")->with("message", "Prompt was deleted successfully!");
     }
+    /**
+     * Search the specified resource from storage.
+     */
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $prompts = Prompt::where('prompt_content', 'like', "%$search%")->orderBy("created_at", "desc")->paginate(10);
+        return view("prompt.index", ["prompts" => $prompts, "search" => $search]);
+    }
 }

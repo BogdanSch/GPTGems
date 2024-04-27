@@ -1,6 +1,6 @@
 .prompts {
     margin-top: 160px;
-    margin-bottom: 160px;
+    margin-bottom: 100px;
 
     &__form {
         .input-group {
@@ -21,7 +21,6 @@
     &__list {
         @include flex-row();
         justify-content: center;
-        // align-items: center;
         flex-wrap: wrap;
         row-gap: 6px;
         column-gap: 6px;
@@ -54,15 +53,33 @@
             font-weight: 600;
         }
     }
-    &__date{
-        font-weight:700;
 
+    &__date {
+        font-weight: 700;
     }
-    &__actions{
+
+    &__actions {
         @include flex-row();
         justify-content: start;
         align-items: center;
         column-gap: 20px;
+    }
+
+    &__pagination {
+        @include flex-row();
+        justify-content: center;
+        align-items: center;
+        column-gap: 10px;
+
+        .pagination__link {
+            color: $accent;
+            text-decoration: none;
+
+            &.active {
+                color: $accent-dark;
+                border-bottom: 1px solid $accent-dark;
+            }
+        }
     }
 }
 
@@ -73,6 +90,7 @@
                 max-width: 100%;
             }
         }
+
         &__list {
             @include flex-column();
             justify-content: center;
