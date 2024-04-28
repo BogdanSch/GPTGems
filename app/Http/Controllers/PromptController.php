@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Prompt;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\Prompt;
 
 class PromptController extends Controller
 {
@@ -33,7 +34,8 @@ class PromptController extends Controller
             "prompt_title" => ["required", "string"],
             "prompt_content" => ["required", "string"],
         ]);
-        $data["prompt_author_id"] = 1;
+        $userId = Auth::id();
+        $data["prompt_author_id"] = $userId;
         $prompt = Prompt::create($data);
         return to_route("prompts.show", ["prompt" => $prompt])->with("message", "Prompt was created successfull!");
     }

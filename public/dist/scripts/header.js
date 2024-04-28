@@ -18,15 +18,19 @@ const headerOffset = 30;
     });
 
     function handleLinks(links, currentPage) {
+        console.log(currentPage);
         links.each(function () {
             const link = $(this);
             const elementHref = link.attr("href").split("/").pop();
+
+            // console.log(link.attr("href").split("/"));
             // console.log(currentPage === elementHref);
-            console.log(link);
+            // console.log(link);
 
             if (currentPage === elementHref) {
                 link.addClass("active");
             } else {
+                // if(currentPage ===)
                 if (link.hasClass("active")) {
                     link.removeClass("active");
                 }
@@ -36,16 +40,21 @@ const headerOffset = 30;
 
     const indexPage = ["/", "/home", ""];
     let path = window.location.pathname;
-    let currentPage = path.split("/").pop();
+    const allHeaderLinks = $(".header__list .header__item a");
+    const allFooterLinks = $(".footer__list .footer__item a");
 
-    const allHeaderLinks = $(".header__item a");
-    const allFooterLinks = $(".footer__item a");
-
-    if (indexPage.includes(currentPage)) {
-        $(".header__list .header__item a").first().addClass("active");
-        $(".footer__list .footer__item a").first().addClass("active");
+    if (path.split("/").includes("prompts")) {
+        handleLinks(allHeaderLinks, "prompts");
+        handleLinks(allFooterLinks, "prompts");
     } else {
-        handleLinks(allHeaderLinks, currentPage);
-        handleLinks(allFooterLinks, currentPage);
+        let currentPage = path.split("/").pop();
+
+        if (indexPage.includes(currentPage)) {
+            allHeaderLinks.first().addClass("active");
+            allFooterLinks.first().addClass("active");
+        } else {
+            handleLinks(allHeaderLinks, currentPage);
+            handleLinks(allFooterLinks, currentPage);
+        }
     }
 })(jQuery);
