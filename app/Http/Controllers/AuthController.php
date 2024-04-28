@@ -23,7 +23,7 @@ class AuthController extends Controller
 
         $user->save();
 
-        return back()->with('success', 'Register successfully');
+        return back()->with('success', 'Registered successfully');
     }
 
     public function login()
@@ -38,15 +38,15 @@ class AuthController extends Controller
         ];
 
         if (Auth::attempt($credetials)) {
-            return to_route("home")->with('success', 'Login Success');
+            return to_route("home")->with('message', 'Logged in Successfully');
         }
 
-        return back()->with('error', 'Error Email or Password');
+        return back()->with('error', 'Please, provide correct Email and Password');
     }
 
     public function logout()
     {
         Auth::logout();
-        return to_route("sign-in");
+        return to_route("home")->with("message", "Successfully logged out!");
     }
 }

@@ -55,7 +55,13 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="#">Sign out</a></li>
+                                <li>
+                                    <form action="{{ route('logout') }}" method="post"role="search">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger dropdown-item" type="submit">Sign out</button>
+                                    </form>
+                                </li>
                             </ul>
                         @else
                             <a class="btn btn-outline-light me-2" href="{{ route('sign-in') }}">Sign-in</a>

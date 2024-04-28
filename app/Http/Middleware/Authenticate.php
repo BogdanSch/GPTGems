@@ -16,20 +16,4 @@ class Authenticate extends Middleware
     {
         return $request->expectsJson() ? null : route('login');
     }
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @param  string[]  ...$guards
-     * @return mixed
-     */
-    // public function handle($request, Closure $next, ...$guards)
-    // {
-    //     if ($this->authenticate($request, $guards) === false) {
-    //         return $this->unauthenticated($request, $guards);
-    //     }
-
-    //     return $next($request);
-    // }
 }

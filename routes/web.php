@@ -40,4 +40,7 @@ Route::get('/sign-up', [AuthController::class, "register"])->name("sign-up");
 Route::post("/sign-up", [AuthController::class, "registerPost"])->name("sign-up");
 Route::get('/sign-in', [AuthController::class, "login"])->name("sign-in");
 Route::post('/sign-in', [AuthController::class, "loginPost"])->name("sign-in");
-Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::group(["middleware" => "auth"], function () {
+    Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
+});
