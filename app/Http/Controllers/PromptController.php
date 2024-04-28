@@ -30,7 +30,7 @@ class PromptController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            // "promptTitle" => ["required", "string"],
+            "prompt_title" => ["required", "string"],
             "prompt_content" => ["required", "string"],
         ]);
         $data["prompt_author_id"] = 1;
@@ -60,7 +60,7 @@ class PromptController extends Controller
     public function update(Request $request, Prompt $prompt)
     {
         $data = $request->validate([
-            // "promptTitle" => ["required", "string"],
+            "prompt_title" => ["required", "string"],
             "prompt_content" => ["required", "string"],
         ]);
         $prompt->update($data);

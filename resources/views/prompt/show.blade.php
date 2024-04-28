@@ -8,9 +8,9 @@
             <div class="prompts__wrap">
                 <h2 class="prompts__title mb-5">Prompt created by: {{ $prompt->user->name }}</h2>
                 <div class="prompts__data">
-                    <div class="prompts__title mb-4">
+                    <h3 class="prompts__title mb-4">
                         {{ $prompt->prompt_title }}
-                    </div>
+                    </h3>
                     <div class="prompts__content mb-4">
                         {{ $prompt->prompt_content }}
                     </div>

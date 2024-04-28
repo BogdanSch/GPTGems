@@ -6,6 +6,7 @@
     <section class="about">
         <div class="container">
             <div class="about__wrap">
+                <img src="{{ asset('dist/images/kyiv-view.jpg') }}" class="about__image" alt="About Intro Image">
                 <div class="text-content text-center">
                     <h1 class="about__title">Discover & Share <span class="mark">AI-Powered Prompts</span></h1>
                     <p class="about__description">Welcome to GPTGems! We're an open-source platform using AI to spark

@@ -67,16 +67,23 @@
         </header>
         <main class="main">
             @session('message')
-                <div class="alert alert-success mt-2" role="alert">
-                    {{ session('message') }}
+                <div class="message">
+                    <div class="container">
+                        <div class="message__wrap">
+                            <div class="alert alert-success mt-2" role="alert">
+                                {{ session('message') }}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             @endsession
+
             @yield('main_content')
         </main>
         <footer class="footer mt-4">
             <div class="container">
                 <div class="footer__wrap d-flex flex-wrap justify-content-between align-items-center py-4">
-                    <p class="footer__copyright col-md-4 mb-0">© <?php echo (new DateTime())->format('Y'); ?> RoCreator, Inc</p>
+                    <p class="footer__copyright col-md-4 mb-0">© <?php echo (new DateTime())->format('Y'); ?> RoCreator, Inc UA</p>
                     <div class="footer__socials col-md-4">
                         <div class="footer__socials-item">
                             <a href="https://t.me/+voC6fujFeLE4ZDQy" target="_blank" class="footer__socials-link">

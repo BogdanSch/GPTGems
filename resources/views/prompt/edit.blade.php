@@ -13,7 +13,7 @@
                     <div class="mb-3">
                         <label for="promptTitle" class="form-label">Enter your prompt title:</label>
                         <input type="text" class="form-control" id="promptTitle" name="prompt_title"
-                            placeholder="Your prompt title: "></input>
+                            placeholder="Your prompt title: " value="{{ $prompt->prompt_title }}" />
                     </div>
                     <div class="mb-3">
                         <label for="promptContent" class="form-label">Enter your prompt content:</label>

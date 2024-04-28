@@ -21,8 +21,9 @@ const headerOffset = 30;
         links.each(function () {
             const link = $(this);
             const elementHref = link.attr("href").split("/").pop();
-            console.log(currentPage === elementHref);
+            // console.log(currentPage === elementHref);
             console.log(link);
+
             if (currentPage === elementHref) {
                 link.addClass("active");
             } else {

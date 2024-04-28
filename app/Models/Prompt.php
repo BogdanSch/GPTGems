@@ -12,5 +12,5 @@ class Prompt extends Model
     {
         return $this->belongsTo(User::class, 'prompt_author_id');
     }
-    protected $fillable = ["prompt_content", "prompt_author_id"];
+    protected $fillable = ["prompt_title", "prompt_content", "prompt_author_id"];
 }
