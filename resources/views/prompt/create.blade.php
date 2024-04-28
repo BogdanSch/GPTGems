@@ -6,7 +6,7 @@
     <section class="prompts" id="prompts">
         <div class="container">
             <div class="prompts__wrap">
-                <h2 class="prompts__title text-center">Let's create <span class="mark">a new prompt together!</span></h2>
+                <h2 class="prompts__title text-center">Let's create <span>a new prompt together!</span></h2>
                 <form class="prompts__form mt-5" action="{{ route('prompts.store') }}" method="post">
                     @csrf
                     <div class="mb-3">

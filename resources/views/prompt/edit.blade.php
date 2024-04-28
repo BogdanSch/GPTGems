@@ -6,7 +6,7 @@
     <section class="prompts" id="prompts">
         <div class="container">
             <div class="prompts__wrap">
-                <h2 class="prompts__title text-center">Let's edit your prompt <span>together!</span></h2>
+                <h2 class="prompts__title text-center">Let's edit <span>your prompt together!</span></h2>
                 <form class="prompts__form mt-5" action="{{ route('prompts.update', $prompt) }}" method="post">
                     @csrf
                     @method('PUT')

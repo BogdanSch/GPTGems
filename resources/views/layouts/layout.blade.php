@@ -58,8 +58,8 @@
                                 <li><a class="dropdown-item" href="#">Sign out</a></li>
                             </ul>
                         @else
-                            <button type="button" class="btn btn-outline-light me-2">Login</button>
-                            <button type="button" class="btn btn-light">Sign-up</button>
+                            <a class="btn btn-outline-light me-2" href="{{ route('sign-in') }}">Sign-in</a>
+                            <a class="btn btn-light" href="{{ route('sign-up') }}">Sign-up</a>
                         @endauth
                     </div>
                 </div>
