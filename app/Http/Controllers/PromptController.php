@@ -53,6 +53,9 @@ class PromptController extends Controller
      */
     public function edit(Prompt $prompt)
     {
+        if ($prompt->prompt_author_id !== auth()->id()) {
+            abort(403);
+        }
         return view("prompt.edit", ["prompt" => $prompt]);
     }
 
@@ -74,6 +77,9 @@ class PromptController extends Controller
      */
     public function destroy(Prompt $prompt)
     {
+        if ($prompt->prompt_author_id !== auth()->id()) {
+            abort(403);
+        }
         $prompt->delete();
         return to_route("prompts.index")->with("message", "Prompt was deleted successfully!");
     }

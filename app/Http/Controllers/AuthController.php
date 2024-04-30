@@ -22,7 +22,6 @@ class AuthController extends Controller
         $user->password = Hash::make($request->password);
 
         $user->save();
-
         return back()->with('success', 'Registered successfully');
     }
 

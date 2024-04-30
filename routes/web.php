@@ -42,5 +42,7 @@ Route::get('/sign-in', [AuthController::class, "login"])->name("sign-in");
 Route::post('/sign-in', [AuthController::class, "loginPost"])->name("sign-in");
 
 Route::group(["middleware" => "auth"], function () {
+    // Route::delete('/prompts/{id}', [PromptController::class, "destroy"])->name("prompt.destroy");
+    Route::get('/prompts/create', [PromptController::class, "create"])->name("prompt.create");
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
 });

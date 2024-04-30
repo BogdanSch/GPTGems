@@ -83,7 +83,6 @@
                     </div>
                 </div>
             @endsession
-
             @yield('main_content')
         </main>
         <footer class="footer mt-4">
