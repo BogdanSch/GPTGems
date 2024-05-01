@@ -48,4 +48,8 @@ class AuthController extends Controller
         Auth::logout();
         return to_route("home")->with("message", "Successfully logged out!");
     }
+    public function profile()
+    {
+        return view("auth.profile");
+    }
 }

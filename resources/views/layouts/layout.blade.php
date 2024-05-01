@@ -42,31 +42,36 @@
                             <li class="header__item"><a href="{{ route('contact') }}" class="nav-link px-2">Contact</a>
                             </li>
                         </nav>
-                        @auth
-                            <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32"
-                                    class="rounded-circle">
-                            </a>
-                            <ul class="dropdown-menu text-small">
-                                <li><a class="dropdown-item" href="#">New project...</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li>
-                                    <form action="{{ route('logout') }}" method="post"role="search">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-danger dropdown-item" type="submit">Sign out</button>
-                                    </form>
-                                </li>
-                            </ul>
-                        @else
-                            <a class="btn btn-outline-light me-2" href="{{ route('sign-in') }}">Sign-in</a>
-                            <a class="btn btn-light" href="{{ route('sign-up') }}">Sign-up</a>
-                        @endauth
+                        <div class="profile">
+                            @auth
+                                <a href="{{ route('prompts.index') }}"
+                                    class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <svg class="profile__svg" width="32" height="32">
+                                        <use xlink:href='#userProfile'></use>
+                                    </svg>
+                                </a>
+                                <ul class="dropdown-menu text-small">
+                                    <li><a class="dropdown-item" href="{{ route('prompt.create') }}">New prompt</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('profile') }}">Check my prompts</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li>
+                                        <form action="{{ route('logout') }}" class="profile__form"
+                                            method="post"role="search">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger profile__form-signout"
+                                                type="submit">Sign out</button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            @else
+                                <a class="btn btn-outline-light me-2" href="{{ route('sign-in') }}">Sign-in</a>
+                                <a class="btn btn-light" href="{{ route('sign-up') }}">Sign-up</a>
+                            @endauth
+                        </div>
                     </div>
                 </div>
             </div>
@@ -142,6 +147,12 @@
                 <path
                     d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z" />
             </g>
+        </symbol>
+        <symbol id="userProfile" viewBox="0 0 16 16">
+            <path
+                d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.708l.547.548 1.17-1.951a.5.5 0 1 1 .858.514M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
+            <path
+                d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z" />
         </symbol>
     </svg>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

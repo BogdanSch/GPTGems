@@ -68,6 +68,29 @@
     }
 }
 
+.profile {
+    .dropdown-toggle {
+        &::after {
+            fill: $white;
+        }
+    }
+
+    &__svg {
+        fill: $white;
+    }
+
+    &__form {
+        padding-left: 4px;
+        padding-right: 4px;
+
+        &-signout {
+            display: block;
+            padding: 8px 24px;
+            width: 100%;
+        }
+    }
+}
+
 @media only screen and (max-width: 580px) {
     .header {
         &__wrap {

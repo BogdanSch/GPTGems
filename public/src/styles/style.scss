@@ -35,6 +35,7 @@ $accent-light: #6dd5fa;
 $accent-light-1: #e0f7ff;
 $secondary: #ff6f61;
 $secondary-light: #ffc6c2;
+$red: #d81907;
 $white: #fdfdfd;
 $grey: #e1e1e1;
 $dark-grey: #4e4e4e;
@@ -46,5 +47,6 @@ $grey-transparent: rgba(54, 54, 54, 0.605);
 @import "templates/header.scss";
 @import "templates/about.scss";
 @import "templates/prompts.scss";
+@import "templates/error-page.scss";
 @import "templates/footer.scss";
-@import "templates/scroll-top.scss"
+@import "templates/scroll-top.scss";
