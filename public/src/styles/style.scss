@@ -9,8 +9,8 @@
 }
 
 @mixin active-item {
-    color: $secondary-light !important;
-    border-bottom: 1px solid $secondary;
+    color: $dark-grey;
+    border-bottom: 1px solid $dark-grey;
 }
 
 @mixin form-control() {
@@ -50,3 +50,5 @@ $grey-transparent: rgba(54, 54, 54, 0.605);
 @import "templates/error-page.scss";
 @import "templates/footer.scss";
 @import "templates/scroll-top.scss";
+@import "templates/auth/sign-in.scss";
+@import "templates/auth/sign-up.scss";

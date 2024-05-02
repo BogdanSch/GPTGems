@@ -46,6 +46,7 @@
 
     &__item {
         a {
+            transition: all 0.7s ease;
             color: $white;
 
             &.active {
@@ -53,7 +54,7 @@
             }
 
             &:hover {
-                color: $secondary-light;
+                color: $dark-grey;
             }
         }
     }

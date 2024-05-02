@@ -1,16 +1,19 @@
-const headerOffset = 30;
+const headerOffset = 1;
+const header = $(".header");
+
+function applyStickyHeader() {
+    if (window.scrollY >= headerOffset) {
+        header.addClass("sticky");
+    } else {
+        if (header.hasClass("sticky")) {
+            header.removeClass("sticky");
+        }
+    }
+}
 
 (function ($, undefined) {
-    $(window).on("scroll", function () {
-        const header = $(".header");
-        if (window.scrollY >= headerOffset) {
-            header.addClass("sticky");
-        } else {
-            if (header.hasClass("sticky")) {
-                header.removeClass("sticky");
-            }
-        }
-    });
+    applyStickyHeader();
+    $(window).on("scroll", applyStickyHeader);
 
     $(".header__burger").click(function (event) {
         $(".header__burger, .header__menu").toggleClass("active");
