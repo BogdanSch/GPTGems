@@ -1,4 +1,12 @@
-.sign-in{
+.sign-in {
     min-width: 40%;
     margin: 0 auto;
+
+    &__hint {
+        a {
+            text-decoration: none;
+            font-weight: 600;
+            color: $accent;
+        }
+    }
 }

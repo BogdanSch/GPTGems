@@ -18,11 +18,11 @@
 
 <body>
     <div class="wrapper" id="start">
-        <header class="header">
+        <header class="header mb-4">
             <div class="container">
                 <div class="header__wrap">
                     <div class="header__logo col-md-3 mb-2 mb-md-0">
-                        <a href="/" class="link-body-emphasis text-decoration-none">
+                        <a href="{{ route('home') }}" class="link-body-emphasis text-decoration-none">
                             <svg>
                                 <use xlink:href='#logoIcon'></use>
                             </svg>
@@ -34,7 +34,8 @@
                     </div>
                     <div class="header__menu">
                         <nav class="header__list nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                            <li class="header__item"><a href="/" class="nav-link px-2 active">Home</a></li>
+                            <li class="header__item"><a href="{{ route('home') }}" class="nav-link px-2 active">Home</a>
+                            </li>
                             <li class="header__item"><a href="{{ route('about') }}" class="nav-link px-2">About</a></li>
                             <li class="header__item"><a href="{{ route('prompts.index') }}"
                                     class="nav-link px-2">Prompts</a>
@@ -115,7 +116,7 @@
                         </div>
                     </div>
                     <nav class="footer__list nav col-md-4 justify-content-end">
-                        <li class="footer__item"><a href="/" class="nav-link px-2 active">Home</a>
+                        <li class="footer__item"><a href="{{ route('home') }}" class="nav-link px-2 active">Home</a>
                         </li>
                         <li class="footer__item"><a href="{{ route('about') }}" class="nav-link px-2">About</a></li>
                         <li class="footer__item"><a href="{{ route('prompts.index') }}"
