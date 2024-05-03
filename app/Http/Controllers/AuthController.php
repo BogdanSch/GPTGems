@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Prompt;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -50,6 +51,13 @@ class AuthController extends Controller
     }
     public function profile()
     {
-        return view("auth.profile");
+        $userId = Auth::id();
+        $userName = Auth::user()->name;
+        $prompts = Prompt::where('prompt_author_id', $userId)
+            ->orderBy("created_at", "desc")
+            ->paginate(10);
+        return view("auth.profile")
+            ->with("prompts", $prompts)
+            ->with("user", $userName);
     }
 }
