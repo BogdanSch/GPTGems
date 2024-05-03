@@ -52,7 +52,7 @@
                             @endif
                         </div>
                     @else
-                        <p class="text-center">No prompts found.</p>
+                        <p class="text-center">Sorry, no prompts found. Try another request!</p>
                     @endif
                 </div>
             </div>

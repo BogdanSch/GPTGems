@@ -53,8 +53,9 @@
                                     </svg>
                                 </a>
                                 <ul class="dropdown-menu text-small">
-                                    <li><a class="dropdown-item" href="{{ route('prompt.create') }}">New prompt</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('profile') }}">Check my prompts</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('prompt.create') }}">Create a new
+                                            prompt</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('profile') }}">Check out my prompts</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
