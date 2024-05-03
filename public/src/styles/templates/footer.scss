@@ -30,12 +30,17 @@
     }
 
     &__item {
-        .active {
-            @include active-item();
-        }
+        & a {
+            transition: all 0.7s ease;
+            color: $white;
 
-        &:hover {
-            color: $dark-grey;
+            &.active {
+                @include active-item();
+            }
+
+            &:hover {
+                color: $grey;
+            }
         }
     }
 }

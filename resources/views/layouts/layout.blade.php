@@ -62,8 +62,8 @@
                                             method="post"role="search">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-danger profile__form-signout"
-                                                type="submit">Sign out</button>
+                                            <button class="btn btn-danger profile__form-signout" type="submit">Sign
+                                                out</button>
                                         </form>
                                     </li>
                                 </ul>
@@ -115,15 +115,13 @@
                         </div>
                     </div>
                     <nav class="footer__list nav col-md-4 justify-content-end">
-                        <li class="footer__item"><a href="/" class="footer__item nav-link px-2 active">Home</a>
+                        <li class="footer__item"><a href="/" class="nav-link px-2 active">Home</a>
                         </li>
-                        <li class="footer__item"><a href="{{ route('about') }}"
-                                class="footer__item nav-link px-2">About</a></li>
+                        <li class="footer__item"><a href="{{ route('about') }}" class="nav-link px-2">About</a></li>
                         <li class="footer__item"><a href="{{ route('prompts.index') }}"
-                                class="footer__item nav-link px-2">Prompts</a>
+                                class="nav-link px-2">Prompts</a>
                         </li>
-                        <li class="footer__item"><a href="{{ route('contact') }}"
-                                class="footer__item nav-link px-2">Contact</a>
+                        <li class="footer__item"><a href="{{ route('contact') }}" class="nav-link px-2">Contact</a>
                         </li>
                     </nav>
                 </div>
