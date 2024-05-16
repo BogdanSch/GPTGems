@@ -9,8 +9,8 @@
 }
 
 @mixin active-item {
-    color: $dark-grey;
-    border-bottom: 1px solid $dark-grey;
+    color: $secondary;
+    border-bottom: 1px solid $secondary-light;
 }
 
 @mixin form-control() {
