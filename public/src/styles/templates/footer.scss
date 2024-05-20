@@ -30,16 +30,16 @@
     }
 
     &__item {
-        & a {
+        a {
             transition: all 0.7s ease;
-            color: $white;
+            color: $white-1;
 
             &.active {
                 @include active-item();
             }
 
             &:hover {
-                color: $grey;
+                color: $white;
             }
         }
     }
