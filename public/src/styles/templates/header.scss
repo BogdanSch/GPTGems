@@ -1,7 +1,14 @@
 .header {
+    position: fixed;
     padding: 24px 0;
-    background: linear-gradient(to right, $accent, $accent-light);
+    background: linear-gradient(to left, $accent, $accent-light);
     min-width: 100% !important;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+
 
     &__wrap {
         @include flex-row();
@@ -11,10 +18,7 @@
     }
 
     &.sticky {
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 10000;
+        padding: 10px 0;
     }
 
     &__logo {

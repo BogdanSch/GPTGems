@@ -34,7 +34,7 @@
                 <div class="prompts__data">
                     <h3 class="prompts__sub-title text-center mt-5">Latest prompts sorted by: <span
                             class="prompts__tag">{{ isset($search) ? $search : 'All' }}</span></h3>
-                    @if ($prompts->count() > 0)
+                    {{-- @if ($prompts->count() > 0)
                         <ul class="prompts__list mt-5">
                             @foreach ($prompts as $prompt)
                                 <a class="prompts__item card" id="{{ $prompt->id }}"
@@ -59,10 +59,10 @@
                         </ul>
                     @else
                         <p class="text-center">No prompts found.</p>
-                    @endif
+                    @endif --}}
+                    @include('prompt.partials.prompt-item-preview', ['prompts' => $prompts])
                     <div class="prompts__buttons text-center mt-5 mb-5">
-                        <a class="btn btn-outline-primary" href="{{ route('prompts.index') }}">Discover all the latest
-                            prompts!</a>
+                        <a class="btn btn-outline-primary" href="{{ route('prompts.index') }}">Check new prompts!</a>
                     </div>
                 </div>
             </div>

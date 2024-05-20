@@ -1,9 +1,8 @@
-const headerOffset = 1;
 const header = $(".header");
 const indexPagePathes = ["/", "/home", ""];
 
 function applyStickyHeader() {
-    if (window.scrollY >= headerOffset) {
+    if (window.scrollY > 0) {
         header.addClass("sticky");
     } else {
         if (header.hasClass("sticky")) {
@@ -13,7 +12,6 @@ function applyStickyHeader() {
 }
 
 (function ($, undefined) {
-    applyStickyHeader();
     $(window).on("scroll", applyStickyHeader);
 
     $(".header__burger").click(function (event) {
