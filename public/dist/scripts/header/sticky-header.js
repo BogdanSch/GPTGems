@@ -13,7 +13,7 @@ const stickyHeader = () => {
 
     (function ($, undefined) {
         applyStickyHeader();
-        $(window).on("scroll", applyStickyHeader);
+        $(window).on("scroll", () => applyStickyHeader());
     })(jQuery);
 };
 

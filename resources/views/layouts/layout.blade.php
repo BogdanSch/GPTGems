@@ -18,7 +18,7 @@
 
 <body>
     <div class="wrapper" id="start">
-        <header class="header mb-4">
+        <header class="header">
             <div class="container">
                 <div class="header__wrap">
                     <div class="header__logo col-md-3 mb-2 mb-md-0">

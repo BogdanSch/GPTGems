@@ -2,7 +2,6 @@
     position: fixed;
     padding: 24px 0;
     background: linear-gradient(to left, $accent, $accent-light);
-    min-width: 100% !important;
     z-index: 1000;
     top: 0;
     left: 0;
@@ -96,7 +95,15 @@
     }
 }
 
-@media only screen and (max-width: 580px) {
+@media screen and (max-width: 992px) and (min-width: 769px) {
+    .header {
+        &__wrap {
+            justify-content: center;
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
     .header {
         &__wrap {
             @include flex-row();
@@ -195,7 +202,7 @@
             padding-right: 20px;
 
             &.active {
-                top: 14%;
+                top: 12%;
             }
         }
     }

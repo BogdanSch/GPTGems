@@ -8,6 +8,7 @@
 }
 
 body {
+    padding-top: 100px;
     font-family: "Poppins", sans-serif;
     background-color: $sky-blue;
 
@@ -20,7 +21,6 @@ body {
     flex: 1;
     @include flex-column();
     justify-content: center;
-    margin-top: 70px;
 }
 
 img {
