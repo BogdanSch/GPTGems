@@ -7,6 +7,23 @@
         <div class="container">
             <div class="prompts__wrap">
                 <h2 class="prompts__title text-center">Welcome back, <span>{{ $user }}!</span></h2>
+                <div class="prompts__profile">
+                    <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <label for="profile_photo">Profile Photo</label>
+                            <input type="file" class="form-control-file" id="profile_photo" name="profile_photo">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Upload Photo</button>
+                    </form>
+                    @if (Auth::user()->profile_photo_path)
+                        <div class="mt-3">
+                            <h5>Current Profile Photo:</h5>
+                            <img src="{{ asset(Auth::user()->profile_photo_path) }}" alt="Profile Photo"
+                                class="img-thumbnail" width="200">
+                        </div>
+                    @endif
+                </div>
                 <form class="prompts__form mt-5" action="{{ route('prompts.search') }}" method="get">
                     @csrf
                     <div class="input-group">
@@ -27,14 +44,10 @@
                 </div>
                 <div class="prompts__liked">
                     <h2 class="text-center mt-5"><span>Liked</span> Prompts</h2>
-                    @if ($likedPrompts->count() > 0)
-                        @include('prompt.partials.prompt-item-preview', [
-                            'prompts' => $likedPrompts,
-                            'showPromptPagination' => true,
-                        ])
-                    @else
-                        <p>No liked prompts found.</p>
-                    @endif
+                    @include('prompt.partials.prompt-item-preview', [
+                        'prompts' => $likedPrompts,
+                        'showPromptPagination' => true,
+                    ]);
                 </div>
             </div>
         </div>

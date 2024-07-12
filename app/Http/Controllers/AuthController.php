@@ -17,13 +17,17 @@ class AuthController extends Controller
     }
     public function registerPost(Request $request)
     {
+        $data = $request->validate([
+            'name' => ['required', 'string'],
+            'email' => ['required', 'string', 'email', 'unique:users,email'],
+            'password' => ['required', 'string', 'min:8'],
+        ]);
         $user = new User();
-
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->password = Hash::make($data['password']);
         $user->save();
+
         return back()->with('success', 'Registered successfully');
     }
 
@@ -63,6 +67,26 @@ class AuthController extends Controller
         if ($user->likes()->count() > 0) {
             $likedPrompts = $user->likes()->with('user')->paginate(10);
         }
+
         return view("auth.profile", ["prompts" => $prompts, "user" => $userName, "likedPrompts" => $likedPrompts]);
+    }
+    public function update(Request $request)
+    {
+        $request->validate([
+            'profile_photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+        $imagePath = "dist/images/profile/";
+
+        if ($request->hasFile('profile_photo')) {
+            $image = $request->file('profile_photo');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path($imagePath), $imageName);
+
+            $user = Auth::user();
+            $user->profile_photo_path = $imagePath . $imageName;
+            $user->save();
+        }
+
+        return redirect()->back()->with('message', 'Profile picture uploaded successfully.');
     }
 }
