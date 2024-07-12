@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Prompt;
+use App\Models\Like;
+use App\Rules\TenWords;
 
 class PromptController extends Controller
 {
@@ -32,7 +34,7 @@ class PromptController extends Controller
     {
         $data = $request->validate([
             "prompt_title" => ["required", "string"],
-            "prompt_content" => ["required", "string"],
+            "prompt_content" => ["required", "string", new TenWords()],
         ]);
         $userId = Auth::id();
         $data["prompt_author_id"] = $userId;
@@ -45,6 +47,10 @@ class PromptController extends Controller
      */
     public function show(Prompt $prompt)
     {
+        $prompt->load('user', 'likes');
+        if (!$prompt) {
+            abort(404);
+        }
         return view("prompt.show", ["prompt" => $prompt]);
     }
 
@@ -96,5 +102,30 @@ class PromptController extends Controller
             ->orderBy("created_at", "desc")
             ->paginate(10);
         return view("prompt.index", ["prompts" => $prompts, "search" => $search]);
+    }
+    public function like(Prompt $prompt)
+    {
+        $user = Auth::user();
+
+        if (!$user->likes()->where('prompt_id', $prompt->id)->exists()) {
+            Like::create([
+                'user_id' => $user->id,
+                'prompt_id' => $prompt->id,
+            ]);
+        }
+
+        return back()->with('message', 'You liked the prompt!');
+    }
+    public function unlike(Prompt $prompt)
+    {
+        $user = Auth::user();
+
+        if ($user->likes()->where('prompt_id', $prompt->id)->exists()) {
+            Like::where('user_id', $user->id)
+                ->where('prompt_id', $prompt->id)
+                ->delete();
+        }
+
+        return back()->with('message', 'You disliked the prompt!');
     }
 }

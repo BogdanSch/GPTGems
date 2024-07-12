@@ -31,13 +31,6 @@ Route::post("/sign-up", [AuthController::class, "registerPost"])->name("sign-up"
 Route::get('/sign-in', [AuthController::class, "login"])->name("sign-in");
 Route::post('/sign-in', [AuthController::class, "loginPost"])->name("sign-in");
 
-// Route::get('/prompts', [PromptController::class, "index"])->name("prompt.index");
-// Route::get('/prompts/create', [PromptController::class, "create"])->name("prompt.create");
-// Route::post('/prompts', [PromptController::class, "store"])->name("prompt.store");
-// Route::get('/prompts/{id}', [PromptController::class, "show"])->name("prompt.show");
-// Route::get('/prompts/{id}/edit', [PromptController::class, "edit"])->name("prompt.edit");
-// Route::put('/prompts/{id}', [PromptController::class, "update"])->name("prompt.update");
-// Route::delete('/prompts/{id}', [PromptController::class, "destroy"])->name("prompt.destroy");
 Route::resource("prompts", PromptController::class);
 Route::get('/search-prompts', [PromptController::class, "search"])->name('prompts.search');
 
@@ -46,4 +39,6 @@ Route::group(["middleware" => "auth"], function () {
     Route::get('/prompts/create', [PromptController::class, "create"])->name("prompt.create");
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
+    Route::post('/prompts/{prompt}/like', [PromptController::class, 'like'])->name('prompts.like');
+    Route::post('/prompts/{prompt}/unlike', [PromptController::class, 'unlike'])->name('prompts.unlike');
 });

@@ -20,7 +20,7 @@
                 <div class="prompts__data">
                     <h3 class="prompts__sub-title text-center mt-5">Latest prompts sorted by: <span
                             class="prompts__tag">{{ isset($search) ? $search : 'All' }}</span></h3>
-                    @include('prompt.partials.prompt-item-preview', ['prompts' => $prompts])
+                    @include('prompt.partials.prompt-item-preview', ['prompts' => $prompts, "showPromptPagination" => true])
                 </div>
             </div>
         </div>

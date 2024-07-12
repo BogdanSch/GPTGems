@@ -81,15 +81,15 @@
         </header>
         <main class="main">
             @session('message')
-                <div class="message">
+                <section class="message">
                     <div class="container">
                         <div class="message__wrap">
-                            <div class="alert alert-success mt-2" role="alert">
+                            <div class="alert alert-success mt-2 text-center" role="alert">
                                 {{ session('message') }}
                             </div>
                         </div>
                     </div>
-                </div>
+                </section>
             @endsession
             @yield('main_content')
         </main>
@@ -168,6 +168,18 @@
                 d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z" />
             <path
                 d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z" />
+        </symbol>
+        <symbol id="heart" viewBox="0 0 16 16">
+            <g>
+                <path
+                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+            </g>
+        </symbol>
+        <symbol id="heartFill" viewBox="0 0 16 16">
+            <g>
+                <path fill-rule="evenodd"
+                    d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" />
+            </g>
         </symbol>
     </svg>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

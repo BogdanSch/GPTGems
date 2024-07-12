@@ -46,7 +46,13 @@
             @include flex-row();
             align-items: center;
             justify-content: space-between;
+        }
 
+        &-elements {
+            @include flex-row();
+            justify-content: center;
+            align-items: center;
+            column-gap: 8px;
         }
 
         &-copy {
@@ -55,6 +61,17 @@
             border-radius: 4px;
 
             svg {
+                width: 100%;
+            }
+        }
+
+        &-like {
+            max-width: 32px;
+            height: 32px;
+            border-radius: 4px;
+
+            svg {
+                fill: $red;
                 width: 100%;
             }
         }
@@ -70,6 +87,20 @@
 
         &-date {
             font-weight: 600;
+        }
+    }
+
+    &__content {
+        &-like {
+            @include flex-row();
+            justify-content: start;
+            align-items: center;
+            column-gap: 12px;
+
+            svg {
+                max-width: 38px;
+                fill: $accent;
+            }
         }
     }
 

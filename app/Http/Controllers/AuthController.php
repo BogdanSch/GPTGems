@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Prompt;
+use App\Models\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -41,7 +42,7 @@ class AuthController extends Controller
             return to_route("home")->with('message', 'Logged in Successfully');
         }
 
-        return back()->with('error', 'Please, provide correct Email and Password');
+        return back()->with('error', 'No such user was found! Please, provide correct email and password');
     }
 
     public function logout()
@@ -51,13 +52,17 @@ class AuthController extends Controller
     }
     public function profile()
     {
+        $user = Auth::user();
         $userId = Auth::id();
-        $userName = Auth::user()->name;
-        $prompts = Prompt::where('prompt_author_id', $userId)
+        $userName = $user->name;
+
+        $prompts = Prompt::where("prompt_author_id", $userId)
             ->orderBy("created_at", "desc")
             ->paginate(10);
-        return view("auth.profile")
-            ->with("prompts", $prompts)
-            ->with("user", $userName);
+        $likedPrompts = null;
+        if ($user->likes()->count() > 0) {
+            $likedPrompts = $user->likes()->with('user')->paginate(10);
+        }
+        return view("auth.profile", ["prompts" => $prompts, "user" => $userName, "likedPrompts" => $likedPrompts]);
     }
 }

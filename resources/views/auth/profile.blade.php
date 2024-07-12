@@ -20,7 +20,21 @@
                 <div class="prompts__data">
                     <h3 class="prompts__sub-title text-center mt-5">Your latest prompts sorted by: <span
                             class="prompts__tag">{{ isset($search) ? $search : 'All' }}</span></h3>
-                    @include('prompt.partials.prompt-item-preview', ['prompts' => $prompts])
+                    @include('prompt.partials.prompt-item-preview', [
+                        'prompts' => $prompts,
+                        'showPromptPagination' => true,
+                    ])
+                </div>
+                <div class="prompts__liked">
+                    <h2 class="text-center mt-5"><span>Liked</span> Prompts</h2>
+                    @if ($likedPrompts->count() > 0)
+                        @include('prompt.partials.prompt-item-preview', [
+                            'prompts' => $likedPrompts,
+                            'showPromptPagination' => true,
+                        ])
+                    @else
+                        <p>No liked prompts found.</p>
+                    @endif
                 </div>
             </div>
         </div>

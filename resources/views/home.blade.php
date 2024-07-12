@@ -34,7 +34,7 @@
                 <div class="prompts__data">
                     <h3 class="prompts__sub-title text-center mt-5">Latest prompts sorted by: <span
                             class="prompts__tag">{{ isset($search) ? $search : 'All' }}</span></h3>
-                    @include('prompt.partials.prompt-item-preview', ['prompts' => $prompts])
+                    @include('prompt.partials.prompt-item-preview', ['prompts' => $prompts, "showPromptPagination" => false])
                     <div class="prompts__buttons text-center mt-5 mb-5">
                         <a class="btn btn-outline-primary" href="{{ route('prompts.index') }}">Check new prompts!</a>
                     </div>
