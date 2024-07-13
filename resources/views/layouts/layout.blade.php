@@ -43,29 +43,29 @@
                             <li class="header__item"><a href="{{ route('contact') }}" class="nav-link px-2">Contact</a>
                             </li>
                         </nav>
-                        <div class="profile">
+                        <div class="header__profile">
                             @auth
                                 <a href="{{ route('prompts.index') }}"
                                     class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    <svg class="profile__svg" width="32" height="32">
+                                    <svg class="header__profile-svg" width="32" height="32">
                                         <use xlink:href='#userProfile'></use>
                                     </svg>
                                 </a>
                                 <ul class="dropdown-menu text-small">
                                     <li><a class="dropdown-item" href="{{ route('prompt.create') }}">Create a new
                                             prompt</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('profile') }}">Check out my prompts</a>
+                                    <li><a class="dropdown-item" href="{{ route('profile.index') }}">My profile</a>
                                     </li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
                                     <li>
-                                        <form action="{{ route('logout') }}" class="profile__form"
+                                        <form action="{{ route('logout') }}" class="header__profile-form"
                                             method="post"role="search">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-danger profile__form-signout" type="submit">Sign
+                                            <button class="btn btn-danger header__profile-signout" type="submit">Sign
                                                 out</button>
                                         </form>
                                     </li>

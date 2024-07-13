@@ -42,7 +42,7 @@ class AuthController extends Controller
             'password' => $request->password,
         ];
 
-        if (Auth::attempt($credetials)) {
+        if (Auth::attempt($credetials, true)) {
             return to_route("home")->with('message', 'Logged in Successfully');
         }
 
@@ -68,9 +68,22 @@ class AuthController extends Controller
             $likedPrompts = $user->likes()->with('user')->paginate(10);
         }
 
-        return view("auth.profile", ["prompts" => $prompts, "user" => $userName, "likedPrompts" => $likedPrompts]);
+        return view("auth.profile.index", ["prompts" => $prompts, "user" => $user, "likedPrompts" => $likedPrompts]);
     }
     public function update(Request $request)
+    {
+        $user = Auth::user();
+        return view("auth.profile.update", compact("user"));
+    }
+    private function removePublicFile($filePath)
+    {
+        if ($filePath === "dist/images/profile/default-profile.png")
+            return;
+        if (file_exists(public_path($filePath))) {
+            unlink(public_path($filePath));
+        }
+    }
+    public function updatePost(Request $request)
     {
         $request->validate([
             'profile_photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
@@ -78,15 +91,18 @@ class AuthController extends Controller
         $imagePath = "dist/images/profile/";
 
         if ($request->hasFile('profile_photo')) {
+            $user = Auth::user();
+
             $image = $request->file('profile_photo');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $imageName = $user->name . time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path($imagePath), $imageName);
 
-            $user = Auth::user();
+            $this->removePublicFile($user->profile_photo_path);
+
             $user->profile_photo_path = $imagePath . $imageName;
             $user->save();
         }
 
-        return redirect()->back()->with('message', 'Profile picture uploaded successfully.');
+        return to_route("profile.index")->with('message', 'Profile picture uploaded successfully.');
     }
 }

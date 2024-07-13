@@ -18,7 +18,6 @@ class PromptController extends Controller
         $prompts = Prompt::query()->orderBy("created_at", "desc")->paginate(10);
         return view("prompt.index", ["prompts" => $prompts]);
     }
-
     /**
      * Show the form for creating a new resource.
      */
@@ -26,7 +25,6 @@ class PromptController extends Controller
     {
         return view("prompt.create");
     }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -41,7 +39,6 @@ class PromptController extends Controller
         $prompt = Prompt::create($data);
         return to_route("prompts.show", ["prompt" => $prompt])->with("message", "Prompt was created successfull!");
     }
-
     /**
      * Display the specified resource.
      */
@@ -53,7 +50,6 @@ class PromptController extends Controller
         }
         return view("prompt.show", ["prompt" => $prompt]);
     }
-
     /**
      * Show the form for editing the specified resource.
      */
@@ -64,7 +60,6 @@ class PromptController extends Controller
         }
         return view("prompt.edit", ["prompt" => $prompt]);
     }
-
     /**
      * Update the specified resource in storage.
      */
@@ -77,7 +72,6 @@ class PromptController extends Controller
         $prompt->update($data);
         return to_route("prompts.show", ["prompt" => $prompt])->with("message", "Prompt was updated successfully!");
     }
-
     /**
      * Remove the specified resource from storage.
      */

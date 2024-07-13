@@ -1,29 +1,18 @@
 @extends('layouts.layout')
 
-@section('title', 'Your Latest Prompts')
+@section('title', 'Your Profile Page')
 
 @section('main_content')
     <section class="prompts" id="prompts">
         <div class="container">
             <div class="prompts__wrap">
-                <h2 class="prompts__title text-center">Welcome back, <span>{{ $user }}!</span></h2>
-                <div class="prompts__profile">
-                    <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="form-group">
-                            <label for="profile_photo">Profile Photo</label>
-                            <input type="file" class="form-control-file" id="profile_photo" name="profile_photo">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Upload Photo</button>
-                    </form>
-                    @if (Auth::user()->profile_photo_path)
-                        <div class="mt-3">
-                            <h5>Current Profile Photo:</h5>
-                            <img src="{{ asset(Auth::user()->profile_photo_path) }}" alt="Profile Photo"
-                                class="img-thumbnail" width="200">
-                        </div>
-                    @endif
-                </div>
+                @if ($user->profile_photo_path)
+                    <div class="profile__image">
+                        <img src="{{ asset($user->profile_photo_path) }}" alt="Profile Photo" />
+                        <a class="profile__image-link" href="{{ route('profile.update') }}">Change profile picture</a>
+                    </div>
+                @endif
+                <h2 class="prompts__title text-center mt-3">Welcome back, <span>{{ $user->name }}!</span></h2>
                 <form class="prompts__form mt-5" action="{{ route('prompts.search') }}" method="get">
                     @csrf
                     <div class="input-group">
@@ -47,7 +36,7 @@
                     @include('prompt.partials.prompt-item-preview', [
                         'prompts' => $likedPrompts,
                         'showPromptPagination' => true,
-                    ]);
+                    ])
                 </div>
             </div>
         </div>

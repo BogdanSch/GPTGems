@@ -10,8 +10,10 @@ return new class extends Migration {
      */
     public function up(): void
     {
+        define("DEFAULT_PROFILE_PHOTO", "dist/images/profile/default-profile.png");
+
         Schema::table('users', function (Blueprint $table) {
-            $table->string('profile_photo_path')->nullable()->after('password');
+            $table->string('profile_photo_path')->default(DEFAULT_PROFILE_PHOTO)->after('password');
         });
     }
 

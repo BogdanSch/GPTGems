@@ -45,6 +45,12 @@ h2 {
         color: $accent;
         background-color: transparent;
     }
+
+    span.secondary {
+        color: $secondary;
+        background-color: transparent;
+        text-shadow: 2px 3px 8px rgba(27, 12, 7, 0.2);
+    }
 }
 
 p {
