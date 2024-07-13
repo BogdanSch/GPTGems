@@ -12,7 +12,9 @@ class HomeController extends Controller
     {
         $prompts = Prompt::orderBy('created_at', 'desc')->paginate(10);
         return Inertia::render('Home', [
-            'prompts' => $prompts
+            "prompts" => $prompts,
+            "showPromptPagination" => true,
+            "search" => "All"
         ]);
     }
 }

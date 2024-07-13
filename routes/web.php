@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PromptController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,21 +36,21 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 
-// Route::get('/about', function () {
-//     return view('about');
-// })->name("about");
+Route::get('/about', function () {
+    return view('about');
+})->name("about");
 
-// Route::get('/contact', function () {
-//     return view('contact');
-// })->name("contact");
+Route::get('/contact', function () {
+    return view('contact');
+})->name("contact");
 
-// Route::get('/sign-up', [AuthController::class, "register"])->name("sign-up");
-// Route::post("/sign-up", [AuthController::class, "registerPost"])->name("sign-up");
-// Route::get('/sign-in', [AuthController::class, "login"])->name("sign-in");
-// Route::post('/sign-in', [AuthController::class, "loginPost"])->name("sign-in");
+Route::get('/sign-up', [AuthController::class, "register"])->name("sign-up");
+Route::post("/sign-up", [AuthController::class, "registerPost"])->name("sign-up");
+Route::get('/sign-in', [AuthController::class, "login"])->name("sign-in");
+Route::post('/sign-in', [AuthController::class, "loginPost"])->name("sign-in");
 
-// Route::resource("prompts", PromptController::class);
-// Route::get('/search-prompts', [PromptController::class, "search"])->name('prompts.search');
+Route::resource("prompts", PromptController::class);
+Route::get('/search-prompts', [PromptController::class, "search"])->name('prompts.search');
 
 // Route::group(["middleware" => "auth"], function () {
 //     Route::delete('/prompts/{id}', [PromptController::class, "destroy"])->name("prompt.destroy");
