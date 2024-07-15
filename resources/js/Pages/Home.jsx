@@ -4,12 +4,8 @@ import { usePage, Link, Head } from "@inertiajs/react";
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import PromptsList from "@/Components/Prompts/PromptsList";
 
-export default function Home({
-    prompts,
-    showPromptPagination,
-    search,
-    csrfToken,
-}) {
+export default function Home({ prompts, search }) {
+    console.log(prompts);
     return (
         <>
             <Head title="Home" />
@@ -18,7 +14,7 @@ export default function Home({
                     <div className="container">
                         <div className="about__wrap">
                             <img
-                                src="/dist/images/kyiv-view.jpg"
+                                src="/images/kyiv-view.jpg"
                                 className="about__image"
                                 alt="About Intro Image"
                             />
@@ -61,17 +57,15 @@ export default function Home({
                                 </h3>
                                 <PromptsList
                                     prompts={prompts}
-                                    showPromptPagination={showPromptPagination}
                                     search={search}
-                                    csrfToken={csrfToken}
                                 />
                                 <div className="prompts__buttons text-center mt-5 mb-5">
-                                    <a
+                                    <Link
                                         className="btn btn-outline-primary"
-                                        href="/prompts"
+                                        href={route("prompts.index")}
                                     >
                                         Check new prompts!
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

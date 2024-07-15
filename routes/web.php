@@ -31,6 +31,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::resource("prompts", PromptController::class);
+    Route::post('/prompts/{prompt}/like', [PromptController::class, 'like'])->name('prompts.like');
+    Route::post('/prompts/{prompt}/unlike', [PromptController::class, 'unlike'])->name('prompts.unlike');
+    Route::get('/search-prompts', [PromptController::class, "search"])->name('prompts.search');
 });
 
 require __DIR__ . '/auth.php';
@@ -49,8 +54,6 @@ Route::post("/sign-up", [AuthController::class, "registerPost"])->name("sign-up"
 Route::get('/sign-in', [AuthController::class, "login"])->name("sign-in");
 Route::post('/sign-in', [AuthController::class, "loginPost"])->name("sign-in");
 
-Route::resource("prompts", PromptController::class);
-Route::get('/search-prompts', [PromptController::class, "search"])->name('prompts.search');
 
 // Route::group(["middleware" => "auth"], function () {
 //     Route::delete('/prompts/{id}', [PromptController::class, "destroy"])->name("prompt.destroy");
