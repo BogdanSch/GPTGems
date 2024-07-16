@@ -19,14 +19,7 @@
 </head>
 
 <body>
-    <div class="wrapper" id="start">
-        @inertia
-        <a class="scroll-top" href="#start">
-            <svg class="scroll-top__svg">
-                <use xlink:href='#arrowTop'></use>
-            </svg>
-        </a>
-    </div>
+    @inertia
     <svg style="display: none;">
         <symbol id="logoIcon" viewBox="0 0 576 512">
             <g>
@@ -72,9 +65,6 @@
             </g>
         </symbol>
     </svg>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/cjs/popper.min.js"
-        integrity="sha512-m4yAwVbwlVl0M8YA4PJz5sY4oDQHq3PhXUY3DmkFgNL/FzdNjFDtR0S27nce8ij9uPb0zWMGxxaBVQViKuvqJg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{ asset('dist/scripts/lib/jquery-3.7.1.js') }}"></script>
     <script defer type="module" src="{{ asset('dist/scripts/header.js') }}"></script>
     <script defer src="{{ asset('dist/scripts/scroll-top.js') }}"></script>

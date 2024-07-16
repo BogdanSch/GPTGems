@@ -4,8 +4,7 @@ import { usePage, Link, Head } from "@inertiajs/react";
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import PromptsList from "@/Components/Prompts/PromptsList";
 
-export default function Home({ prompts, search }) {
-    console.log(prompts);
+export default function Home({ prompts, search }) { 
     return (
         <>
             <Head title="Home" />

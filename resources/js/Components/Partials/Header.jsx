@@ -4,7 +4,6 @@ import { Link, usePage } from "@inertiajs/react";
 export default function Header() {
     const { auth } = usePage().props;
     const user = auth.user;
-    console.log(user);
 
     return (
         <header className="header">
@@ -63,7 +62,6 @@ export default function Header() {
                             {user ? (
                                 <div className="dropdown">
                                     <button
-                                        // href={route("prompts.index")}
                                         type="button"
                                         className="btn d-block link-body-emphasis text-decoration-none dropdown-toggle"
                                         data-bs-toggle="dropdown"
