@@ -5,9 +5,9 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PromptController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +28,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource("prompts", PromptController::class);
     Route::post('/prompts/{prompt}/like', [PromptController::class, 'like'])->name('prompts.like');
@@ -49,10 +49,10 @@ Route::get('/contact', function () {
     return view('contact');
 })->name("contact");
 
-Route::get('/sign-up', [AuthController::class, "register"])->name("sign-up");
-Route::post("/sign-up", [AuthController::class, "registerPost"])->name("sign-up");
-Route::get('/sign-in', [AuthController::class, "login"])->name("sign-in");
-Route::post('/sign-in', [AuthController::class, "loginPost"])->name("sign-in");
+// Route::get('/sign-up', [AuthController::class, "register"])->name("sign-up");
+// Route::post("/sign-up", [AuthController::class, "registerPost"])->name("sign-up");
+// Route::get('/sign-in', [AuthController::class, "login"])->name("sign-in");
+// Route::post('/sign-in', [AuthController::class, "loginPost"])->name("sign-in");
 
 
 // Route::group(["middleware" => "auth"], function () {

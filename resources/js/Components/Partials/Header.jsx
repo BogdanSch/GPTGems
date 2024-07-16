@@ -2,7 +2,9 @@ import React from "react";
 import { Link, usePage } from "@inertiajs/react";
 
 export default function Header() {
-    const { user } = usePage().props;
+    const { auth } = usePage().props;
+    const user = auth.user;
+    console.log(user);
 
     return (
         <header className="header">
@@ -60,9 +62,10 @@ export default function Header() {
                         <div className="header__profile">
                             {user ? (
                                 <div className="dropdown">
-                                    <Link
-                                        href={route("prompts.index")}
-                                        className="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                                    <button
+                                        // href={route("prompts.index")}
+                                        type="button"
+                                        className="btn d-block link-body-emphasis text-decoration-none dropdown-toggle"
                                         data-bs-toggle="dropdown"
                                         aria-expanded="false"
                                     >
@@ -73,12 +76,12 @@ export default function Header() {
                                         >
                                             <use xlinkHref="#userProfile"></use>
                                         </svg>
-                                    </Link>
+                                    </button>
                                     <ul className="dropdown-menu text-small">
                                         <li>
                                             <Link
                                                 className="dropdown-item"
-                                                href={route("prompt.create")}
+                                                href={route("prompts.create")}
                                             >
                                                 Create a new prompt
                                             </Link>
@@ -86,7 +89,7 @@ export default function Header() {
                                         <li>
                                             <Link
                                                 className="dropdown-item"
-                                                href={route("profile.index")}
+                                                href={route("dashboard")}
                                             >
                                                 My profile
                                             </Link>
@@ -115,13 +118,13 @@ export default function Header() {
                             ) : (
                                 <>
                                     <Link
-                                        href={route("sign-in")}
+                                        href={route("login")}
                                         className="btn btn-outline-light me-2"
                                     >
                                         Sign-in
                                     </Link>
                                     <Link
-                                        href={route("sign-up")}
+                                        href={route("register")}
                                         className="btn btn-light"
                                     >
                                         Sign-up

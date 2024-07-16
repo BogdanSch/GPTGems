@@ -27,27 +27,28 @@ const playAnimation = (propmtItemCopyButton) => {
         );
     }, 1500);
 };
+(function ($, undefined) {
+    propmtItems.each((index, promptItem) => {
+        const propmtItemCopyButton = $(promptItem).find(".prompts__item-copy");
+        const propmtItemContent = getFilteredValueFromElement(
+            $(promptItem).find(".prompts__item-text")
+        );
 
-propmtItems.each((index, promptItem) => {
-    const propmtItemCopyButton = $(promptItem).find(".prompts__item-copy");
-    const propmtItemContent = getFilteredValueFromElement(
-        $(promptItem).find(".prompts__item-text")
-    );
-
-    propmtItemCopyButton.on("click", function (event) {
-        event.preventDefault();
-        copyContent(propmtItemContent);
-        playAnimation(propmtItemCopyButton);
+        propmtItemCopyButton.on("click", function (event) {
+            event.preventDefault();
+            copyContent(propmtItemContent);
+            playAnimation(propmtItemCopyButton);
+        });
     });
-});
 
-if (propmtContent.length > 0) {
-    const propmtItemCopyButton = $(".prompts__item-copy");
-    const textToCopy = propmtContent.text().trim();
+    if (propmtContent.length > 0) {
+        const propmtItemCopyButton = $(".prompts__item-copy");
+        const textToCopy = propmtContent.text().trim();
 
-    propmtItemCopyButton.on("click", function (event) {
-        event.preventDefault();
-        copyContent(textToCopy);
-        playAnimation(propmtItemCopyButton);
-    });
-}
+        propmtItemCopyButton.on("click", function (event) {
+            event.preventDefault();
+            copyContent(textToCopy);
+            playAnimation(propmtItemCopyButton);
+        });
+    }
+})(jQuery);

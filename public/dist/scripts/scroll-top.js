@@ -3,7 +3,7 @@
 const scrollTopElement = $(".scroll-top");
 const screenOffset = 100;
 
-$(document).ready(function () {
+(function ($, undefined) {
     $(window).on("scroll", function () {
         if (window.scrollY >= screenOffset) {
             scrollTopElement.addClass("active");
@@ -13,5 +13,4 @@ $(document).ready(function () {
             }
         }
     });
-});
-
+})(jQuery);

@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title inertia>{{ config('app.name', 'Laravel') }}</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('dist/images/favicon/apple-touch-icon.png') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('dist/images/favicon/favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('dist/images/favicon/favicon-16x16.png') }}">
-    <link rel="manifest" href="{{ asset('dist/images/favicon/site.webmanifest') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/images/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/images/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/images/favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('/images/favicon/site.webmanifest') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <!-- Scripts -->
     @routes
@@ -72,10 +72,13 @@
             </g>
         </symbol>
     </svg>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/cjs/popper.min.js"
+        integrity="sha512-m4yAwVbwlVl0M8YA4PJz5sY4oDQHq3PhXUY3DmkFgNL/FzdNjFDtR0S27nce8ij9uPb0zWMGxxaBVQViKuvqJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{ asset('dist/scripts/lib/jquery-3.7.1.js') }}"></script>
-    <script type="module" src="{{ asset('dist/scripts/header.js') }}"></script>
-    <script src="{{ asset('dist/scripts/scroll-top.js') }}"></script>
-    <script src="{{ asset('dist/scripts/copy-prompt-handler.js') }}"></script>
+    <script defer type="module" src="{{ asset('dist/scripts/header.js') }}"></script>
+    <script defer src="{{ asset('dist/scripts/scroll-top.js') }}"></script>
+    <script defer src="{{ asset('dist/scripts/copy-prompt-handler.js') }}"></script>
 </body>
 
 </html>
