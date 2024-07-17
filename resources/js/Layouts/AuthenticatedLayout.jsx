@@ -1,6 +1,7 @@
-import { useState } from "react";
+import React, { useEffect, useRef } from "react";
 import Header from "@/Components/Partials/Header";
 import Footer from "@/Components/Partials/Footer";
+import ScrollTop from "@/Components/ScrollTop/ScrollTop";
 
 export default function Authenticated({ user, children }) {
     return (
@@ -8,11 +9,7 @@ export default function Authenticated({ user, children }) {
             <Header user={user} />
             <main className="main">{children}</main>
             <Footer />
-            <a className="scroll-top" href="#start">
-                <svg className="scroll-top__svg">
-                    <use xlinkHref="#arrowTop"></use>
-                </svg>
-            </a>
+            <ScrollTop />
         </div>
     );
 }

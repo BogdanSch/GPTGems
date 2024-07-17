@@ -10,6 +10,9 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('/images/favicon/favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/images/favicon/favicon-16x16.png') }}">
     <link rel="manifest" href="{{ asset('/images/favicon/site.webmanifest') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('dist/styles/style.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <!-- Scripts -->
     @routes
@@ -65,9 +68,12 @@
             </g>
         </symbol>
     </svg>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
     <script src="{{ asset('dist/scripts/lib/jquery-3.7.1.js') }}"></script>
     <script defer type="module" src="{{ asset('dist/scripts/header.js') }}"></script>
-    <script defer src="{{ asset('dist/scripts/scroll-top.js') }}"></script>
+    {{-- <script defer src="{{ asset('dist/scripts/scroll-top.js') }}"></script> --}}
     <script defer src="{{ asset('dist/scripts/copy-prompt-handler.js') }}"></script>
 </body>
 
