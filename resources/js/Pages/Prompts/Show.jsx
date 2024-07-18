@@ -1,92 +1,108 @@
 import React from "react";
-import { usePage, Head } from "@inertiajs/react";
+import { usePage, Head, Link } from "@inertiajs/react";
+
 import Authenticated from "@/Layouts/AuthenticatedLayout";
+import CopyPromptContentButton from "@/Components/Buttons/CopyPromptContentButton";
+import LikePromptButton from "@/Components/Buttons/LikePromptButton";
 
-@extends('layouts.layout')
+export default function Show({ prompt }) {
+    const { auth, csrf } = usePage().props;
+    const user = auth.user.data;
+    const promptData = prompt.data;
 
-@section('title', 'Prompt created by: ' . $prompt->user->name)
+    const handleDelete = async (event) => {
+        event.preventDefault();
+        await fetch(route("prompts.destroy", { prompt: prompt.id }), {
+            method: "DELETE",
+            headers: {
+                "X-CSRF-Token": csrf,
+                "Content-Type": "application/json",
+            },
+        });
+    };
 
-@section('main_content')
-    <section class="prompts mt-5 mb-5" id="prompts">
-        <div class="container">
-            <div class="prompts__wrap">
-                <h2 class="prompts__title mb-5">Prompt created by: {{ $prompt->user->name }}</h2>
-                <div class="prompts__data">
-                    <div class="prompts__item-group">
-                        <h3 class="prompts__title">
-                            {{ $prompt->prompt_title }}
-                        </h3>
-                        <div class="prompts__item-elements">
-                            <button class="prompts__item-copy card p-1">
-                                <svg>
-                                    <use xlink:href='#clipboard'></use>
-                                </svg>
-                            </button>
-                            @auth
-                                @if (Auth::user()->likes->contains($prompt->id))
-                                    <form action="{{ route('prompts.unlike', $prompt) }}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="prompts__item-like card p-1">
-                                            <svg>
-                                                <use xlink:href='#heartFill'></use>
-                                            </svg>
-                                        </button>
-                                    </form>
-                                @else
-                                    <form action="{{ route('prompts.like', $prompt) }}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="prompts__item-like card p-1">
-                                            <svg>
-                                                <use xlink:href='#heart'></use>
-                                            </svg>
-                                        </button>
-                                    </form>
-                                @endif
-                            @endauth
-                        </div>
-                    </div>
-                    <div class="prompts__content mb-4">
-                        <div class="prompts__content-like">
-                            <span>{{ $prompt->likes()->count() }}</span>
-                            <svg>
-                                @if (Auth::user()->likes->contains($prompt->id))
-                                    <use xlink:href='#heartFill'></use>
-                                @else
-                                    <use xlink:href='#heart'></use>
-                                @endif
-                            </svg>
-                        </div>
-                        {{ $prompt->prompt_content }}
-                    </div>
-                    <div class="prompts__date">{{ $prompt->created_at->format('Y, d F') }}</div>
-                    @auth
-                        @if (Auth::user()->id === $prompt->prompt_author_id)
-                            <div class="prompts__actions mt-5">
-                                <a href="{{ route('prompts.edit', $prompt) }}"
-                                    class="prompts__button-edit btn btn-outline-primary">Edit this prompt</a>
-                                <form action="{{ route('prompts.destroy', $prompt) }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="prompts__button-delete btn btn-danger">Delete this
-                                        prompt</button>
-                                </form>
-                            </div>
-                        @endif
-                    @endauth
-                </div>
-            </div>
-        </div>
-    </section>
-@endsection
-
-
-export default function Show() {
-    
-    return <>
-
-    <Head title="Latest Prompts" />
+    return (
+        <>
+            <Head
+                title={`Prompt created by: ${promptData["prompt_author"].name}`}
+            />
             <Authenticated>
-
+                <section className="prompts mt-5 mb-5" id="prompts">
+                    <div className="container">
+                        <div className="prompts__wrap">
+                            <h2 className="prompts__title mb-5">
+                                Prompt created by:{" "}
+                                {promptData["prompt_author"].name}
+                            </h2>
+                            <div className="prompts__data">
+                                <div className="prompts__item-group">
+                                    <h3 className="prompts__title">
+                                        {prompt["prompt_title"]}
+                                    </h3>
+                                    <div className="prompts__item-elements">
+                                        <CopyPromptContentButton
+                                            prompt={prompt}
+                                        />
+                                        <LikePromptButton prompt={promptData} />
+                                    </div>
+                                </div>
+                                <div className="prompts__content mb-4">
+                                    <div className="prompts__content-like">
+                                        <span>{promptData["likes_count"]}</span>
+                                        <svg>
+                                            <use
+                                                xlinkHref={
+                                                    user &&
+                                                    promptData[
+                                                        "is_liked_by_user"
+                                                    ]
+                                                        ? "#heartFill"
+                                                        : "#heart"
+                                                }
+                                            ></use>
+                                        </svg>
+                                    </div>
+                                    <div className="prompts__content-text">
+                                        {promptData["prompt_content"]}
+                                    </div>
+                                </div>
+                                <div className="prompts__date">
+                                    {promptData["created_at"]}
+                                </div>
+                                {user &&
+                                    user.id ===
+                                        promptData["prompt_author"].id && (
+                                        <div className="prompts__actions mt-5">
+                                            <Link
+                                                href={route("prompts.edit", {
+                                                    prompt: promptData.id,
+                                                })}
+                                                className="prompts__button-edit btn btn-outline-primary"
+                                            >
+                                                Edit this prompt
+                                            </Link>
+                                            <form
+                                                action={route(
+                                                    "prompts.destroy",
+                                                    { prompt: promptData.id }
+                                                )}
+                                                method="POST"
+                                                onSubmit={handleDelete}
+                                            >
+                                                <button
+                                                    type="submit"
+                                                    className="prompts__button-delete btn btn-danger"
+                                                >
+                                                    Delete this prompt
+                                                </button>
+                                            </form>
+                                        </div>
+                                    )}
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </Authenticated>
-    </>;
+        </>
+    );
 }

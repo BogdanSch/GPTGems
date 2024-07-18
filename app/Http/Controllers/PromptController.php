@@ -59,7 +59,7 @@ class PromptController extends Controller
         if (!$prompt) {
             abort(404);
         }
-        return view("prompt.show", ["prompt" => new PromptResource($prompt)]);
+        return inertia("Prompts/Show", ["prompt" => new PromptResource($prompt)]);
     }
     /**
      * Show the form for editing the specified resource.

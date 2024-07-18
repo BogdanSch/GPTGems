@@ -22,15 +22,15 @@ use App\Http\Controllers\HomeController;
 Route::get('/', [HomeController::class, "index"])->name("home");
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return inertia('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::resource("prompts", PromptController::class);
 
 Route::middleware('auth')->group(function () {
     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-    Route::resource("prompts", PromptController::class);
     Route::post('/prompts/{prompt}/like', [PromptController::class, 'like'])->name('prompts.like');
     Route::post('/prompts/{prompt}/unlike', [PromptController::class, 'unlike'])->name('prompts.unlike');
     Route::get('/search-prompts', [PromptController::class, "search"])->name('prompts.search');
