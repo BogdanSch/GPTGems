@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PromptResource;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Prompt;
@@ -15,15 +16,25 @@ class PromptController extends Controller
      */
     public function index()
     {
-        $prompts = Prompt::query()->orderBy("created_at", "desc")->paginate(10);
-        return view("prompt.index", ["prompts" => $prompts]);
+        $query = Prompt::query();
+        $prompts = $query->orderBy("created_at", "desc")->paginate(10)->onEachSide(1);
+
+        $user = Auth::user();
+        if ($user) {
+            $user->load('likes');
+        }
+
+        return inertia("Prompts/Index", [
+            "prompts" => PromptResource::collection($prompts),
+            "search" => "All"
+        ]);
     }
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view("prompt.create");
+        return inertia("Prompts/Create");
     }
     /**
      * Store a newly created resource in storage.
@@ -48,7 +59,7 @@ class PromptController extends Controller
         if (!$prompt) {
             abort(404);
         }
-        return view("prompt.show", ["prompt" => $prompt]);
+        return view("prompt.show", ["prompt" => new PromptResource($prompt)]);
     }
     /**
      * Show the form for editing the specified resource.

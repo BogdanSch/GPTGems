@@ -1,12 +1,50 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Link, usePage } from "@inertiajs/react";
+import useActiveLinks from "@/Hooks/useActiveLinks";
 
 export default function Header() {
-    const { auth } = usePage().props;
+    const { auth, csrf } = usePage().props;
     const user = auth.user;
 
+    const headerRef = useRef(null);
+
+    useEffect(() => {
+        function applyStickyHeader() {
+            if (window.scrollY > 0) {
+                headerRef.current.classList.add("sticky");
+            } else {
+                if (headerRef.current.classList.contains("sticky")) {
+                    headerRef.current.classList.remove("sticky");
+                }
+            }
+        }
+
+        applyStickyHeader();
+        window.addEventListener("scroll", applyStickyHeader);
+    }, []);
+
+    useEffect(() => {
+        const burger = document.querySelector(".header__burger");
+        const menu = document.querySelector(".header__menu");
+        const body = document.body;
+
+        const toggleMenu = () => {
+            burger.classList.toggle("active");
+            menu.classList.toggle("active");
+            body.classList.toggle("lock");
+        };
+
+        burger.addEventListener("click", toggleMenu);
+
+        return () => {
+            burger.removeEventListener("click", toggleMenu);
+        };
+    }, []);
+
+    useActiveLinks(".header__list .header__item a");
+
     return (
-        <header className="header">
+        <header className="header" ref={headerRef}>
             <div className="container">
                 <div className="header__wrap">
                     <div className="header__logo col-md-3 mb-2 mb-md-0">
@@ -63,7 +101,7 @@ export default function Header() {
                                 <div className="dropdown">
                                     <button
                                         type="button"
-                                        className="btn d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                                        className="btn btn-profile d-block link-body-emphasis text-decoration-none dropdown-toggle"
                                         data-bs-toggle="dropdown"
                                         aria-expanded="false"
                                     >
@@ -100,9 +138,8 @@ export default function Header() {
                                                 action={route("logout")}
                                                 className="header__profile-form"
                                                 method="post"
-                                                role="search"
+                                                role="logout"
                                             >
-                                                @csrf @method('DELETE')
                                                 <button
                                                     className="btn btn-danger header__profile-signout"
                                                     type="submit"

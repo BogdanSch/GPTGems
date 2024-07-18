@@ -1,7 +1,10 @@
 import React from "react";
-import { Link, usePage } from "@inertiajs/react";
+import { Link } from "@inertiajs/react";
+import useActiveLinks from "@/Hooks/useActiveLinks";
 
 const Footer = () => {
+    useActiveLinks(".footer__list .footer__item a");
+
     return (
         <footer className="footer mt-4">
             <div className="container">

@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -48,12 +46,6 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('contact');
 })->name("contact");
-
-// Route::get('/sign-up', [AuthController::class, "register"])->name("sign-up");
-// Route::post("/sign-up", [AuthController::class, "registerPost"])->name("sign-up");
-// Route::get('/sign-in', [AuthController::class, "login"])->name("sign-in");
-// Route::post('/sign-in', [AuthController::class, "loginPost"])->name("sign-in");
-
 
 // Route::group(["middleware" => "auth"], function () {
 //     Route::delete('/prompts/{id}', [PromptController::class, "destroy"])->name("prompt.destroy");

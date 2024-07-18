@@ -21,7 +21,7 @@
     @inertiaHead
 </head>
 
-<body>
+<body id="start">
     @inertia
     <svg style="display: none;">
         <symbol id="logoIcon" viewBox="0 0 576 512">
@@ -71,10 +71,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
-    <script src="{{ asset('dist/scripts/lib/jquery-3.7.1.js') }}"></script>
-    <script defer type="module" src="{{ asset('dist/scripts/header.js') }}"></script>
-    {{-- <script defer src="{{ asset('dist/scripts/scroll-top.js') }}"></script> --}}
-    <script defer src="{{ asset('dist/scripts/copy-prompt-handler.js') }}"></script>
 </body>
 
 </html>
