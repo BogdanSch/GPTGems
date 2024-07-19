@@ -2,10 +2,11 @@ import React, { useEffect, useRef } from "react";
 
 export default function ScrollTop() {
     const scrollTopRef = useRef(null);
-    const screenOffset = 150;
 
     useEffect(() => {
         const handleScroll = () => {
+            const screenOffset = 150;
+
             if (scrollTopRef.current) {
                 if (window.scrollY >= screenOffset) {
                     scrollTopRef.current.classList.add("active");

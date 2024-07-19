@@ -11,24 +11,36 @@ export default function LikePromptButton({ prompt }) {
 
     const handleLike = (event) => {
         event.preventDefault();
-        router.post(promptLikeAction);
+        router.post(
+            promptLikeAction,
+            {},
+            {
+                headers: {
+                    "X-CSRF-Token": csrf,
+                    "Content-Type": "application/json",
+                },
+                onSuccess: () => {
+                    window.location.hash = "#prompts";
+                },
+            }
+        );
     };
 
     return (
         user && (
-            <form onSubmit={handleLike}>
-                <button type="submit" className="prompts__item-like card p-1">
-                    <svg>
-                        <use
-                            xlinkHref={
-                                prompt["is_liked_by_user"]
-                                    ? "#heartFill"
-                                    : "#heart"
-                            }
-                        ></use>
-                    </svg>
-                </button>
-            </form>
+            <button
+                type="submit"
+                className="prompts__item-like card p-1"
+                onClick={handleLike}
+            >
+                <svg>
+                    <use
+                        xlinkHref={
+                            prompt["is_liked_by_user"] ? "#heartFill" : "#heart"
+                        }
+                    ></use>
+                </svg>
+            </button>
         )
     );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { usePage, Head, Link } from "@inertiajs/react";
+import { usePage, Head, Link, router } from "@inertiajs/react";
 
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import CopyPromptContentButton from "@/Components/Buttons/CopyPromptContentButton";
@@ -9,16 +9,20 @@ export default function Show({ prompt }) {
     const { auth, csrf } = usePage().props;
     const user = auth.user.data;
     const promptData = prompt.data;
+    console.log(promptData);
 
     const handleDelete = async (event) => {
         event.preventDefault();
-        await fetch(route("prompts.destroy", { prompt: prompt.id }), {
-            method: "DELETE",
-            headers: {
-                "X-CSRF-Token": csrf,
-                "Content-Type": "application/json",
-            },
-        });
+        router.delete(
+            route("prompts.destroy", { prompt: promptData }),
+            {},
+            {
+                headers: {
+                    "X-CSRF-Token": csrf,
+                    "Content-Type": "application/json",
+                },
+            }
+        );
     };
 
     return (
@@ -75,20 +79,13 @@ export default function Show({ prompt }) {
                                         <div className="prompts__actions mt-5">
                                             <Link
                                                 href={route("prompts.edit", {
-                                                    prompt: promptData.id,
+                                                    prompt: promptData,
                                                 })}
                                                 className="prompts__button-edit btn btn-outline-primary"
                                             >
                                                 Edit this prompt
                                             </Link>
-                                            <form
-                                                action={route(
-                                                    "prompts.destroy",
-                                                    { prompt: promptData.id }
-                                                )}
-                                                method="POST"
-                                                onSubmit={handleDelete}
-                                            >
+                                            <form onSubmit={handleDelete}>
                                                 <button
                                                     type="submit"
                                                     className="prompts__button-delete btn btn-danger"
