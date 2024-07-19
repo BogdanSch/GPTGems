@@ -1,25 +1,17 @@
 import React from "react";
-import { usePage } from "@inertiajs/react";
-import { Inertia } from "@inertiajs/inertia";
+import { router, usePage } from "@inertiajs/react";
 
 export default function LikePromptButton({ prompt }) {
     const { auth, csrf } = usePage().props;
     const user = auth.user;
 
     const promptLikeAction = prompt["is_liked_by_user"]
-        ? route("prompts.unlike", { prompt })
-        : route("prompts.like", { prompt });
+        ? route("prompts.unlike", { prompt: prompt })
+        : route("prompts.like", { prompt: prompt });
 
-    const handleLike = async (event) => {
+    const handleLike = (event) => {
         event.preventDefault();
-        await fetch(promptLikeAction, {
-            method: "POST",
-            headers: {
-                "X-CSRF-Token": csrf,
-                "Content-Type": "application/json",
-            },
-        });
-        Inertia.reload();   
+        router.post(promptLikeAction);
     };
 
     return (

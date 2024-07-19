@@ -3,7 +3,7 @@ import { Link, usePage } from "@inertiajs/react";
 import CopyPromptContentButton from "../Buttons/CopyPromptContentButton";
 import LikePromptButton from "../Buttons/LikePromptButton";
 
-export default function PromptsList({ prompts, search }) {
+export default function PromptsList({ prompts }) {
     const { auth, csrf } = usePage().props;
     const promptsData = prompts.data;
 
@@ -15,15 +15,15 @@ export default function PromptsList({ prompts, search }) {
                         <div key={prompt.id} className="prompts__item card">
                             <Link
                                 className="card-body"
-                                href={route("prompts.show", { prompt })}
-                                onClick={(e) => {
-                                    if (
-                                        e.target.closest("button") ||
-                                        e.target.closest("form")
-                                    ) {
-                                        e.preventDefault();
-                                    }
-                                }}
+                                href={route("prompts.show", { prompt: prompt })}
+                                // onClick={(event) => {
+                                //     if (
+                                //         event.target.closest("button") ||
+                                //         event.target.closest("form")
+                                //     ) {
+                                //         event.preventDefault();
+                                //     }
+                                // }}
                             >
                                 <h4 className="prompts__item-title card-title mb-4">
                                     {prompt["prompt_title"]}
