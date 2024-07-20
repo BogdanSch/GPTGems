@@ -29,6 +29,7 @@ export default function Index({ prompts, search }) {
                                 <PromptsList
                                     prompts={prompts}
                                     showPagination={true}
+                                    search={search}
                                 />
                             </div>
                         </div>

@@ -5,7 +5,7 @@ import Pagination from "../Pagination/Pagination";
 import CopyPromptContentButton from "../Buttons/CopyPromptContentButton";
 import LikePromptButton from "../Buttons/LikePromptButton";
 
-export default function PromptsList({ prompts, showPagination }) {
+export default function PromptsList({ prompts, search, showPagination }) {
     const promptsData = prompts.data;
 
     const handleLinkClick = (event) => {
@@ -56,7 +56,11 @@ export default function PromptsList({ prompts, showPagination }) {
                         ))}
                     </ul>
                     {showPagination && (
-                        <Pagination class="mt-6" links={prompts.meta.links} />
+                        <Pagination
+                            class="mt-6"
+                            links={prompts.meta.links}
+                            searchTerm={search}
+                        />
                     )}
                 </>
             ) : (

@@ -1,13 +1,19 @@
 import React from "react";
 import { Link } from "@inertiajs/react";
 
-export default function Pagination({ links }) {
+export default function Pagination({ links, searchTerm }) {
     const getClassName = (active) => {
         if (active) {
             return "active";
         } else {
             return "";
         }
+    };
+
+    const appendSearchTerm = (url) => {
+        if (!url) return null;
+        const separator = url.includes("?") ? "&" : "?";
+        return `${url}${separator}search=${encodeURIComponent(searchTerm)}`;
     };
 
     const prevLink = links.find((link) => link.label === "&laquo; Previous");
@@ -22,7 +28,7 @@ export default function Pagination({ links }) {
             {prevLink && prevLink.url && (
                 <Link
                     className="btn btn-outline-pagination"
-                    href={prevLink.url}
+                    href={appendSearchTerm(prevLink.url)}
                 >
                     Previous
                 </Link>
@@ -38,7 +44,7 @@ export default function Pagination({ links }) {
                         className={`${getClassName(
                             link.active
                         )} pagination__link`}
-                        href={link.url}
+                        href={appendSearchTerm(link.url)}
                         key={key}
                     >
                         {link.label}
@@ -49,7 +55,7 @@ export default function Pagination({ links }) {
             {nextLink && nextLink.url && (
                 <Link
                     className="btn btn-outline-pagination"
-                    href={nextLink.url}
+                    href={appendSearchTerm(nextLink.url)}
                 >
                     Next
                 </Link>
