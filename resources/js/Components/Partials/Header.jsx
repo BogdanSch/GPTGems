@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { Link, usePage } from "@inertiajs/react";
+import { Link, usePage, router } from "@inertiajs/react";
 import useActiveLinks from "@/Hooks/useActiveLinks";
 
 export default function Header() {
@@ -42,6 +42,20 @@ export default function Header() {
     }, []);
 
     useActiveLinks(".header__list .header__item a");
+
+    const handleLogout = (event) => {
+        event.preventDefault();
+        router.post(
+            route("logout"),
+            {},
+            {
+                headers: {
+                    "X-CSRF-Token": csrf,
+                    "Content-Type": "application/json",
+                },
+            }
+        );
+    };
 
     return (
         <header className="header" ref={headerRef}>
@@ -135,9 +149,10 @@ export default function Header() {
                                         </li>
                                         <li>
                                             <form
-                                                action={route("logout")}
+                                                onSubmit={handleLogout}
+                                                // action={route("logout")}
                                                 className="header__profile-form"
-                                                method="post"
+                                                // method="post"
                                                 role="logout"
                                             >
                                                 <button

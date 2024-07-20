@@ -1,48 +1,24 @@
 import React from "react";
-import { usePage, Head } from "@inertiajs/react";
+import { Head } from "@inertiajs/react";
+
 import Authenticated from "@/Layouts/AuthenticatedLayout";
+import FlashMessage from "@/Components/FlashMessages/FlashMessage";
 import PromptsList from "@/Components/Prompts/PromptsList";
+import Search from "@/Components/Search/Search";
 
 export default function Index({ prompts, search }) {
-    const { auth, csrf } = usePage().props;
-
     return (
         <>
             <Head title="Latest Prompts" />
             <Authenticated>
+                <FlashMessage />
                 <section className="prompts" id="prompts">
                     <div className="container">
                         <div className="prompts__wrap">
                             <h2 className="prompts__title text-center">
                                 Discover all the latest prompts
                             </h2>
-                            <form
-                                className="prompts__form mt-5"
-                                action={route("prompts.search")}
-                                method="get"
-                            >
-                                <input
-                                    type="hidden"
-                                    name="_token"
-                                    value={csrf}
-                                />
-                                <div className="input-group">
-                                    <input
-                                        type="search"
-                                        placeholder="Search for a tag or a username"
-                                        name="search"
-                                        className="prompts__form-search form-control"
-                                        id="promptsSearch"
-                                    />
-                                    <button
-                                        type="submit"
-                                        className="btn btn-primary input-group-text"
-                                        data-mdb-ripple-init
-                                    >
-                                        <i className="bi bi-search"></i>
-                                    </button>
-                                </div>
-                            </form>
+                            <Search previousSearchTerm={search} />
                             <div className="prompts__data">
                                 <h3 className="prompts__sub-title text-center mt-5">
                                     Latest prompts sorted by:{" "}

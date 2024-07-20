@@ -3,7 +3,7 @@ import { usePage, Head } from "@inertiajs/react";
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 
 export default function Create() {
-    const { auth, csrf } = usePage().props;
+    // const { auth, csrf } = usePage().props;
 
     return (
         <>

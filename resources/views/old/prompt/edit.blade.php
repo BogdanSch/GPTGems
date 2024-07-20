@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', 'Create A New Prompt')
+@section('title', 'Edit Prompt')
 
 @section('main_content')
     <section class="prompts" id="prompts">

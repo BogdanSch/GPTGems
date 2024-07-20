@@ -7,9 +7,8 @@ import LikePromptButton from "@/Components/Buttons/LikePromptButton";
 
 export default function Show({ prompt }) {
     const { auth, csrf } = usePage().props;
-    const user = auth.user.data;
+    const user = auth.user?.data;
     const promptData = prompt.data;
-    console.log(promptData);
 
     const handleDelete = async (event) => {
         event.preventDefault();
@@ -31,6 +30,7 @@ export default function Show({ prompt }) {
                 title={`Prompt created by: ${promptData["prompt_author"].name}`}
             />
             <Authenticated>
+                <FlashMessage />
                 <section className="prompts mt-5 mb-5" id="prompts">
                     <div className="container">
                         <div className="prompts__wrap">

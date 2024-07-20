@@ -11,13 +11,14 @@ use App\Rules\TenWords;
 
 class PromptController extends Controller
 {
+    private const AMOUNT_PROMPTS_TO_PAGINATE = 10;
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         $query = Prompt::query();
-        $prompts = $query->orderBy("created_at", "desc")->paginate(10)->onEachSide(1);
+        $prompts = $query->orderBy("created_at", "desc")->paginate(self::AMOUNT_PROMPTS_TO_PAGINATE)->onEachSide(1);
 
         $user = Auth::user();
         if ($user) {
@@ -48,7 +49,7 @@ class PromptController extends Controller
         $userId = Auth::id();
         $data["prompt_author_id"] = $userId;
         $prompt = Prompt::create($data);
-        return to_route("prompts.show", ["prompt" => $prompt])->with("message", "Prompt was created successfull!");
+        return to_route("prompts.show", ["prompt" => new PromptResource($prompt)])->with("message", "Prompt was created successfull!");
     }
     /**
      * Display the specified resource.
@@ -69,7 +70,7 @@ class PromptController extends Controller
         if ($prompt->prompt_author_id !== auth()->id()) {
             abort(403);
         }
-        return view("prompt.edit", ["prompt" => $prompt]);
+        return inertia("Prompts/Edit", ["prompt" => new PromptResource($prompt)]);
     }
     /**
      * Update the specified resource in storage.
@@ -81,7 +82,7 @@ class PromptController extends Controller
             "prompt_content" => ["required", "string"],
         ]);
         $prompt->update($data);
-        return to_route("prompts.show", ["prompt" => $prompt])->with("message", "Prompt was updated successfully!");
+        return to_route("prompts.show", ["prompt" => new PromptResource($prompt)])->with("message", "Prompt was updated successfully!");
     }
     /**
      * Remove the specified resource from storage.
@@ -100,13 +101,18 @@ class PromptController extends Controller
     public function search(Request $request)
     {
         $search = $request->input('search');
-        $prompts = Prompt::where('prompt_content', 'like', "%$search%")
-            ->orWhereHas('user', function ($query) use ($search) {
-                $query->where('name', 'like', "%$search%");
-            })
-            ->orderBy("created_at", "desc")
-            ->paginate(10);
-        return view("prompt.index", ["prompts" => $prompts, "search" => $search]);
+
+        $query = Prompt::query();
+        $prompts = $query->orderBy("created_at", "desc")->paginate(self::AMOUNT_PROMPTS_TO_PAGINATE)->onEachSide(1);
+
+        if ($search !== "All")
+            $prompts = Prompt::where('prompt_content', 'like', "%$search%")
+                ->orWhereHas('user', function ($query) use ($search) {
+                    $query->where('name', 'like', "%$search%");
+                })
+                ->orderBy("created_at", "desc")
+                ->paginate(self::AMOUNT_PROMPTS_TO_PAGINATE)->onEachSide(1);
+        return inertia("Prompts/Index", ["prompts" => PromptResource::collection($prompts), "search" => $search]);
     }
     public function like(Prompt $prompt)
     {
