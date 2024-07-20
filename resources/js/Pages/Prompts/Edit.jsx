@@ -1,9 +1,8 @@
 import React from "react";
-import { usePage, Head, useForm, router } from "@inertiajs/react";
+import { Head, useForm } from "@inertiajs/react";
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 
 export default function Edit({ prompt }) {
-    const { csrf } = usePage().props;
     const promptData = prompt.data;
 
     const { data, setData, put, processing, errors, reset } = useForm({
@@ -11,7 +10,7 @@ export default function Edit({ prompt }) {
         prompt_content: promptData["prompt_content"],
     });
 
-    const handleUpdate = async (event) => {
+    const submitUpdate = async (event) => {
         event.preventDefault();
         put(route("prompts.update", { prompt: promptData }));
     };
@@ -28,7 +27,7 @@ export default function Edit({ prompt }) {
                             </h2>
                             <form
                                 className="prompts__form mt-5"
-                                onSubmit={handleUpdate}
+                                onSubmit={submitUpdate}
                             >
                                 <div className="mb-3">
                                     <label
@@ -51,6 +50,10 @@ export default function Edit({ prompt }) {
                                             )
                                         }
                                     />
+                                    <InputError
+                                        message={errors["prompt_title"]}
+                                        className="mt-2"
+                                    />
                                 </div>
                                 <div className="mb-3">
                                     <label
@@ -72,6 +75,10 @@ export default function Edit({ prompt }) {
                                             )
                                         }
                                         value={data["prompt_content"]}
+                                    />
+                                    <InputError
+                                        message={errors["prompt_content"]}
+                                        className="mt-2"
                                     />
                                 </div>
                                 <button

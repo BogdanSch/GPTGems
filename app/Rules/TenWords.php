@@ -15,8 +15,8 @@ class TenWords implements ValidationRule
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
         $wordCount = str_word_count($value);
-        if ($wordCount !== 10) {
-            $fail('The :attribute must be exactly 10 words.');
+        if ($wordCount <= 10) {
+            $fail('The :attribute must be more than 10 words.');
         }
     }
 }

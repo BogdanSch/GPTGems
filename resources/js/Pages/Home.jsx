@@ -57,7 +57,7 @@ export default function Home({ prompts }) {
                                 </h3>
                                 <PromptsList
                                     prompts={prompts}
-                                    search={search}
+                                    showPagination={false}
                                 />
                                 <div className="prompts__buttons text-center mt-5 mb-5">
                                     <Link

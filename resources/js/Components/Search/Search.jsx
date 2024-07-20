@@ -5,8 +5,6 @@ export default function Search({ previousSearchTerm = "" }) {
     const { csrf } = usePage().props;
     const [searchTerm, setSearchTerm] = useState(previousSearchTerm);
 
-    console.log(previousSearchTerm);
-
     const submitSearch = (event) => {
         event.preventDefault();
         router.get(

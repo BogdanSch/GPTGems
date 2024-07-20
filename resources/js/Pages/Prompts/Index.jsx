@@ -28,7 +28,7 @@ export default function Index({ prompts, search }) {
                                 </h3>
                                 <PromptsList
                                     prompts={prompts}
-                                    search={search}
+                                    showPagination={true}
                                 />
                             </div>
                         </div>

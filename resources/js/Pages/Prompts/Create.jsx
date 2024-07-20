@@ -1,9 +1,19 @@
 import React from "react";
-import { usePage, Head } from "@inertiajs/react";
+import { Head, useForm } from "@inertiajs/react";
+
 import Authenticated from "@/Layouts/AuthenticatedLayout";
+import InputError from "@/Components/Inputs/InputError";
 
 export default function Create() {
-    // const { auth, csrf } = usePage().props;
+    const { data, setData, post, processing, errors, reset } = useForm({
+        prompt_title: "",
+        prompt_content: "",
+    });
+
+    const submitCreate = (event) => {
+        event.preventDefault();
+        post(route("prompts.store", { data }));
+    };
 
     return (
         <>
@@ -17,8 +27,7 @@ export default function Create() {
                             </h2>
                             <form
                                 className="prompts__form mt-5"
-                                action={route("prompts.store")}
-                                method="post"
+                                onSubmit={submitCreate}
                             >
                                 <div className="mb-3">
                                     <label
@@ -33,6 +42,17 @@ export default function Create() {
                                         id="promptTitle"
                                         name="prompt_title"
                                         placeholder="Your prompt title: "
+                                        value={data["prompt_title"]}
+                                        onChange={(event) => {
+                                            setData(
+                                                "prompt_title",
+                                                event.target.value
+                                            );
+                                        }}
+                                    />
+                                    <InputError
+                                        message={errors["prompt_title"]}
+                                        className="mt-2"
                                     />
                                 </div>
                                 <div className="mb-3">
@@ -48,11 +68,23 @@ export default function Create() {
                                         id="promptContent"
                                         name="prompt_content"
                                         placeholder="Your prompt content: "
-                                    ></textarea>
+                                        value={data["prompt_content"]}
+                                        onChange={(event) => {
+                                            setData(
+                                                "prompt_content",
+                                                event.target.value
+                                            );
+                                        }}
+                                    />
+                                    <InputError
+                                        message={errors["prompt_content"]}
+                                        className="mt-2"
+                                    />
                                 </div>
                                 <button
                                     type="submit"
                                     className="btn btn-primary"
+                                    disabled={processing}
                                 >
                                     Submit
                                 </button>

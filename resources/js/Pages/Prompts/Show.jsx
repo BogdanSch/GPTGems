@@ -4,13 +4,14 @@ import { usePage, Head, Link, router } from "@inertiajs/react";
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import CopyPromptContentButton from "@/Components/Buttons/CopyPromptContentButton";
 import LikePromptButton from "@/Components/Buttons/LikePromptButton";
+import FlashMessage from "@/Components/FlashMessages/FlashMessage";
 
 export default function Show({ prompt }) {
     const { auth, csrf } = usePage().props;
     const user = auth.user?.data;
     const promptData = prompt.data;
 
-    const handleDelete = async (event) => {
+    const submitDelete = async (event) => {
         event.preventDefault();
         router.delete(
             route("prompts.destroy", { prompt: promptData }),
@@ -85,7 +86,7 @@ export default function Show({ prompt }) {
                                             >
                                                 Edit this prompt
                                             </Link>
-                                            <form onSubmit={handleDelete}>
+                                            <form onSubmit={submitDelete}>
                                                 <button
                                                     type="submit"
                                                     className="prompts__button-delete btn btn-danger"
