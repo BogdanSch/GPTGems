@@ -117,6 +117,10 @@ textarea.form-control {
 .text-content {
     max-width: 60%;
     margin: 0 auto;
+
+    &.full {
+        max-width: 100% !important;
+    }
 }
 
 .card {

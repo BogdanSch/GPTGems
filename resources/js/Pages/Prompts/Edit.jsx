@@ -81,13 +81,13 @@ export default function Edit({ prompt }) {
                                         className="mt-2"
                                     />
                                 </div>
-                                <button
-                                    type="submit"
-                                    className="btn btn-primary"
+                                <PrimaryButton
                                     disabled={processing}
+                                    type="submit"
+                                    isOutline={false}
                                 >
-                                    Submit
-                                </button>
+                                    Submit the new changes
+                                </PrimaryButton>
                             </form>
                         </div>
                     </div>

@@ -3,6 +3,7 @@ import { Head, Link, useForm } from "@inertiajs/react";
 
 import GuestLayout from "@/Layouts/GuestLayout";
 import InputError from "@/Components/Inputs/InputError";
+import PrimaryButton from "@/Components/Buttons/PrimaryButton";
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -42,7 +43,10 @@ export default function Register() {
                                 </div>
                                 <form onSubmit={submitRegistration}>
                                     <div className="mb-3">
-                                        <label htmlFor="name" className="form-label">
+                                        <label
+                                            htmlFor="name"
+                                            className="form-label"
+                                        >
                                             Name:
                                         </label>
                                         <input
@@ -52,7 +56,6 @@ export default function Register() {
                                             id="name"
                                             placeholder="John Doe"
                                             autoComplete="name"
-                                            isFocused={true}
                                             onChange={(event) =>
                                                 setData(
                                                     "name",
@@ -68,7 +71,10 @@ export default function Register() {
                                         />
                                     </div>
                                     <div className="mb-3">
-                                        <label htmlFor="email" className="form-label">
+                                        <label
+                                            htmlFor="email"
+                                            className="form-label"
+                                        >
                                             Email address:
                                         </label>
                                         <input
@@ -152,12 +158,13 @@ export default function Register() {
                                     </div>
                                     <div className="mb-3">
                                         <div className="d-grid">
-                                            <button
-                                                className="btn btn-primary"
+                                            <PrimaryButton
                                                 disabled={processing}
+                                                type="submit"
+                                                isOutline={false}
                                             >
                                                 Register
-                                            </button>
+                                            </PrimaryButton>
                                         </div>
                                     </div>
                                 </form>

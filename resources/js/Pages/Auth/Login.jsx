@@ -4,6 +4,7 @@ import { Head, Link, useForm } from "@inertiajs/react";
 import GuestLayout from "@/Layouts/GuestLayout";
 import Checkbox from "@/Components/Checkbox";
 import InputError from "@/Components/Inputs/InputError";
+import PrimaryButton from "@/Components/Buttons/PrimaryButton";
 
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -125,7 +126,7 @@ export default function Login({ status, canResetPassword }) {
                                         {canResetPassword && (
                                             <Link
                                                 href={route("password.request")}
-                                                className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                                className="sign-in__forget"
                                             >
                                                 Forgot your password?
                                             </Link>
@@ -133,12 +134,13 @@ export default function Login({ status, canResetPassword }) {
                                     </div>
                                     <div className="mb-3">
                                         <div className="d-grid">
-                                            <button
-                                                className="btn btn-primary"
+                                            <PrimaryButton
                                                 disabled={processing}
+                                                type="submit"
+                                                isOutline={false}
                                             >
                                                 Log in
-                                            </button>
+                                            </PrimaryButton>
                                         </div>
                                     </div>
                                 </form>

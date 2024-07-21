@@ -20,16 +20,14 @@ export default function ResetPassword({ token, email }) {
         };
     }, []);
 
-    const submit = (e) => {
+    const submit = (event) => {
         e.preventDefault();
-
         post(route("password.store"));
     };
 
     return (
         <GuestLayout>
             <Head title="Reset Password" />
-
             <form onSubmit={submit}>
                 <div>
                     <InputLabel htmlFor="email" value="Email" />

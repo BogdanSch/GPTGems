@@ -81,13 +81,13 @@ export default function Create() {
                                         className="mt-2"
                                     />
                                 </div>
-                                <button
-                                    type="submit"
-                                    className="btn btn-primary"
+                                <PrimaryButton
                                     disabled={processing}
+                                    type="submit"
+                                    isOutline={false}
                                 >
-                                    Submit
-                                </button>
+                                    Create the prompt
+                                </PrimaryButton>
                             </form>
                         </div>
                     </div>
