@@ -40,24 +40,29 @@ export default function ForgotPassword({ status }) {
                                     </div>
                                 )}
                                 <form onSubmit={submitForgotPassword}>
-                                    <input
-                                        className="form-control"
-                                        id="email"
-                                        type="email"
-                                        name="email"
-                                        value={data.email}
-                                        placeholder="Enter your email: "
-                                        onChange={(event) =>
-                                            setData("email", event.target.value)
-                                        }
-                                        autoComplete="email"
-                                        required
-                                    />
-                                    <InputError
-                                        message={errors.email}
-                                        className="mt-2"
-                                    />
-                                    <div className="mt-4 text-center">
+                                    <div className="mb-4">
+                                        <input
+                                            className="form-control"
+                                            id="email"
+                                            type="email"
+                                            name="email"
+                                            value={data.email}
+                                            placeholder="Enter your email: "
+                                            onChange={(event) =>
+                                                setData(
+                                                    "email",
+                                                    event.target.value
+                                                )
+                                            }
+                                            autoComplete="email"
+                                            required
+                                        />
+                                        <InputError
+                                            message={errors.email}
+                                            className="mt-2"
+                                        />
+                                    </div>
+                                    <div className="text-center">
                                         <PrimaryButton disabled={processing}>
                                             Email Password Reset Link
                                         </PrimaryButton>
