@@ -29,7 +29,7 @@ img {
 
 h1 {
     font-weight: 800;
-    font-size: 48px;
+    font-size: 3rem;
 
     .mark {
         color: $secondary;
@@ -39,7 +39,7 @@ h1 {
 
 h2 {
     font-weight: 700;
-    font-size: 36px;
+    font-size: 2.25rem;
 
     span {
         color: $accent;
@@ -55,7 +55,7 @@ h2 {
 
 p {
     color: $dark-grey;
-    font-size: 16px;
+    font-size: 1rem;
 
     &.error {
         font-size: 0.875rem;

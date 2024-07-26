@@ -24,7 +24,7 @@ class PromptResource extends JsonResource
             "prompt_title" => $this->prompt_title,
             "prompt_content" => $this->prompt_content,
             "prompt_author" => new UserResource($this->user),
-            "created_at" => (new Carbon($this->created_at))->format("Y-m-d"),
+            "created_at" => (new Carbon($this->created_at))->format("Y, M d"),
             "likes_count" => $this->likes()->count(),
             "is_liked_by_user" => in_array($this->id, $userLikes),
         ];

@@ -36,8 +36,9 @@
         background-color: $white;
         transition: box-shadow 0.3s ease;
         transition: all 0.7s ease;
+        position: relative;
 
-        .card-body{
+        .card-body {
             text-decoration: none;
         }
 
@@ -84,7 +85,7 @@
             margin-bottom: 0;
 
             span {
-                font-size: 18px;
+                font-size: 1.125rem;
                 font-weight: 700;
             }
         }

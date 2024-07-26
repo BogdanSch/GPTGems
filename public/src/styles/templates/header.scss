@@ -25,7 +25,7 @@
             color: $white !important;
             @include flex-row();
             font-weight: 600;
-            font-size: 24px;
+            font-size: 1.5rem;
             column-gap: 20px;
             align-items: center;
             transition: all 0.6s ease;
@@ -115,7 +115,7 @@
 
         &__logo {
             margin-bottom: 0 !important;
-            font-size: 20px;
+            font-size: 1.25rem;
 
             &-svg {
                 max-width: 32px;

@@ -1,6 +1,9 @@
 import React from "react";
 import { Head, useForm } from "@inertiajs/react";
+
 import Authenticated from "@/Layouts/AuthenticatedLayout";
+import InputError from "@/Components/Inputs/InputError";
+import PrimaryButton from "@/Components/Buttons/PrimaryButton";
 
 export default function Edit({ prompt }) {
     const promptData = prompt.data;
