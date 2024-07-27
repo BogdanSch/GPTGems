@@ -14,6 +14,7 @@ use App\Http\Resources\PromptResource;
 
 class ProfileController extends Controller
 {
+    private const PROFILE_IMAGE_PATH = "dist/images/profile/";
     /**
      * Display the user's profile data.
      */
@@ -71,6 +72,9 @@ class ProfileController extends Controller
 
         return Redirect::route('home');
     }
+    /**
+     * Remove the specified file from the public folder
+     */
     private function removePublicFile($filePath)
     {
         if ($filePath === "/images/profile/default-profile.png")
@@ -79,26 +83,28 @@ class ProfileController extends Controller
             unlink(public_path($filePath));
         }
     }
-    // public function updatePost(Request $request)
-    // {
-    //     $request->validate([
-    //         'profile_photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-    //     ]);
-    //     $imagePath = "dist/images/profile/";
+    /**
+     * Update the user's profile picture
+     */
+    public function updateProfilePicture(Request $request)
+    {
+        $request->validate([
+            'profile_photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
 
-    //     if ($request->hasFile('profile_photo')) {
-    //         $user = Auth::user();
+        if ($request->hasFile('profile_photo')) {
+            $user = Auth::user();
 
-    //         $image = $request->file('profile_photo');
-    //         $imageName = $user->name . time() . '.' . $image->getClientOriginalExtension();
-    //         $image->move(public_path($imagePath), $imageName);
+            $image = $request->file('profile_photo');
+            $imageName = $user->name . time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path(self::PROFILE_IMAGE_PATH), $imageName);
 
-    //         $this->removePublicFile($user->profile_photo_path);
+            $this->removePublicFile($user->profile_photo_path);
 
-    //         $user->profile_photo_path = $imagePath . $imageName;
-    //         $user->save();
-    //     }
+            $user->profile_photo_path = self::PROFILE_IMAGE_PATH . $imageName;
+            $user->save();
+        }
 
-    //     return to_route("profile.index")->with('message', 'Profile picture uploaded successfully.');
-    // }
+        return Redirect::route('dashboard')->with('message', 'Profile picture was uploaded successfully.');
+    }
 }

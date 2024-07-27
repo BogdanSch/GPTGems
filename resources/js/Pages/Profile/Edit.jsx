@@ -6,15 +6,17 @@ import DeleteUserForm from "./Partials/DeleteUserForm";
 import UpdateProfileImageForm from "./Partials/UpdateProfileImageForm";
 import UpdatePasswordForm from "./Partials/UpdatePasswordForm";
 import UpdateProfileInformationForm from "./Partials/UpdateProfileInformationForm";
+import FlashMessage from "@/Components/FlashMessages/FlashMessage";
 
 export default function Edit({ mustVerifyEmail, status }) {
     return (
         <AuthenticatedLayout>
             <Head title="Edit Profile" />
-            <section class="profile" id="profile">
-                <div class="container">
-                    <div class="profile__wrap">
-                        <div class="profile__card card py-3 px-5">
+            <FlashMessage />
+            <section className="profile" id="profile">
+                <div className="container">
+                    <div className="profile__wrap">
+                        <div className="profile__card card py-3 px-5">
                             <div className="mb-5">
                                 <UpdateProfileImageForm />
                             </div>

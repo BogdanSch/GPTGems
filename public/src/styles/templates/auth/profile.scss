@@ -82,6 +82,11 @@
             color: $dark-grey;
         }
     }
+
+    &__description {
+        background-color: $dark-grey;
+        font-size: 1.125rem;
+    }
 }
 
 @media screen and (max-width: 800px) {

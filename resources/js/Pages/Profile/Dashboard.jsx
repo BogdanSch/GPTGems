@@ -5,6 +5,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import PromptsList from "@/Components/Prompts/PromptsList";
 import Search from "@/Components/Search/Search";
 import Image from "@/Components/Image";
+import FlashMessage from "@/Components/FlashMessages/FlashMessage";
 
 export default function Dashboard({ prompts, likedPrompts, search }) {
     const { auth } = usePage().props;
@@ -13,6 +14,7 @@ export default function Dashboard({ prompts, likedPrompts, search }) {
     return (
         <AuthenticatedLayout>
             <Head title="Dashboard" />
+            <FlashMessage />
             <section className="prompts" id="prompts">
                 <div className="container">
                     <div className="prompts__wrap">

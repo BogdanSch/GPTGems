@@ -18,83 +18,80 @@ export default function UpdateProfileInformation({
             email: user.email,
         });
 
-    const submit = (e) => {
-        e.preventDefault();
+    const submitProfileInformation = (event) => {
+        event.preventDefault();
 
         patch(route("profile.update"));
     };
 
     return (
-        <section className={className}>
-            <header>
-                <h2 className="text-lg font-medium text-gray-900">
-                    Profile Information
-                </h2>
-
-                <p className="mt-1 text-sm text-gray-600">
+        <>
+            <div className="text-content full text-center">
+                <h2 className="prompts__title mt-3">Profile Information</h2>
+                <p className="prompts__description mt-1">
                     Update your account's profile information and email address.
                 </p>
-            </header>
-
-            <form onSubmit={submit} className="mt-6 space-y-6">
-                <div>
-                    <InputLabel htmlFor="name" value="Name" />
-
-                    <TextInput
+            </div>
+            <form onSubmit={submitProfileInformation} className="profile__form">
+                <div className="form-group mb-4">
+                    <InputLabel htmlFor="name" value="New name:" />
+                    <input
                         id="name"
-                        className="mt-1 block w-full"
+                        className="form-control"
                         value={data.name}
-                        onChange={(e) => setData("name", e.target.value)}
-                        required
-                        isFocused
+                        onChange={(event) =>
+                            setData("name", event.target.value)
+                        }
                         autoComplete="name"
+                        placeholder="Enter your new username: "
+                        required
                     />
-
                     <InputError className="mt-2" message={errors.name} />
                 </div>
-
-                <div>
-                    <InputLabel htmlFor="email" value="Email" />
-
-                    <TextInput
+                <div className="form-group mb-4">
+                    <InputLabel htmlFor="email" value="New email:" />
+                    <input
                         id="email"
                         type="email"
-                        className="mt-1 block w-full"
+                        className="form-control"
                         value={data.email}
-                        onChange={(e) => setData("email", e.target.value)}
+                        onChange={(event) =>
+                            setData("email", event.target.value)
+                        }
+                        autoComplete="email"
+                        placeholder="Enter your new email: "
                         required
-                        autoComplete="username"
                     />
-
                     <InputError className="mt-2" message={errors.email} />
                 </div>
-
                 {mustVerifyEmail && user.email_verified_at === null && (
                     <div>
-                        <p className="text-sm mt-2 text-gray-800">
+                        <p className="profile__description">
                             Your email address is unverified.
                             <Link
                                 href={route("verification.send")}
                                 method="post"
                                 as="button"
-                                className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                className="btn btn-outline-primary"
                             >
                                 Click here to re-send the verification email.
                             </Link>
                         </p>
-
                         {status === "verification-link-sent" && (
-                            <div className="mt-2 font-medium text-sm text-green-600">
+                            <div
+                                className="alert alert-success mt-2 text-center"
+                                role="alert"
+                            >
                                 A new verification link has been sent to your
                                 email address.
                             </div>
                         )}
                     </div>
                 )}
-
-                <div className="flex items-center gap-4">
-                    <PrimaryButton disabled={processing}>Save</PrimaryButton>
-
+                <div className="text-center">
+                    <PrimaryButton disabled={processing} isOutline={true}>
+                        Save changes
+                    </PrimaryButton>
                     <Transition
                         show={recentlySuccessful}
                         enter="transition ease-in-out"
@@ -106,6 +103,6 @@ export default function UpdateProfileInformation({
                     </Transition>
                 </div>
             </form>
-        </section>
+        </>
     );
 }
