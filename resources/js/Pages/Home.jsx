@@ -1,11 +1,13 @@
 import React from "react";
-import { usePage, Link, Head } from "@inertiajs/react";
+import { Link, Head } from "@inertiajs/react";
 
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import PromptsList from "@/Components/Prompts/PromptsList";
+import Image from "@/Components/Image";
 
 export default function Home({ prompts }) {
-    const search = "All";
+    const searchTerm = "All";
+
     return (
         <>
             <Head title="Home" />
@@ -13,8 +15,8 @@ export default function Home({ prompts }) {
                 <section className="about">
                     <div className="container">
                         <div className="about__wrap">
-                            <img
-                                src="/images/kyiv-view.jpg"
+                            <Image
+                                src={"/images/kyiv-view.jpg"}
                                 className="about__image"
                                 alt="About Intro Image"
                             />
@@ -52,14 +54,14 @@ export default function Home({ prompts }) {
                                 <h3 className="prompts__sub-title text-center mt-5">
                                     Latest prompts sorted by:{" "}
                                     <span className="prompts__tag">
-                                        {search}
+                                        {searchTerm}
                                     </span>
                                 </h3>
                                 <PromptsList
                                     prompts={prompts}
                                     showPagination={false}
                                 />
-                                <div className="prompts__buttons text-center mt-5 mb-5">
+                                <div className="prompts__buttons text-center mt-4">
                                     <Link
                                         className="btn btn-outline-primary"
                                         href={route("prompts.index")}

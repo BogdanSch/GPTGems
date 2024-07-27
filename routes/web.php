@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PromptController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,13 +22,16 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, "index"])->name("home");
 
-Route::get('/dashboard', function () {
-    return inertia('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::resource("prompts", PromptController::class);
 
-Route::middleware('auth')->group(function () {
+Route::middleware("auth")->group(function () {
+    Route::middleware("verified")->group(function () {
+        Route::get('/profile', [ProfileController::class, "index"])->name('dashboard');
+        Route::get('/profile/edit', [ProfileController::class, "edit"])->name('profile.edit');
+        Route::patch('/profile/update', [ProfileController::class, "update"])->name('profile.update');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    });
+
     // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -36,15 +40,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/search-prompts', [PromptController::class, "search"])->name('prompts.search');
 });
 
+
 require __DIR__ . '/auth.php';
 
-
 Route::get('/about', function () {
-    return view('about');
+    // return view('about');
 })->name("about");
 
 Route::get('/contact', function () {
-    return view('contact');
+    // return view('contact');
 })->name("contact");
 
 // Route::group(["middleware" => "auth"], function () {

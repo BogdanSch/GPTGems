@@ -1,21 +1,73 @@
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
+import React from "react";
+import { Head, usePage, Link } from "@inertiajs/react";
 
-export default function Dashboard({ auth }) {
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import PromptsList from "@/Components/Prompts/PromptsList";
+import Search from "@/Components/Search/Search";
+import Image from "@/Components/Image";
+
+export default function Dashboard({ prompts, likedPrompts, search }) {
+    const { auth } = usePage().props;
+    const userData = auth.user.data;
+
     return (
-        <AuthenticatedLayout
-            user={auth.user}
-            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Dashboard</h2>}
-        >
+        <AuthenticatedLayout>
             <Head title="Dashboard" />
-
-            <div className="py-12">
-                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div className="p-6 text-gray-900">You're logged in!</div>
+            <section className="prompts" id="prompts">
+                <div className="container">
+                    <div className="prompts__wrap">
+                        {userData["profile_photo_path"] && (
+                            <div className="profile__image">
+                                <Image
+                                    src={userData["profile_photo_path"]}
+                                    alt="Profile Photo"
+                                />
+                                <Link
+                                    className="profile__image-link"
+                                    href={route("profile.edit")}
+                                >
+                                    Update your profile info
+                                </Link>
+                            </div>
+                        )}
+                        <div className="text-center mt-2">
+                            <Link
+                                className="btn btn-outline-primary"
+                                href={route("profile.edit")}
+                            >
+                                Update your profile
+                            </Link>
+                        </div>
+                        <h2 className="prompts__title text-center mt-3">
+                            Welcome back, <span>{userData.name}!</span>
+                        </h2>
+                        <Search previousSearchTerm={search} />
+                        <div className="prompts__data">
+                            <h3 className="prompts__sub-title text-center mt-5">
+                                Your latest prompts sorted by:{" "}
+                                <span className="prompts__tag">
+                                    {search ? search : "All"}
+                                </span>
+                            </h3>
+                            <PromptsList
+                                prompts={prompts}
+                                search={search}
+                                showPagination={true}
+                            />
+                        </div>
+                        <div className="prompts__liked">
+                            <h2 className="prompts__title text-center mt-5">
+                                <span>Liked</span> Prompts
+                            </h2>
+                            <PromptsList
+                                prompts={likedPrompts}
+                                search={search}
+                                showPagination={true}
+                            />
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </AuthenticatedLayout>
     );
 }

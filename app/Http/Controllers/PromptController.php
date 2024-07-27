@@ -8,10 +8,33 @@ use Illuminate\Http\Request;
 use App\Models\Prompt;
 use App\Models\Like;
 use App\Rules\TenWords;
+use Inertia\Response;
 
 class PromptController extends Controller
 {
     private const AMOUNT_PROMPTS_TO_PAGINATE = 10;
+    /**
+     * Returns all prompts created by a specific user
+     */
+    public static function getAllUserPrompts($user)
+    {
+        $userId = $user->id;
+        $prompts = Prompt::where("prompt_author_id", $userId)
+            ->orderBy("created_at", "desc")
+            ->paginate(self::AMOUNT_PROMPTS_TO_PAGINATE);
+        return $prompts;
+    }
+    /**
+     * Returns all prompts liked by a specific user
+     */
+    public static function getAllLikedUserPrompts($user)
+    {
+        $likedPrompts = null;
+        if ($user->likes()->count() > 0) {
+            $likedPrompts = $user->likes()->with('user')->paginate(self::AMOUNT_PROMPTS_TO_PAGINATE);
+        }
+        return $likedPrompts;
+    }
     /**
      * Display a listing of the resource.
      */
@@ -33,7 +56,7 @@ class PromptController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): Response
     {
         return inertia("Prompts/Create");
     }
@@ -54,7 +77,7 @@ class PromptController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Prompt $prompt)
+    public function show(Prompt $prompt): Response
     {
         $prompt->load('user', 'likes');
         if (!$prompt) {
@@ -65,7 +88,7 @@ class PromptController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Prompt $prompt)
+    public function edit(Prompt $prompt): Response
     {
         if ($prompt->prompt_author_id !== auth()->id()) {
             abort(403);
@@ -112,8 +135,12 @@ class PromptController extends Controller
                 })
                 ->orderBy("created_at", "desc")
                 ->paginate(self::AMOUNT_PROMPTS_TO_PAGINATE)->onEachSide(1);
+
         return inertia("Prompts/Index", ["prompts" => PromptResource::collection($prompts), "search" => $search]);
     }
+    /**
+     * Likes the specified prompt item.
+     */
     public function like(Prompt $prompt)
     {
         $user = Auth::user();
@@ -127,6 +154,9 @@ class PromptController extends Controller
 
         return back()->with('message', 'You liked the prompt!');
     }
+    /**
+     * Unlikes the specified prompt item.
+     */
     public function unlike(Prompt $prompt)
     {
         $user = Auth::user();

@@ -8,22 +8,35 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use Inertia\Inertia;
 use Inertia\Response;
+use App\Http\Controllers\PromptController;
+use App\Http\Resources\PromptResource;
 
 class ProfileController extends Controller
 {
+    /**
+     * Display the user's profile data.
+     */
+    public function index(): Response
+    {
+        $user = Auth::user();
+
+        $prompts = PromptController::getAllUserPrompts($user);
+        $likedPrompts = PromptController::getAllLikedUserPrompts($user);
+
+        return inertia('Profile/Dashboard', ["prompts" => PromptResource::collection($prompts), "likedPrompts" => PromptResource::collection($likedPrompts)]);
+    }
+
     /**
      * Display the user's profile form.
      */
     public function edit(Request $request): Response
     {
-        return Inertia::render('Profile/Edit', [
+        return inertia('Profile/Edit', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => session('status'),
         ]);
     }
-
     /**
      * Update the user's profile information.
      */
@@ -50,14 +63,42 @@ class ProfileController extends Controller
         ]);
 
         $user = $request->user();
-
         Auth::logout();
-
         $user->delete();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return Redirect::to('/');
+        return Redirect::route('home');
     }
+    private function removePublicFile($filePath)
+    {
+        if ($filePath === "/images/profile/default-profile.png")
+            return;
+        if (file_exists(public_path($filePath))) {
+            unlink(public_path($filePath));
+        }
+    }
+    // public function updatePost(Request $request)
+    // {
+    //     $request->validate([
+    //         'profile_photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+    //     ]);
+    //     $imagePath = "dist/images/profile/";
+
+    //     if ($request->hasFile('profile_photo')) {
+    //         $user = Auth::user();
+
+    //         $image = $request->file('profile_photo');
+    //         $imageName = $user->name . time() . '.' . $image->getClientOriginalExtension();
+    //         $image->move(public_path($imagePath), $imageName);
+
+    //         $this->removePublicFile($user->profile_photo_path);
+
+    //         $user->profile_photo_path = $imagePath . $imageName;
+    //         $user->save();
+    //     }
+
+    //     return to_route("profile.index")->with('message', 'Profile picture uploaded successfully.');
+    // }
 }

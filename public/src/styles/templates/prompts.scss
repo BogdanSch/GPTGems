@@ -30,13 +30,17 @@
     &__item {
         text-decoration: none;
         max-width: 18rem;
-        border: 1px solid $grey;
+        border: 3px solid $purple-transparent;
         border-radius: 12px;
         padding: 20px;
         background-color: $white;
         transition: box-shadow 0.3s ease;
         transition: all 0.7s ease;
         position: relative;
+
+        &:nth-child(2n) {
+            border: 3px solid $secondary-transparent;
+        }
 
         .card-body {
             text-decoration: none;

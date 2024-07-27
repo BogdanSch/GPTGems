@@ -1,4 +1,20 @@
+@keyframes slide {
+    from {
+        transform: translateY(0%);
+    }
+
+    50% {
+        transform: translateY(-16%);
+    }
+
+    to {
+        transform: translateY(0%);
+    }
+}
+
 .profile {
+    margin-top: 80px;
+
     &__card {
         max-width: 60%;
         margin: 0 auto;
@@ -13,7 +29,8 @@
         border-radius: 50%;
         overflow: hidden;
         position: relative;
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        box-shadow: rgba(0, 0, 255, 0.3) 0px 7px 29px 0px;
+        animation: slide 5s ease-in-out infinite;
 
         &:hover {
             .profile__image-link {

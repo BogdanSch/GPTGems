@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Link, usePage, router } from "@inertiajs/react";
 import useActiveLinks from "@/Hooks/useActiveLinks";
+import DangerButton from "../Buttons/DangerButton";
 
 export default function Header() {
     const { auth, csrf } = usePage().props;
@@ -150,17 +151,15 @@ export default function Header() {
                                         <li>
                                             <form
                                                 onSubmit={handleLogout}
-                                                // action={route("logout")}
                                                 className="header__profile-form"
-                                                // method="post"
                                                 role="logout"
                                             >
-                                                <button
-                                                    className="btn btn-danger header__profile-signout"
+                                                <DangerButton
                                                     type="submit"
+                                                    className="header__profile-signout"
                                                 >
                                                     Sign out
-                                                </button>
+                                                </DangerButton>
                                             </form>
                                         </li>
                                     </ul>

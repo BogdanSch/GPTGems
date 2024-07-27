@@ -19,6 +19,7 @@ class UserResource extends JsonResource
             "id" => $this->id,
             "name" => $this->name,
             "email" => $this->email,
+            "profile_photo_path" => $this->profile_photo_path,
             // "liked_prompts" => $this->likes()->get(),
             "created_at" => (new Carbon($this->created_at))->format("Y-m-d"),
         ];

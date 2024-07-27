@@ -21,6 +21,7 @@ export default function ConfirmPassword() {
         event.preventDefault();
         post(route("password.confirm"));
     };
+
     return (
         <GuestLayout>
             <Head title="Confirm Password" />
@@ -34,8 +35,11 @@ export default function ConfirmPassword() {
                                     Please confirm your password before
                                     continuing.
                                 </div>
-                                <form onSubmit={submitConfirmPassword}>
-                                    <div className="mt-4">
+                                <form
+                                    className="password__form"
+                                    onSubmit={submitConfirmPassword}
+                                >
+                                    <div className="mt-1 mb-4">
                                         <InputLabel
                                             htmlFor="password"
                                             value="Password"
@@ -46,10 +50,10 @@ export default function ConfirmPassword() {
                                             type="password"
                                             name="password"
                                             value={data.password}
-                                            onChange={(e) =>
+                                            onChange={(event) =>
                                                 setData(
                                                     "password",
-                                                    e.target.value
+                                                    event.target.value
                                                 )
                                             }
                                         />
