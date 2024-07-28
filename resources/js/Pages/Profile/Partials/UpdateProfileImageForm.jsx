@@ -37,7 +37,7 @@ export default function UpdateProfileImageForm() {
             <form
                 onSubmit={submitProfileImage}
                 className="profile__form"
-                enctype="multipart/form-data"
+                encType="multipart/form-data"
             >
                 <div className="form-group text-center mb-3">
                     <InputLabel

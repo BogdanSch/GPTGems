@@ -16,21 +16,23 @@ export default function Edit({ mustVerifyEmail, status }) {
             <section className="profile" id="profile">
                 <div className="container">
                     <div className="profile__wrap">
-                        <div className="profile__card card py-3 px-5">
-                            <div className="mb-5">
-                                <UpdateProfileImageForm />
-                            </div>
-                            <div className="mb-5">
-                                <UpdateProfileInformationForm
-                                    mustVerifyEmail={mustVerifyEmail}
-                                    status={status}
-                                />
-                            </div>
-                            <div className="mb-5">
-                                <UpdatePasswordForm />
-                            </div>
-                            <div className="mb-3">
-                                <DeleteUserForm />
+                        <div className="profile__card card">
+                            <div className="card-body">
+                                <div className="mb-5">
+                                    <UpdateProfileImageForm />
+                                </div>
+                                <div className="mb-5">
+                                    <UpdateProfileInformationForm
+                                        mustVerifyEmail={mustVerifyEmail}
+                                        status={status}
+                                    />
+                                </div>
+                                <div className="mb-5">
+                                    <UpdatePasswordForm />
+                                </div>
+                                <div className="mb-3">
+                                    <DeleteUserForm />
+                                </div>
                             </div>
                         </div>
                     </div>

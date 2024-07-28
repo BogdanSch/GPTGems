@@ -1,33 +1,30 @@
-import InputError from "@/Components/Inputs/InputError";
-import InputLabel from "@/Components/Inputs/InputLabel";
-import PrimaryButton from "@/Components/Buttons/PrimaryButton";
-import TextInput from "@/Components/Inputs/TextInput";
+import React from "react";
 import { Link, useForm, usePage } from "@inertiajs/react";
 import { Transition } from "@headlessui/react";
 
-export default function UpdateProfileInformation({
-    mustVerifyEmail,
-    status,
-    className = "",
-}) {
-    const user = usePage().props.auth.user;
+import InputError from "@/Components/Inputs/InputError";
+import InputLabel from "@/Components/Inputs/InputLabel";
+import PrimaryButton from "@/Components/Buttons/PrimaryButton";
+
+export default function UpdateProfileInformation({ mustVerifyEmail, status }) {
+    const { auth } = usePage().props;
+    const userData = auth.user.data;
 
     const { data, setData, patch, errors, processing, recentlySuccessful } =
         useForm({
-            name: user.name,
-            email: user.email,
+            name: userData.name,
+            email: userData.email,
         });
 
     const submitProfileInformation = (event) => {
         event.preventDefault();
-
         patch(route("profile.update"));
     };
 
     return (
         <>
-            <div className="text-content full text-center">
-                <h2 className="prompts__title mt-3">Profile Information</h2>
+            <div className="text-content full mt-3 text-center">
+                <h2 className="prompts__title">Profile Information</h2>
                 <p className="prompts__description mt-1">
                     Update your account's profile information and email address.
                 </p>
@@ -64,7 +61,7 @@ export default function UpdateProfileInformation({
                     />
                     <InputError className="mt-2" message={errors.email} />
                 </div>
-                {mustVerifyEmail && user.email_verified_at === null && (
+                {mustVerifyEmail && userData.email_verified_at === null && (
                     <div>
                         <p className="profile__description">
                             Your email address is unverified.
