@@ -50,6 +50,7 @@ $dark: #111111;
 $grey-transparent: rgba(54, 54, 54, 0.605);
 
 @import "templates/general.scss";
+@import "templates/modal.scss";
 @import "templates/header.scss";
 @import "templates/about.scss";
 @import "templates/prompts.scss";

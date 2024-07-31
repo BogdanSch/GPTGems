@@ -1,84 +1,63 @@
-import React from "react";
-import { Dialog, Transition } from "@headlessui/react";
+import React, { useEffect, useRef } from "react";
+import PrimaryButton from "../Buttons/PrimaryButton";
 
-export default function Modal({ children, show = false }) {
-    // const close = () => {
-    //     if (closeable) {
-    //         onClose();
-    //     }
-    // };
+export default function Modal({ id, title, children, showModal, hideModal }) {
+    const modalRef = useRef(null);
+    const modalInstanceRef = useRef(null);
 
-    // const maxWidthClass = {
-    //     sm: 'sm:max-w-sm',
-    //     md: 'sm:max-w-md',
-    //     lg: 'sm:max-w-lg',
-    //     xl: 'sm:max-w-xl',
-    //     '2xl': 'sm:max-w-2xl',
-    // }[maxWidth];
+    useEffect(() => {
+        if (modalRef.current) {
+            modalInstanceRef.current = new bootstrap.Modal(modalRef.current, {
+                keyboard: false,
+            });
+
+            if (showModal) {
+                modalInstanceRef.current.show();
+            }
+        }
+
+        return () => {
+            if (modalInstanceRef.current) {
+                modalInstanceRef.current.hide();
+                modalInstanceRef.current.dispose();
+            }
+        };
+    }, [showModal]);
 
     return (
-        <div class="modal" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
+        <div
+            className="modal fade"
+            id={id}
+            tabIndex="-1"
+            role="dialog"
+            ref={modalRef}
+            aria-hidden={!showModal}
+        >
+            <div className="modal-dialog modal-dialog-centered" role="document">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h4 className="modal-title">{title}</h4>
                         <button
                             type="button"
-                            class="btn-close"
+                            className="btn-close"
                             data-bs-dismiss="modal"
                             aria-label="Close"
+                            onClick={hideModal}
                         ></button>
                     </div>
-                    <div class="modal-body">{children}</div>
-                    <div class="modal-footer">
-                        <button
+                    <div className="modal-body">{children}</div>
+                    <div className="modal-footer">
+                        <PrimaryButton
                             type="button"
-                            class="btn btn-secondary"
+                            isOutline={true}
                             data-bs-dismiss="modal"
+                            onClick={hideModal}
                         >
                             Close
-                        </button>
-                        <button type="button" class="btn btn-primary">
-                            Save changes
-                        </button>
+                        </PrimaryButton>
                     </div>
                 </div>
             </div>
         </div>
-        // <Transition show={show} as={Fragment} leave="duration-200">
-        //     <Dialog
-        //         as="div"
-        //         id="modal"
-        //         className="fixed inset-0 flex overflow-y-auto px-4 py-6 sm:px-0 items-center z-50 transform transition-all"
-        //         onClose={close}
-        //     >
-        //         <Transition.Child
-        //             as={Fragment}
-        //             enter="ease-out duration-300"
-        //             enterFrom="opacity-0"
-        //             enterTo="opacity-100"
-        //             leave="ease-in duration-200"
-        //             leaveFrom="opacity-100"
-        //             leaveTo="opacity-0"
-        //         >
-        //             <div className="absolute inset-0 bg-gray-500/75" />
-        //         </Transition.Child>
-        //         <Transition.Child
-        //             as={Fragment}
-        //             enter="ease-out duration-300"
-        //             enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-        //             enterTo="opacity-100 translate-y-0 sm:scale-100"
-        //             leave="ease-in duration-200"
-        //             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-        //             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-        //         >
-        //             <Dialog.Panel
-        //                 className={`mb-6 bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full sm:mx-auto ${maxWidthClass}`}
-        //             >
-        //                 {children}
-        //             </Dialog.Panel>
-        //         </Transition.Child>
-        //     </Dialog>
-        // </Transition>
     );
 }

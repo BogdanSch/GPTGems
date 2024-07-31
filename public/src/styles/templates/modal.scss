@@ -1,0 +1,10 @@
+.modal {
+    &-title {
+        width: 100%;
+        text-align: center;
+    }
+
+    &-footer {
+        justify-content: flex-start;
+    }
+}
