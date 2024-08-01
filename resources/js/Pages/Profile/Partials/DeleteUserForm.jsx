@@ -7,7 +7,6 @@ import DangerButton from "@/Components/Buttons/DangerButton";
 import SecondaryButton from "@/Components/Buttons/SecondaryButton";
 import InputError from "@/Components/Inputs/InputError";
 import InputLabel from "@/Components/Inputs/InputLabel";
-import TextInput from "@/Components/Inputs/TextInput";
 
 export default function DeleteUserForm() {
     const [confirmingUserDeletion, setConfirmingUserDeletion] = useState(false);
@@ -99,10 +98,11 @@ export default function DeleteUserForm() {
                             />
                         </div>
                         <div className="mt-5 d-flex justify-content-end">
-                            <SecondaryButton onClick={closeModal}>
+                            <SecondaryButton onClick={closeModal} type="reset">
                                 Cancel
                             </SecondaryButton>
                             <DangerButton
+                                type="submit"
                                 className="ms-3"
                                 disabled={processing}
                             >

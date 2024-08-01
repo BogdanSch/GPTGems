@@ -94,6 +94,10 @@ p {
         }
     }
 
+    &-secondary {
+        border: none;
+    }
+
     &-outline-pagination {
         background-color: $accent-light;
         color: $white;

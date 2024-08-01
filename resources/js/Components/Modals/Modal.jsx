@@ -7,19 +7,14 @@ export default function Modal({ id, title, children, showModal, hideModal }) {
 
     useEffect(() => {
         if (modalRef.current) {
-            modalInstanceRef.current = new bootstrap.Modal(modalRef.current, {
-                keyboard: false,
-            });
-
+            modalInstanceRef.current = new bootstrap.Modal(modalRef.current);
             if (showModal) {
                 modalInstanceRef.current.show();
             }
         }
-
         return () => {
             if (modalInstanceRef.current) {
                 modalInstanceRef.current.hide();
-                modalInstanceRef.current.dispose();
             }
         };
     }, [showModal]);

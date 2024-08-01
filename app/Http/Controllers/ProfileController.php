@@ -25,7 +25,10 @@ class ProfileController extends Controller
         $prompts = PromptController::getAllUserPrompts($user);
         $likedPrompts = PromptController::getAllLikedUserPrompts($user);
 
-        return inertia('Profile/Dashboard', ["prompts" => PromptResource::collection($prompts), "likedPrompts" => PromptResource::collection($likedPrompts)]);
+        if (isset($prompts) && isset($likedPrompts)) {
+            return inertia('Profile/Dashboard', ["prompts" => PromptResource::collection($prompts), "likedPrompts" => PromptResource::collection($likedPrompts)]);
+        }
+        return inertia('Profile/Dashboard', ["prompts" => null, "likedPrompts" => null]);
     }
 
     /**
