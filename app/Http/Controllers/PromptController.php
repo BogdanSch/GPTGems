@@ -22,7 +22,7 @@ class PromptController extends Controller
         $prompts = Prompt::where("prompt_author_id", $userId)
             ->orderBy("created_at", "desc")
             ->paginate(self::AMOUNT_PROMPTS_TO_PAGINATE);
-        return $prompts;
+        return $prompts ?? [];
     }
     /**
      * Returns all prompts liked by a specific user
@@ -33,7 +33,7 @@ class PromptController extends Controller
         if ($user->likes()->count() > 0) {
             $likedPrompts = $user->likes()->with('user')->paginate(self::AMOUNT_PROMPTS_TO_PAGINATE);
         }
-        return $likedPrompts;
+        return $likedPrompts ?? [];
     }
     /**
      * Display a listing of the resource.

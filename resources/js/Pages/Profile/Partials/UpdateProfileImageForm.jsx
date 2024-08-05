@@ -8,8 +8,9 @@ import InputLabel from "@/Components/Inputs/InputLabel";
 
 export default function UpdateProfileImageForm() {
     const { data, setData, post, processing, errors } = useForm({
-        profile_photo: "",
+        profile_photo: null,
     });
+
     const { auth } = usePage().props;
     const userData = auth.user.data;
 
@@ -18,6 +19,9 @@ export default function UpdateProfileImageForm() {
         post(route("profile.updateProfilePicture"), {
             preserveScroll: true,
             data,
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
         });
     };
 
@@ -49,12 +53,11 @@ export default function UpdateProfileImageForm() {
                         className="form-control mt-2"
                         id="profilePhoto"
                         name="profile_photo"
-                        required
-                        value={data.photo}
                         onChange={(event) => {
-                            setData("profile_photo", event.target.value);
+                            setData("profile_photo", event.target.files[0]);
                         }}
                         accept="image/png, image/jpeg, image/jpg, image/gif"
+                        required
                     />
                     <InputError
                         message={errors["profile_photo"]}

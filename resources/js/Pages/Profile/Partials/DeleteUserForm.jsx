@@ -97,7 +97,7 @@ export default function DeleteUserForm() {
                                 className="mt-2"
                             />
                         </div>
-                        <div className="mt-5 d-flex justify-content-end">
+                        <div className="mt-3 d-flex justify-content-end">
                             <SecondaryButton onClick={closeModal} type="reset">
                                 Cancel
                             </SecondaryButton>

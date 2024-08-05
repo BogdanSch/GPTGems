@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
-    private const DEFAULT_PROFILE_PHOTO = "dist/images/profile/default-profile.png";
+    private const DEFAULT_PROFILE_PHOTO = "/images/profile/default-profile.png";
     /**
      * Run the migrations.
      */

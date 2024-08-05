@@ -6,13 +6,13 @@ import CopyPromptContentButton from "../Buttons/CopyPromptContentButton";
 import LikePromptButton from "../Buttons/LikePromptButton";
 
 export default function PromptsList({ prompts, search, showPagination }) {
-    const promptsData = prompts.data;
-
     const handleLinkClick = (event) => {
         if (event.target.closest("button") || event.target.closest("form")) {
             event.preventDefault();
         }
     };
+
+    const promptsData = prompts.data;
 
     return (
         <>

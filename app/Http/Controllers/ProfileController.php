@@ -14,7 +14,7 @@ use App\Http\Resources\PromptResource;
 
 class ProfileController extends Controller
 {
-    private const PROFILE_IMAGE_PATH = "dist/images/profile/";
+    private const PROFILE_IMAGE_PATH = "/images/profile/";
     /**
      * Display the user's profile data.
      */
@@ -25,10 +25,7 @@ class ProfileController extends Controller
         $prompts = PromptController::getAllUserPrompts($user);
         $likedPrompts = PromptController::getAllLikedUserPrompts($user);
 
-        if (isset($prompts) && isset($likedPrompts)) {
-            return inertia('Profile/Dashboard', ["prompts" => PromptResource::collection($prompts), "likedPrompts" => PromptResource::collection($likedPrompts)]);
-        }
-        return inertia('Profile/Dashboard', ["prompts" => null, "likedPrompts" => null]);
+        return inertia('Profile/Dashboard', ["prompts" => PromptResource::collection($prompts), "likedPrompts" => PromptResource::collection($likedPrompts)]);
     }
 
     /**
@@ -53,7 +50,6 @@ class ProfileController extends Controller
         }
 
         $request->user()->save();
-
         return Redirect::route('profile.edit');
     }
 
