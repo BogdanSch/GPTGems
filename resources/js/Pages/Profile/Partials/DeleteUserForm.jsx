@@ -81,7 +81,8 @@ export default function DeleteUserForm() {
                                 className="sr-only"
                             />
                             <input
-                                id="password"
+                                className="form-control"
+                                id="deletePassword"
                                 type="password"
                                 name="password"
                                 ref={passwordInput}
@@ -89,8 +90,8 @@ export default function DeleteUserForm() {
                                 onChange={(event) =>
                                     setData("password", event.target.value)
                                 }
-                                className="form-control"
                                 placeholder="Password"
+                                autoComplete="current-password"
                             />
                             <InputError
                                 message={errors.password}
@@ -101,11 +102,7 @@ export default function DeleteUserForm() {
                             <SecondaryButton onClick={closeModal} type="reset">
                                 Cancel
                             </SecondaryButton>
-                            <DangerButton
-                                type="submit"
-                                className="ms-3"
-                                disabled={processing}
-                            >
+                            <DangerButton type="submit" disabled={processing}>
                                 Delete Account
                             </DangerButton>
                         </div>

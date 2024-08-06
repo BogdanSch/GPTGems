@@ -18,19 +18,19 @@ export default function Edit({ mustVerifyEmail, status }) {
                     <div className="profile__wrap">
                         <div className="profile__card card">
                             <div className="card-body">
-                                <div className="mb-5">
+                                <div className="profile__section mb-5">
                                     <UpdateProfileImageForm />
                                 </div>
-                                <div className="mb-5">
+                                <div className="profile__section mb-5">
                                     <UpdateProfileInformationForm
                                         mustVerifyEmail={mustVerifyEmail}
                                         status={status}
                                     />
                                 </div>
-                                <div className="mb-5">
+                                <div className="profile__section mb-5">
                                     <UpdatePasswordForm />
                                 </div>
-                                <div className="mb-3">
+                                <div className="profile__section">
                                     <DeleteUserForm />
                                 </div>
                             </div>
