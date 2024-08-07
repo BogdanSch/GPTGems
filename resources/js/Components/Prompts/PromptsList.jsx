@@ -27,6 +27,8 @@ export default function PromptsList({ prompts, search, showPagination }) {
                                         prompt: prompt,
                                     })}
                                     onClick={handleLinkClick}
+                                    data-aos="fade-up"
+                                    data-aos-duration="2000"
                                 >
                                     <h4 className="prompts__item-title card-title mb-4">
                                         {prompt["prompt_title"]}

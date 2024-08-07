@@ -111,6 +111,10 @@ p {
 
     &-profile {
         padding: 8px 20px;
+
+        &:focus {
+            border-color: $white !important;
+        }
     }
 }
 
@@ -136,6 +140,44 @@ textarea.form-control {
     &:hover {
         box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
         transform: translateY(-2px);
+    }
+}
+
+.background-decoration {
+    position: relative;
+
+    &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: -1;
+        top: 90%;
+        right: 0;
+        width: 26%;
+        height: 30%;
+        background-image: url("/images/background-decoration-element-transparent.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        transform: rotate(-90deg) translate(0, 50%);
+    }
+
+    &-reverse {
+        position: relative;
+
+        &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            z-index: -1;
+            top: 80%;
+            left: -12%;
+            width: 26%;
+            height: 20%;
+            background-image: url("/images/background-decoration-element-transparent.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            transform: rotate(90deg) translate(50%, 0);
+        }
     }
 }
 

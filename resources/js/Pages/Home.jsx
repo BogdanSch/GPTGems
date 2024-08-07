@@ -12,7 +12,12 @@ export default function Home({ prompts }) {
         <>
             <Head title="Home" />
             <Authenticated>
-                <section className="about">
+                <section
+                    className="about background-decoration"
+                    data-aos="fade-up"
+                    data-aos-anchor-placement="center-bottom"
+                    data-aos-duration="2000"
+                >
                     <div className="container">
                         <div className="about__wrap">
                             <Image
@@ -44,7 +49,12 @@ export default function Home({ prompts }) {
                         </div>
                     </div>
                 </section>
-                <section className="prompts" id="prompts">
+                <section
+                    className="prompts background-decoration-reverse"
+                    id="prompts"
+                    data-aos="fade-up"
+                    data-aos-duration="2000"
+                >
                     <div className="container">
                         <div className="prompts__wrap">
                             <h2 className="prompts__title text-center">
