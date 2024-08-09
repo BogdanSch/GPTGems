@@ -19,10 +19,11 @@ export default function VerifyEmail({ status }) {
         event.preventDefault();
         router.post(
             route("logout"),
-            {},
+            {
+                _token: csrf,
+            },
             {
                 headers: {
-                    "X-CSRF-Token": csrf,
                     "Content-Type": "application/json",
                 },
             }

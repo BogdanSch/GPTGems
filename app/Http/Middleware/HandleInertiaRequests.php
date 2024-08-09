@@ -34,6 +34,8 @@ class HandleInertiaRequests extends Middleware
         if ($request->user() !== null) {
             $userResource = new UserResource($request->user());
         }
+        $flashMessage = $request->hasSession() ? $request->session()->get('message') : null;
+
         return [
             ...parent::share($request),
             'auth' => [
@@ -41,7 +43,7 @@ class HandleInertiaRequests extends Middleware
             ],
             'csrf' => csrf_token(),
             'flash' => [
-                'message' => fn() => $request->session()->get('message')
+                'message' => $flashMessage
             ],
         ];
     }

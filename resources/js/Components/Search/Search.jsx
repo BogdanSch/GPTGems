@@ -9,10 +9,11 @@ export default function Search({ previousSearchTerm = "" }) {
         event.preventDefault();
         router.get(
             route("prompts.search", { search: searchTerm }),
-            {},
+            {
+                _token: csrf,
+            },
             {
                 headers: {
-                    "X-CSRF-Token": csrf,
                     "Content-Type": "application/json",
                 },
             }
@@ -21,7 +22,7 @@ export default function Search({ previousSearchTerm = "" }) {
 
     return (
         <form className="prompts__form mt-5" onSubmit={submitSearch}>
-            <input type="hidden" name="_token" value={csrf} />
+            {/* <input type="hidden" name="_token" value={csrf} /> */}
             <div className="input-group">
                 <input
                     className="prompts__form-search form-control"

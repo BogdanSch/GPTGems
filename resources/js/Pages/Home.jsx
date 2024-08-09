@@ -52,7 +52,7 @@ export default function Home({ prompts }) {
                 <section
                     className="prompts background-decoration-reverse"
                     id="prompts"
-                    data-aos="fade-up"
+                    data-aos="zoom-in"
                     data-aos-duration="2000"
                 >
                     <div className="container">

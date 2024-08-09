@@ -72,12 +72,6 @@
     }
 
     &__profile {
-        .dropdown-toggle {
-            &::after {
-                fill: $white;
-            }
-        }
-
         &-svg {
             fill: $white;
         }

@@ -13,10 +13,11 @@ export default function LikePromptButton({ prompt }) {
         event.preventDefault();
         router.post(
             promptLikeAction,
-            {},
+            {
+                _token: csrf,
+            },
             {
                 headers: {
-                    "X-CSRF-Token": csrf,
                     "Content-Type": "application/json",
                 },
                 onSuccess: () => {

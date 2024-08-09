@@ -112,8 +112,14 @@ p {
     &-profile {
         padding: 8px 20px;
 
-        &:focus {
+        &:focus,
+        &:hover,
+        &:active {
             border-color: $white !important;
+        }
+
+        &::after {
+            color: $white !important;
         }
     }
 }
@@ -121,6 +127,23 @@ p {
 input.form-control,
 textarea.form-control {
     @include form-control();
+}
+
+.dropdown {
+    &-menu {
+        background-color: $white;
+    }
+
+    &-item {
+        transition: all 0.4s ease;
+        padding: 12px 20px;
+
+        &:active,
+        &:hover {
+            color: $white;
+            background-color: $accent-dark !important;
+        }
+    }
 }
 
 .text-content {
@@ -135,11 +158,11 @@ textarea.form-control {
 .card {
     background-color: $white;
     border-radius: 16px;
-    transition: all 0.5s ease;
+    transition: all 0.5s ease !important;
 
     &:hover {
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-        transform: translateY(-2px);
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px !important;
+        transform: translateY(-2px) !important;
     }
 }
 
@@ -184,5 +207,11 @@ textarea.form-control {
 @media screen and (max-width: 900px) {
     .btn {
         padding: 12px 24px;
+    }
+
+    .dropdown {
+        &-item {
+            padding: 8px 16px;
+        }
     }
 }

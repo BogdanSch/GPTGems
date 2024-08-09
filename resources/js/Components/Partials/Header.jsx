@@ -48,10 +48,11 @@ export default function Header() {
         event.preventDefault();
         router.post(
             route("logout"),
-            {},
+            {
+                _token: csrf,
+            },
             {
                 headers: {
-                    "X-CSRF-Token": csrf,
                     "Content-Type": "application/json",
                 },
             }
@@ -128,7 +129,7 @@ export default function Header() {
                                             <use xlinkHref="#userProfile"></use>
                                         </svg>
                                     </button>
-                                    <ul className="dropdown-menu text-small">
+                                    <ul className="dropdown-menu">
                                         <li>
                                             <Link
                                                 className="dropdown-item"
@@ -145,9 +146,7 @@ export default function Header() {
                                                 My profile
                                             </Link>
                                         </li>
-                                        <li>
-                                            <hr className="dropdown-divider" />
-                                        </li>
+                                        <hr className="dropdown-divider" />
                                         <li>
                                             <form
                                                 onSubmit={handleLogout}

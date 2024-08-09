@@ -13,22 +13,28 @@ export default function PromptsList({ prompts, search, showPagination }) {
     };
 
     const promptsData = prompts.data;
+    const offsets = [0, 100, 200, 300];
 
     return (
         <>
             {promptsData.length > 0 ? (
                 <>
                     <ul className="prompts__list mt-5">
-                        {promptsData.map((prompt) => (
-                            <div key={prompt.id} className="prompts__item card">
+                        {promptsData.map((prompt, index) => (
+                            <div
+                                key={prompt.id}
+                                className="prompts__item card"
+                                data-aos="fade-up"
+                                data-aos-offset={
+                                    offsets[index % offsets.length]
+                                }
+                            >
                                 <Link
                                     className="card-body"
                                     href={route("prompts.show", {
                                         prompt: prompt,
                                     })}
                                     onClick={handleLinkClick}
-                                    data-aos="fade-up"
-                                    data-aos-duration="2000"
                                 >
                                     <h4 className="prompts__item-title card-title mb-4">
                                         {prompt["prompt_title"]}

@@ -15,10 +15,11 @@ export default function Show({ prompt }) {
         event.preventDefault();
         router.delete(
             route("prompts.destroy", { prompt: promptData }),
-            {},
+            {
+                _token: csrf,
+            },
             {
                 headers: {
-                    "X-CSRF-Token": csrf,
                     "Content-Type": "application/json",
                 },
             }
