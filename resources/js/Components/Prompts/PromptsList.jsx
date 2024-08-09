@@ -19,9 +19,9 @@ export default function PromptsList({ prompts, search, showPagination }) {
         <>
             {promptsData.length > 0 ? (
                 <>
-                    <ul className="prompts__list mt-5">
+                    <div className="prompts__list mt-5">
                         {promptsData.map((prompt, index) => (
-                            <div
+                            <article
                                 key={prompt.id}
                                 className="prompts__item card"
                                 data-aos="fade-up"
@@ -60,9 +60,9 @@ export default function PromptsList({ prompts, search, showPagination }) {
                                         {prompt["created_at"]}
                                     </span>
                                 </Link>
-                            </div>
+                            </article>
                         ))}
-                    </ul>
+                    </div>
                     {showPagination && (
                         <Pagination
                             class="mt-6"

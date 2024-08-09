@@ -20,7 +20,12 @@ export default function Create() {
         <>
             <Head title="Create A New Prompt" />
             <Authenticated>
-                <section className="prompts" id="prompts">
+                <section
+                    className="prompts"
+                    id="prompts"
+                    data-aos="zoom-out"
+                    data-aos-duration="2000"
+                >
                     <div className="container">
                         <div className="prompts__wrap">
                             <h2 className="prompts__title text-center">

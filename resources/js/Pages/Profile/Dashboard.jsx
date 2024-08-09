@@ -15,9 +15,14 @@ export default function Dashboard({ prompts, likedPrompts, search }) {
         <AuthenticatedLayout>
             <Head title="Dashboard" />
             <FlashMessage />
-            <section className="prompts" id="prompts">
+            <section
+                className="profile"
+                id="profile"
+                data-aos="fade-right"
+                data-aos-duration="2000"
+            >
                 <div className="container">
-                    <div className="prompts__wrap">
+                    <div className="profile__wrap">
                         {userData["profile_photo_path"] && (
                             <div className="profile__image">
                                 <Image
@@ -43,6 +48,18 @@ export default function Dashboard({ prompts, likedPrompts, search }) {
                         <h2 className="prompts__title text-center mt-3">
                             Welcome back, <span>{userData.name}!</span>
                         </h2>
+                    </div>
+                </div>
+            </section>
+            <section
+                className="prompts mt-0"
+                id="prompts"
+                data-aos="fade-up"
+                data-aos-duration="2000"
+                data-aos-easing="ease-in-sine"
+            >
+                <div className="container">
+                    <div className="prompts__wrap">
                         <Search previousSearchTerm={search} />
                         <div className="prompts__data">
                             <h3 className="prompts__sub-title text-center mt-5">

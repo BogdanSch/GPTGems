@@ -22,7 +22,12 @@ export default function Edit({ prompt }) {
         <>
             <Head title={`Editing Prompt: ${promptData["prompt_title"]}`} />
             <Authenticated>
-                <section className="prompts" id="prompts">
+                <section
+                    className="prompts"
+                    id="prompts"
+                    data-aos="flip-up"
+                    data-aos-duration="1400"
+                >
                     <div className="container">
                         <div className="prompts__wrap">
                             <h2 className="prompts__title text-center">

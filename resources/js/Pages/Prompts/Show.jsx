@@ -33,7 +33,13 @@ export default function Show({ prompt }) {
             />
             <Authenticated>
                 <FlashMessage />
-                <section className="prompts mt-5 mb-5" id="prompts">
+                <section
+                    className="prompts mt-5 mb-5"
+                    id="prompts"
+                    data-aos="fade-up"
+                    data-aos-easing="linear"
+                    data-aos-duration="1400"
+                >
                     <div className="container">
                         <div className="prompts__wrap">
                             <h2 className="prompts__title mb-5">

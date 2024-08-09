@@ -12,7 +12,12 @@ export default function Index({ prompts, search }) {
             <Head title="Latest Prompts" />
             <Authenticated>
                 <FlashMessage />
-                <section className="prompts" id="prompts">
+                <section
+                    className="prompts"
+                    id="prompts"
+                    data-aos="fade-down"
+                    data-aos-duration="1000"
+                >
                     <div className="container">
                         <div className="prompts__wrap">
                             <h2 className="prompts__title text-center">

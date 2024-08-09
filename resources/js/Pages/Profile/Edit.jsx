@@ -13,7 +13,12 @@ export default function Edit({ mustVerifyEmail, status }) {
         <AuthenticatedLayout>
             <Head title="Edit Profile" />
             <FlashMessage />
-            <section className="profile" id="profile">
+            <section
+                className="profile"
+                id="profile"
+                data-aos="fade-right"
+                data-aos-duration="2000"
+            >
                 <div className="container">
                     <div className="profile__wrap">
                         <div className="profile__card card">

@@ -5,7 +5,12 @@ export default function FlashMessage() {
     const { flash } = usePage().props;
     return (
         flash.message && (
-            <section className="message">
+            <section
+                className="message"
+                data-aos="fade-up"
+                data-aos-duration="2000"
+                data-aos-easing="ease-in-sine"
+            >
                 <div className="container">
                     <div className="message__wrap">
                         <div
