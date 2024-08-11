@@ -35,7 +35,12 @@ export default function VerifyEmail({ status }) {
             <Head title="Email Verification" />
             <GuestLayout>
                 <Head title="Confirm Password" />
-                <section className="password">
+                <section
+                    className="password"
+                    data-aos="flip-left"
+                    data-aos-easing="ease-in-out"
+                    data-aos-duration="1000"
+                >
                     <div className="container">
                         <div className="password__wrap">
                             <div className="card password__card py-5 px-4">

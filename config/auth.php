@@ -16,6 +16,7 @@ return [
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
+        'remember' => now()->addDays(7)->diffInMinutes(),
     ],
 
     /*
@@ -111,5 +112,4 @@ return [
     */
 
     'password_timeout' => 10800,
-
 ];

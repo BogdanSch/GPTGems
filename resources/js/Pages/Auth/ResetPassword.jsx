@@ -27,7 +27,12 @@ export default function ResetPassword({ token, email }) {
     return (
         <GuestLayout>
             <Head title="Reset Password" />
-            <section className="password">
+            <section
+                className="password"
+                data-aos="zoom-out"
+                data-aos-easing="ease-in-out"
+                data-aos-duration="2000"
+            >
                 <div className="container">
                     <div className="password__wrap">
                         <div className="card password__card py-5 px-4">

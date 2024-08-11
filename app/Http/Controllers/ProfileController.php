@@ -14,6 +14,10 @@ use App\Http\Resources\PromptResource;
 
 class ProfileController extends Controller
 {
+
+    /**
+     * @var string
+     */
     private const PROFILE_IMAGE_PATH = "/images/profile/";
     /**
      * Display the user's profile data.

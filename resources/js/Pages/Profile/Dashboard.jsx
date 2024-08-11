@@ -74,7 +74,12 @@ export default function Dashboard({ prompts, likedPrompts, search }) {
                                 showPagination={true}
                             />
                         </div>
-                        <div className="prompts__liked">
+                        <div
+                            className="prompts__liked"
+                            data-aos="fade-right"
+                            data-aos-duration="2000"
+                            data-aos-easing="ease-in-sine"
+                        >
                             <h2 className="prompts__title text-center mt-5">
                                 <span>Liked</span> Prompts
                             </h2>

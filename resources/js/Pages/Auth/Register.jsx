@@ -27,7 +27,12 @@ export default function Register() {
     return (
         <GuestLayout>
             <Head title="Register" />
-            <section className="sign-up">
+            <section
+                className="sign-up"
+                data-aos="fade-down"
+                data-aos-easing="ease-in-out"
+                data-aos-duration="2000"
+            >
                 <div className="container">
                     <div className="sign-up__wrap">
                         <div className="card p-2">
@@ -38,7 +43,12 @@ export default function Register() {
                                     </h2>
                                     <p className="sign-up__hint">
                                         Already have an account?{" "}
-                                        <a href={route("login")}>Sign in now</a>
+                                        <Link
+                                            href={route("login")}
+                                            className="sign-up__link sign-up__to-login"
+                                        >
+                                            Sign in now
+                                        </Link>
                                     </p>
                                 </div>
                                 <form onSubmit={submitRegistration}>

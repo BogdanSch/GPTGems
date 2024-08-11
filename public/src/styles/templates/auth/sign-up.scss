@@ -2,12 +2,12 @@
     min-width: 40%;
     margin: 0 auto;
 
+    &__link {
+        @include auth-link();
+    }
 
-    &__hint {
-        a {
-            text-decoration: none;
-            font-weight: 600;
-            color: $accent;
-        }
+    &__to-login {
+        font-size: 1rem;
+        font-weight: 700;
     }
 }

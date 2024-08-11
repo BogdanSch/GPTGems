@@ -16,26 +16,47 @@ export default function Edit({ mustVerifyEmail, status }) {
             <section
                 className="profile"
                 id="profile"
-                data-aos="fade-right"
+                data-aos="fade-down"
+                data-aos-easing="ease-in-out"
                 data-aos-duration="2000"
             >
                 <div className="container">
                     <div className="profile__wrap">
                         <div className="profile__card card">
                             <div className="card-body">
-                                <div className="profile__section mb-5">
+                                <div
+                                    className="profile__section mb-5"
+                                    data-aos="fade-right"
+                                    data-aos-easing="ease-in-out"
+                                    data-aos-duration="1000"
+                                >
                                     <UpdateProfileImageForm />
                                 </div>
-                                <div className="profile__section mb-5">
+                                <div
+                                    className="profile__section mb-5"
+                                    data-aos="fade-left"
+                                    data-aos-easing="ease-in-out"
+                                    data-aos-duration="1000"
+                                >
                                     <UpdateProfileInformationForm
                                         mustVerifyEmail={mustVerifyEmail}
                                         status={status}
                                     />
                                 </div>
-                                <div className="profile__section mb-5">
+                                <div
+                                    className="profile__section mb-5"
+                                    data-aos="fade-right"
+                                    data-aos-easing="ease-in-out"
+                                    data-aos-duration="1000"
+                                >
                                     <UpdatePasswordForm />
                                 </div>
-                                <div className="profile__section">
+                                <div
+                                    className="profile__section"
+                                    data-aos="fade-left"
+                                    data-aos-easing="ease-in-out"
+                                    data-aos-duration="1000"
+                                >
                                     <DeleteUserForm />
                                 </div>
                             </div>

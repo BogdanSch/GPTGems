@@ -29,6 +29,17 @@
     }
 }
 
+@mixin auth-link {
+    color: $accent;
+    transition: color 0.6s ease-in-out;
+    text-decoration: underline;
+    outline: none;
+
+    &:hover {
+        color: $link-accent;
+    }
+}
+
 $accent: #3498db;
 $accent-dark: #106197;
 $accent-light: #6dd5fa;

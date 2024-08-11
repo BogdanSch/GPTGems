@@ -18,14 +18,19 @@ export default function ForgotPassword({ status }) {
     return (
         <GuestLayout>
             <Head title="Forgot Password" />
-            <section className="password">
+            <section
+                className="password"
+                data-aos="zoom-out"
+                data-aos-easing="ease-in-out"
+                data-aos-duration="2000"
+            >
                 <div className="container">
                     <div className="password__wrap">
                         <div className="card password__card py-5 px-4">
                             <div className="card-body">
                                 <div className="text-content text-center full mb-5">
                                     <h2 className="password__title">
-                                        Reset Password
+                                        Forgot Your Password
                                     </h2>
                                     <div className="password__description">
                                         Forgot your password? No problem. Just

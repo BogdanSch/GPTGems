@@ -32,7 +32,12 @@ export default function Login({ status, canResetPassword }) {
                     {status}
                 </div>
             )}
-            <section className="sign-in">
+            <section
+                className="sign-in"
+                data-aos="zoom-in"
+                data-aos-easing="ease-in-out"
+                data-aos-duration="2000"
+            >
                 <div className="container">
                     <div className="sign-in__wrap">
                         <div className="card p-2">
@@ -43,9 +48,12 @@ export default function Login({ status, canResetPassword }) {
                                     </h2>
                                     <p className="sign-in__hint">
                                         New to GPTGems?{" "}
-                                        <a href={route("register")}>
+                                        <Link
+                                            href={route("register")}
+                                            className="sign-in__to-register sign-in__link"
+                                        >
                                             Sign up for a free account
-                                        </a>
+                                        </Link>
                                     </p>
                                 </div>
                                 <form onSubmit={submitLogin}>
@@ -126,7 +134,7 @@ export default function Login({ status, canResetPassword }) {
                                         {canResetPassword && (
                                             <Link
                                                 href={route("password.request")}
-                                                className="sign-in__forget"
+                                                className="sign-in__forget sign-in__link"
                                             >
                                                 Forgot your password?
                                             </Link>
