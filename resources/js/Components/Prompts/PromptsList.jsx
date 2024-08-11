@@ -41,7 +41,7 @@ export default function PromptsList({ prompts, search, showPagination }) {
                                     </h4>
                                     <div className="prompts__item-group mb-3">
                                         <h5 className="prompts__item-author">
-                                            By:
+                                            By:{" "}
                                             <span>
                                                 {prompt["prompt_author"].name}
                                             </span>

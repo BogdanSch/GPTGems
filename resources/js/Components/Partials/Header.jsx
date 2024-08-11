@@ -12,7 +12,9 @@ export default function Header() {
     useEffect(() => {
         function applyStickyHeader() {
             if (window.scrollY > 0) {
-                headerRef.current.classList.add("sticky");
+                if (!headerRef.current.classList.contains("sticky")) {
+                    headerRef.current.classList.add("sticky");
+                }
             } else {
                 if (headerRef.current.classList.contains("sticky")) {
                     headerRef.current.classList.remove("sticky");

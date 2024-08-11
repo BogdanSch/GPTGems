@@ -7,7 +7,7 @@ import Search from "@/Components/Search/Search";
 import Image from "@/Components/Image";
 import FlashMessage from "@/Components/FlashMessages/FlashMessage";
 
-export default function Dashboard({ prompts, likedPrompts, search }) {
+export default function Dashboard({ prompts, likedPrompts, search = "All" }) {
     const { auth } = usePage().props;
     const userData = auth.user.data;
 
@@ -45,9 +45,6 @@ export default function Dashboard({ prompts, likedPrompts, search }) {
                                 Update your profile
                             </Link>
                         </div>
-                        <h2 className="prompts__title text-center mt-3">
-                            Welcome back, <span>{userData.name}!</span>
-                        </h2>
                     </div>
                 </div>
             </section>
@@ -60,19 +57,33 @@ export default function Dashboard({ prompts, likedPrompts, search }) {
             >
                 <div className="container">
                     <div className="prompts__wrap">
-                        <Search previousSearchTerm={search} />
-                        <div className="prompts__data">
-                            <h3 className="prompts__sub-title text-center mt-5">
-                                Your latest prompts sorted by:{" "}
-                                <span className="prompts__tag">
-                                    {search ? search : "All"}
-                                </span>
-                            </h3>
-                            <PromptsList
-                                prompts={prompts}
-                                search={search}
-                                showPagination={true}
-                            />
+                        <div className="prompts__created">
+                            <div className="text-content text-center mt-5">
+                                <h2 className="prompts__title mb-2">
+                                    Welcome back, <span>{userData.name}!</span>
+                                </h2>
+                                <p className="prompts__description">
+                                    Here are all the prompts you've created,
+                                    showcasing your creativity and unique
+                                    ideas.Revisit your past work, refine your
+                                    prompts, and continue to inspire others with
+                                    your originality.
+                                </p>
+                            </div>
+                            <Search previousSearchTerm={search} />
+                            <div className="prompts__data">
+                                <h3 className="prompts__sub-title text-center mt-5">
+                                    Your latest prompts sorted by:{" "}
+                                    <span className="prompts__tag">
+                                        {search ? search : "All"}
+                                    </span>
+                                </h3>
+                                <PromptsList
+                                    prompts={prompts}
+                                    search={search}
+                                    showPagination={true}
+                                />
+                            </div>
                         </div>
                         <div
                             className="prompts__liked"
@@ -80,14 +91,36 @@ export default function Dashboard({ prompts, likedPrompts, search }) {
                             data-aos-duration="2000"
                             data-aos-easing="ease-in-sine"
                         >
-                            <h2 className="prompts__title text-center mt-5">
-                                <span>Liked</span> Prompts
-                            </h2>
-                            <PromptsList
-                                prompts={likedPrompts}
-                                search={search}
-                                showPagination={true}
+                            <div className="text-content text-center mt-5">
+                                <h2 className="prompts__title mb-2">
+                                    <span>Liked</span> Prompts
+                                </h2>
+                                <p className="prompts__description">
+                                    Explore your most loved prompts. This
+                                    section highlights the prompts that have
+                                    captured your interest and received your
+                                    appreciation. Revisit, reuse, and get
+                                    inspired by the ideas that resonated with
+                                    you the most.
+                                </p>
+                            </div>
+                            <Search
+                                previousSearchTerm={search}
+                                searchLikedPrompts={true}
                             />
+                            <div className="prompts__data">
+                                <h3 className="prompts__sub-title text-center mt-5">
+                                    Your latest liked prompts sorted by:{" "}
+                                    <span className="prompts__tag">
+                                        {search ? search : "All"}
+                                    </span>
+                                </h3>
+                                <PromptsList
+                                    prompts={likedPrompts}
+                                    search={search}
+                                    showPagination={true}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>

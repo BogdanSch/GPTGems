@@ -6,7 +6,7 @@ import FlashMessage from "@/Components/FlashMessages/FlashMessage";
 import PromptsList from "@/Components/Prompts/PromptsList";
 import Search from "@/Components/Search/Search";
 
-export default function Index({ prompts, search }) {
+export default function Index({ prompts, search, searchLikedPrompts }) {
     return (
         <>
             <Head title="Latest Prompts" />
@@ -23,7 +23,10 @@ export default function Index({ prompts, search }) {
                             <h2 className="prompts__title text-center">
                                 Discover all the latest prompts
                             </h2>
-                            <Search previousSearchTerm={search} />
+                            <Search
+                                previousSearchTerm={search}
+                                searchLikedPrompts={searchLikedPrompts}
+                            />
                             <div className="prompts__data">
                                 <h3 className="prompts__sub-title text-center mt-5">
                                     Latest prompts sorted by:{" "}

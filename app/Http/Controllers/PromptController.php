@@ -124,22 +124,44 @@ class PromptController extends Controller
     public function search(Request $request)
     {
         $search = $request->input('search');
+        $searchLikedPrompts = $request->input('searchLikedPrompts');
 
+        $user = Auth::user();
         $query = Prompt::query();
-        $prompts = $query->orderBy("created_at", "desc")->paginate(self::AMOUNT_PROMPTS_TO_PAGINATE)->onEachSide(1);
 
-        if ($search !== "All")
-            $prompts = Prompt::where('prompt_content', 'like', "%$search%")
-                ->orWhereHas('user', function ($query) use ($search) {
-                    $query->where('name', 'like', "%$search%");
-                })
-                ->orderBy("created_at", "desc")
-                ->paginate(self::AMOUNT_PROMPTS_TO_PAGINATE)->onEachSide(1);
+        if ($searchLikedPrompts) {
+            if (!$user) {
+                $query->where('id', null);
+            } else {
+                $likedPromptIds = $user->likes()->pluck('prompt_id')->toArray();
+                $query->whereIn('id', $likedPromptIds);
+            }
+        }
 
-        return inertia("Prompts/Index", ["prompts" => PromptResource::collection($prompts), "search" => $search]);
+        if ($search !== "All") {
+            $query->where(function ($q) use ($search) {
+                $q->where('prompt_content', 'like', "%$search%")
+                    ->orWhere('prompt_title', 'like', "%$search%")
+                    ->orWhereHas('user', function ($query) use ($search) {
+                        $query->where('name', 'like', "%$search%");
+                    });
+            });
+        }
+
+        $prompts = $query->orderBy("created_at", "desc")
+            ->distinct()
+            ->paginate(self::AMOUNT_PROMPTS_TO_PAGINATE)
+            ->onEachSide(1);
+
+        return inertia("Prompts/Index", [
+            "prompts" => PromptResource::collection($prompts),
+            "search" => $search,
+            "searchLikedPrompts" => $searchLikedPrompts,
+        ]);
     }
+
     /**
-     * Likes the specified prompt item.
+     * Likes the specified prompt.
      */
     public function like(Prompt $prompt)
     {
@@ -155,7 +177,7 @@ class PromptController extends Controller
         return back()->with('message', 'You liked the prompt!');
     }
     /**
-     * Unlikes the specified prompt item.
+     * Unlikes the specified prompt.
      */
     public function unlike(Prompt $prompt)
     {

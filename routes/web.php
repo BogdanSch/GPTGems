@@ -6,6 +6,8 @@ use Inertia\Inertia;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PromptController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 
 /*
@@ -22,6 +24,7 @@ use App\Http\Controllers\ProfileController;
 Route::get('/', [HomeController::class, "index"])->name("home");
 
 Route::resource("prompts", PromptController::class);
+Route::get('/search-prompts', [PromptController::class, "search"])->name('prompts.search');
 
 Route::middleware("auth")->group(function () {
     Route::middleware("verified")->group(function () {
@@ -33,20 +36,13 @@ Route::middleware("auth")->group(function () {
     });
     Route::post('/prompts/{prompt}/like', [PromptController::class, 'like'])->name('prompts.like');
     Route::post('/prompts/{prompt}/unlike', [PromptController::class, 'unlike'])->name('prompts.unlike');
-    
-    Route::get('/search-prompts', [PromptController::class, "search"])->name('prompts.search');
 });
 
 
 require __DIR__ . '/auth.php';
 
-Route::get('/about', function () {
-    // return view('about');
-})->name("about");
-
-Route::get('/contact', function () {
-    // return view('contact');
-})->name("contact");
+Route::get('/about', [ContactController::class, "index"])->name("about");
+Route::get('/contact', [ContactController::class, "index"])->name("contact");
 
 // Route::group(["middleware" => "auth"], function () {
 //     Route::delete('/prompts/{id}', [PromptController::class, "destroy"])->name("prompt.destroy");
