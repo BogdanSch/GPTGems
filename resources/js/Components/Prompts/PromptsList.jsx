@@ -65,7 +65,7 @@ export default function PromptsList({ prompts, search, showPagination }) {
                     </div>
                     {showPagination && (
                         <Pagination
-                            class="mt-6"
+                            className="mt-5"
                             links={prompts.meta.links}
                             searchTerm={search}
                         />

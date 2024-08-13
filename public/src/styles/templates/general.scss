@@ -175,8 +175,8 @@ textarea.form-control {
         z-index: -1;
         top: 90%;
         right: 0;
-        width: 26%;
-        height: 30%;
+        width: clamp(200px, 26%, 400px);
+        height: clamp(200px, 30%, 500px);
         background-image: url("/images/background-decoration-element-transparent.png");
         background-size: cover;
         background-repeat: no-repeat;
@@ -193,8 +193,8 @@ textarea.form-control {
             z-index: -1;
             top: 80%;
             left: -12%;
-            width: 26%;
-            height: 20%;
+            width: clamp(200px, 26%, 400px);
+            height: clamp(200px, 30%, 500px);
             background-image: url("/images/background-decoration-element-transparent.png");
             background-size: cover;
             background-repeat: no-repeat;

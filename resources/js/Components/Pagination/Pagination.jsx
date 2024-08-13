@@ -1,7 +1,12 @@
 import React from "react";
 import { Link } from "@inertiajs/react";
 
-export default function Pagination({ links, searchTerm }) {
+export default function Pagination({
+    links,
+    searchTerm,
+    currentPage,
+    onPageChange,
+}) {
     const getClassName = (active) => {
         if (active) {
             return "active";
@@ -23,17 +28,24 @@ export default function Pagination({ links, searchTerm }) {
             link.label !== "&laquo; Previous" && link.label !== "Next &raquo;"
     );
 
+    const handlePageChange = (url, page) => {
+        onPageChange(page);
+        window.location.href = appendSearchTerm(url);
+    };
+
     return (
         <div className="prompts__pagination mt-5">
             {prevLink && prevLink.url && (
                 <Link
                     className="btn btn-outline-pagination"
                     href={appendSearchTerm(prevLink.url)}
+                    onClick={() =>
+                        handlePageChange(prevLink.url, currentPage - 1)
+                    }
                 >
                     Previous
                 </Link>
             )}
-
             {pageLinks.map((link, key) =>
                 link.url === null ? (
                     <div className="pagination__link disabled" key={key}>

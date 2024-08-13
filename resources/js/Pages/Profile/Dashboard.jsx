@@ -16,7 +16,7 @@ export default function Dashboard({ prompts, likedPrompts, search = "All" }) {
             <Head title="Dashboard" />
             <FlashMessage />
             <section
-                className="profile"
+                className="profile background-decoration"
                 id="profile"
                 data-aos="fade-right"
                 data-aos-duration="2000"
@@ -71,7 +71,7 @@ export default function Dashboard({ prompts, likedPrompts, search = "All" }) {
                                 </p>
                             </div>
                             <Search previousSearchTerm={search} />
-                            <div className="prompts__data">
+                            <div className="prompts__data background-decoration-reverse">
                                 <h3 className="prompts__sub-title text-center mt-5">
                                     Your latest prompts sorted by:{" "}
                                     <span className="prompts__tag">
@@ -86,7 +86,7 @@ export default function Dashboard({ prompts, likedPrompts, search = "All" }) {
                             </div>
                         </div>
                         <div
-                            className="prompts__liked"
+                            className="prompts__liked background-decoration"
                             data-aos="fade-right"
                             data-aos-duration="2000"
                             data-aos-easing="ease-in-sine"
