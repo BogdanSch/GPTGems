@@ -41,7 +41,7 @@ Route::middleware("auth")->group(function () {
 
 require __DIR__ . '/auth.php';
 
-Route::get('/about', [ContactController::class, "index"])->name("about");
+Route::get('/about', [AboutController::class, "index"])->name("about");
 Route::get('/contact', [ContactController::class, "index"])->name("contact");
 
 // Route::group(["middleware" => "auth"], function () {

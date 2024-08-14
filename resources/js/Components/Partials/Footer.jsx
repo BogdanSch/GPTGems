@@ -53,6 +53,16 @@ const Footer = () => {
                                 <i className="bi bi-github"></i>
                             </a>
                         </div>
+                        <div className="footer__socials-item">
+                            <a
+                                href="https://discord.gg/ncvKBbQK"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="footer__socials-link"
+                            >
+                                <i className="bi bi-discord"></i>
+                            </a>
+                        </div>
                     </div>
                     <nav className="footer__list nav col-md-4 justify-content-end">
                         <li className="footer__item">

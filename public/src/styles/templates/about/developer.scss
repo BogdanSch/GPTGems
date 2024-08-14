@@ -1,0 +1,35 @@
+.developer {
+    margin-top: 0;
+    margin-bottom: 160px;
+
+    &__list {
+        @include flex-column();
+        row-gap: 8px;
+    }
+
+    &__item {
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 76%;
+            left: 24px;
+            display: block;
+            width: 60%;
+            height: 2px;
+            background-color: $grey;
+        }
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .developer {
+        &__item {
+            &::after {
+                top: 82%;
+                left: 24px;
+            }
+        }
+    }
+}
