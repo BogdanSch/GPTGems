@@ -23,6 +23,16 @@ export default function ImagesSlider({
                 disableOnInteraction: false,
             }}
             speed={10000}
+            breakpoints={{
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: spaceBetweenSlides,
+                },
+            }}
             modules={[Autoplay]}
         >
             {images.map((image, index) => {

@@ -44,11 +44,18 @@ export default function About() {
                                 images={sliderImages}
                                 slidesPerView={3}
                                 spaceBetweenSlides={40}
+                                data-aos="fade-up"
+                                data-aos-duration="2000"
                             />
                         </div>
                     </div>
                 </section>
-                <section className="features background-decoration-reverse">
+                <section
+                    className="features background-decoration-reverse"
+                    data-aos="fade-right"
+                    data-aos-duration="2000"
+                    data-aos-offset="400"
+                >
                     <div className="container">
                         <div className="features__wrap">
                             <div className="text-content text-center">
@@ -108,7 +115,11 @@ export default function About() {
                         </div>
                     </div>
                 </section>
-                <section className="developer background-decoration">
+                <section
+                    className="developer background-decoration"
+                    data-aos="fade-left"
+                    data-aos-duration="2000"
+                >
                     <div className="container">
                         <div className="developer__wrap">
                             <div className="text-content text-center mb-4">
@@ -147,7 +158,11 @@ export default function About() {
                         </div>
                     </div>
                 </section>
-                <section className="mission background-decoration-reverse">
+                <section
+                    className="mission background-decoration-reverse"
+                    data-aos="zoom-in-up"
+                    data-aos-duration="2000"
+                >
                     <div className="container">
                         <div className="mission__wrap">
                             <div className="mission__group">
@@ -172,7 +187,11 @@ export default function About() {
                         </div>
                     </div>
                 </section>
-                <section className="prompts-action background-decoration">
+                <section
+                    className="prompts-action background-decoration"
+                    data-aos="zoom-in-down"
+                    data-aos-duration="2000"
+                >
                     <div className="container">
                         <div className="prompts-action__wrap">
                             <Image
