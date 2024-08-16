@@ -5,6 +5,7 @@ import GuestLayout from "@/Layouts/GuestLayout";
 import InputError from "@/Components/Inputs/InputError";
 import InputLabel from "@/Components/Inputs/InputLabel";
 import PrimaryButton from "@/Components/Buttons/PrimaryButton";
+import TextInput from "@/Components/Inputs/TextInput";
 
 export default function ConfirmPassword() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -49,7 +50,7 @@ export default function ConfirmPassword() {
                                             htmlFor="password"
                                             value="Password"
                                         />
-                                        <input
+                                        <TextInput
                                             className="form-control"
                                             id="password"
                                             type="password"

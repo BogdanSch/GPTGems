@@ -43,14 +43,3 @@ require __DIR__ . '/auth.php';
 
 Route::get('/about', [AboutController::class, "index"])->name("about");
 Route::get('/contact', [ContactController::class, "index"])->name("contact");
-
-// Route::group(["middleware" => "auth"], function () {
-//     Route::delete('/prompts/{id}', [PromptController::class, "destroy"])->name("prompt.destroy");
-//     Route::get('/prompts/create', [PromptController::class, "create"])->name("prompt.create");
-//     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
-//     Route::get('/profile', [AuthController::class, 'profile'])->name('profile.index');
-//     Route::get('/profile/update', [AuthController::class, 'update'])->name('profile.update');
-//     Route::post('/profile/update', [AuthController::class, 'updatePost'])->name('profile.update');
-//     Route::post('/prompts/{prompt}/like', [PromptController::class, 'like'])->name('prompts.like');
-//     Route::post('/prompts/{prompt}/unlike', [PromptController::class, 'unlike'])->name('prompts.unlike');
-// });

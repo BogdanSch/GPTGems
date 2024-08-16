@@ -4,6 +4,7 @@ import { Head, useForm } from "@inertiajs/react";
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import InputError from "@/Components/Inputs/InputError";
 import PrimaryButton from "@/Components/Buttons/PrimaryButton";
+import InputLabel from "@/Components/Inputs/InputLabel";
 
 export default function Create() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -36,12 +37,9 @@ export default function Create() {
                                 onSubmit={submitCreate}
                             >
                                 <div className="mb-3">
-                                    <label
-                                        htmlFor="promptTitle"
-                                        className="form-label"
-                                    >
+                                    <InputLabel htmlFor="promptTitle">
                                         Enter your prompt title:
-                                    </label>
+                                    </InputLabel>
                                     <input
                                         type="text"
                                         className="form-control"
@@ -62,12 +60,9 @@ export default function Create() {
                                     />
                                 </div>
                                 <div className="mb-3">
-                                    <label
-                                        htmlFor="promptContent"
-                                        className="form-label"
-                                    >
+                                    <InputLabel htmlFor="promptContent">
                                         Enter your prompt content:
-                                    </label>
+                                    </InputLabel>
                                     <textarea
                                         className="form-control"
                                         rows="10"

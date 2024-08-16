@@ -17,7 +17,7 @@
     border: 1px solid $dark-grey-1;
     border-radius: 8px;
     padding: 8px 12px;
-    background-color: $white;
+    background-color: $accent-light-1;
     color: $accent;
     transition: all 0.4s ease-out;
 
@@ -25,7 +25,7 @@
         border-color: transparent !important;
         outline: 0;
         box-shadow: 0 0 0 0.2rem $accent;
-        background-color: $accent-light-1;
+        background-color: $white-1;
     }
 }
 
@@ -106,6 +106,8 @@ $grey-transparent: rgba(54, 54, 54, 0.605);
 @import "templates/about/developer.scss";
 @import "templates/about/mission.scss";
 @import "templates/about/prompts-action.scss";
+@import "templates/contact/contact.scss";
+@import "templates/contact/map.scss";
 @import "templates/prompts.scss";
 @import "templates/error-page.scss";
 @import "templates/footer.scss";

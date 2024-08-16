@@ -1,0 +1,22 @@
+.contact {
+    position: relative;
+    margin-top: 100px;
+    margin-bottom: 160px;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 40%;
+        right: 16px;
+        display: block;
+        width: 20px;
+        height: 156px;
+        background: url("/images/icons/scroll-element.svg");
+    }
+
+    &-card {
+        border: none;
+        border-radius: 0;
+    }
+
+}
