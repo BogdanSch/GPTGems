@@ -38,8 +38,10 @@ Route::middleware("auth")->group(function () {
     Route::post('/prompts/{prompt}/unlike', [PromptController::class, 'unlike'])->name('prompts.unlike');
 });
 
-
 require __DIR__ . '/auth.php';
 
 Route::get('/about', [AboutController::class, "index"])->name("about");
+
 Route::get('/contact', [ContactController::class, "index"])->name("contact");
+Route::post('/contact/send', [ContactController::class, "sendMailPost"])->name("contact.sendMail");
+Route::get('/contact/status', [ContactController::class, "displayStatus"])->name("contact.status");

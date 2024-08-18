@@ -6,6 +6,7 @@ use Inertia\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\RedirectResponse;
 
 enum OperationStatus: string
 {
@@ -32,16 +33,9 @@ class ContactController extends Controller
         return inertia("Contact/Index");
     }
     /**
-     * Display the contact page.
-     */
-    public function displayStatus(): Response
-    {
-        return inertia("Contact/Status");
-    }
-    /**
      * Handle send email feature via post method.
      */
-    public function sendMailPost(Request $request)
+    public function sendMailPost(Request $request): RedirectResponse
     {
         $contactData = $request->validate([
             "fullName" => "required|string|max:255",
@@ -61,5 +55,12 @@ class ContactController extends Controller
 
         $contactStatus = $response->successful() ? OperationStatus::Success : OperationStatus::Error;
         return Redirect::route("contact.status", ["contactStatus" => $contactStatus]);
+    }
+    /**
+     * Display the contact page.
+     */
+    public function displayStatus(): Response
+    {
+        return inertia("Contact/Status");
     }
 }

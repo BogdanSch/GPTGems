@@ -17,7 +17,7 @@ const Contact = () => {
 
     const handleEmailSubmition = (event) => {
         event.preventDefault();
-        post(router("contact.send"));
+        post(router("contact.sendMail"));
     };
 
     return (
