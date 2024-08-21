@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\RedirectResponse;
+use SheetDB\SheetDB;
 
 enum OperationStatus: string
 {
@@ -19,11 +20,11 @@ class ContactController extends Controller
     /**
      * @var string
      */
-    private $sheetDbUrl = "";
+    private $sheetDbKey = "";
 
     public function __construct()
     {
-        $this->sheetDbUrl = env("SHEET_DB_URL", "NONE");
+        $this->sheetDbKey = env("SHEET_DB_KEY", "NONE");
     }
     /**
      * Display the contact page.
@@ -40,27 +41,28 @@ class ContactController extends Controller
         $contactData = $request->validate([
             "fullName" => "required|string|max:255",
             "email" => "required|email",
-            "subject" => "required|string|max: 90",
+            "subject" => "required|string|max:90",
             "message" => "required|string",
         ]);
 
-        $response = Http::post($this->sheetDbUrl, [
-            'data' => [
-                'fullName' => $contactData['fullName'],
-                'email' => $contactData['email'],
-                'subject' => $contactData['subject'],
-                'message' => $contactData['message'],
-            ],
-        ]);
+        $sheetdb = new SheetDB($this->sheetDbKey);
+        $contactStatus = OperationStatus::Error;
 
-        $contactStatus = $response->successful() ? OperationStatus::Success : OperationStatus::Error;
-        return Redirect::route("contact.status", ["contactStatus" => $contactStatus]);
+        try {
+            $sheetdb->create($contactData);
+            $contactStatus = OperationStatus::Success;
+        } catch (\Exception $e) {
+            $contactStatus = OperationStatus::Error;
+        }
+
+        return Redirect::route("contact.status", ["contactStatus" => $contactStatus->value]);
     }
     /**
      * Display the contact page.
      */
-    public function displayStatus(): Response
+    public function displayStatus(Request $request): Response
     {
-        return inertia("Contact/Status");
+        $contactStatus = $request->query("contactStatus", OperationStatus::Error->value);
+        return inertia("Contact/Status", ["contactStatus" => $contactStatus]);
     }
 }

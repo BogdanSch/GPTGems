@@ -17,7 +17,7 @@ const Contact = () => {
 
     const handleEmailSubmition = (event) => {
         event.preventDefault();
-        post(router("contact.sendMail"));
+        post(route("contact.sendMail"));
     };
 
     return (
@@ -147,8 +147,10 @@ const Contact = () => {
                                             isOutline={false}
                                             disabled={processing}
                                         >
-                                            Submit{" "}
-                                            <i className="bi bi-arrow-up-right"></i>
+                                            Submit
+                                            <svg className="btn-svg">
+                                                <use xlinkHref="#boxArrowUpRight"></use>
+                                            </svg>
                                         </PrimaryButton>
                                     </form>
                                 </div>

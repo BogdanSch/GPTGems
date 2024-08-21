@@ -13,10 +13,12 @@ export default function Status({ contactStatus }) {
         >
             <div className="container">
                 <div className="contact__wrap">
-                    (
-                    {contactStatus === "success" ? (
-                        <div className="popup success card">
-                            <div className="text-content full">
+                    {contactStatus.toLowerCase() === "success" ? (
+                        <div
+                            className="contact-message card px-5 py-4"
+                            key={`successMessage`}
+                        >
+                            <div className="text-content text-center full">
                                 <h2 className="popup__title">
                                     Confirmation message
                                 </h2>
@@ -27,19 +29,19 @@ export default function Status({ contactStatus }) {
                             </div>
                             <Image
                                 className="popup__image"
-                                src="{{ asset('img/confirm-icon.png') }}"
-                                alt="Email Confirmation"
+                                src={"/images/icons/status/confirm-icon.svg"}
+                                alt="Email Confirmation Arrow"
                             />
                             <Link
-                                className="btn btn--more"
+                                className="btn btn-outline-primary"
                                 href={route("home")}
                             >
                                 Go Back
                             </Link>
                         </div>
                     ) : (
-                        <div className="popup error card">
-                            <div className="text-content full">
+                        <div className="popup error card" key={`errorMessage`}>
+                            <div className="text-content text-center full">
                                 <h2 className="popup__title">Error message</h2>
                                 <p className="popup__description">
                                     Your request wasn’t sent. Please, try again
@@ -48,18 +50,17 @@ export default function Status({ contactStatus }) {
                             </div>
                             <Image
                                 className="popup__image"
-                                src="{{ asset('img/error-icon.png') }}"
-                                alt="Email Sending Error"
+                                src={"/images/icons/status/error-icon.svg"}
+                                alt="Email Sending Error Cross"
                             />
                             <Link
-                                className="btn btn--more"
+                                className="btn btn-outline-primary"
                                 href={route("home")}
                             >
                                 Go Back
                             </Link>
                         </div>
                     )}
-                    )
                 </div>
             </div>
         </section>

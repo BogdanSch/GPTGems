@@ -65,13 +65,19 @@ p {
 }
 
 .btn {
-    // @include flex-row();
-    // justify-content: center;
-    // align-items: center;
-    // column-gap: 8px;
+    @include flex-row();
+    justify-content: center;
+    align-items: center;
+    column-gap: 8px;
     border-radius: 12px;
     transition: all 0.6s ease;
     padding: 16px 32px;
+
+    &-svg {
+        width: 20px;
+        height: 20px;
+        fill: $white;
+    }
 
     &-primary {
         background-color: $secondary !important;
@@ -216,5 +222,17 @@ textarea.form-control {
         &-item {
             padding: 8px 16px;
         }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    h1 {
+        font-weight: 700;
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-weight: 600;
+        font-size: 2rem;
     }
 }
