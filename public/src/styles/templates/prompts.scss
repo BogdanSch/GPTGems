@@ -67,8 +67,7 @@
         border-radius: 12px;
         padding: 20px;
         background-color: $white;
-        transition: all 0.7s ease;
-        transition: box-shadow 0.4s ease;
+        transition: all 0.5s ease !important;
         position: relative;
 
         &:nth-child(2n) {
@@ -81,7 +80,7 @@
 
         &:hover {
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-            transform: translateY(-2px);
+            transform: translateY(-2px) !important;
         }
 
         &-group {

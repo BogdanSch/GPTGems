@@ -189,13 +189,14 @@ textarea.form-control {
 .card {
     background-color: $white;
     border-radius: 16px;
-    transition: all 0.5s ease !important;
+    transition: all 0.5s ease;
 
     &:hover {
         box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
         transform: translateY(-2px);
     }
 }
+
 
 .background-decoration {
     position: relative;

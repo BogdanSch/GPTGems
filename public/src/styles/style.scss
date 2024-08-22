@@ -100,7 +100,8 @@ $grey-transparent: rgba(54, 54, 54, 0.605);
 
 @import "templates/general.scss";
 @import "templates/modal.scss";
-@import "templates/header.scss";
+@import "templates/partials/header.scss";
+@import "templates/partials/footer.scss";
 @import "templates/about/about.scss";
 @import "templates/about/features.scss";
 @import "templates/about/developer.scss";
@@ -110,7 +111,6 @@ $grey-transparent: rgba(54, 54, 54, 0.605);
 @import "templates/contact/map.scss";
 @import "templates/prompts.scss";
 @import "templates/error-page.scss";
-@import "templates/footer.scss";
 @import "templates/scroll-top.scss";
 @import "templates/auth/sign-in.scss";
 @import "templates/auth/sign-up.scss";

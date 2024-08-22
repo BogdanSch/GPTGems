@@ -23,7 +23,7 @@ export default function PromptsList({ prompts, search, showPagination }) {
                         {promptsData.map((prompt, index) => (
                             <article
                                 key={prompt.id}
-                                className="prompts__item card"
+                                className="prompts__item"
                                 data-aos="fade-up"
                                 data-aos-offset={
                                     offsets[index % offsets.length]
