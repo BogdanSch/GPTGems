@@ -6,7 +6,7 @@
     &::after {
         content: "";
         position: absolute;
-        top: 40%;
+        top: 38%;
         right: 16px;
         display: block;
         width: 20px;
@@ -19,4 +19,12 @@
         border-radius: 0;
     }
 
+    &-message {
+        max-width: 70%;
+        margin: 0 auto;
+
+        &__image {
+            margin: 0 auto;
+        }
+    }
 }

@@ -72,11 +72,21 @@ p {
     border-radius: 12px;
     transition: all 0.6s ease;
     padding: 16px 32px;
+    display: inline-flex;
 
-    &-svg {
+    &-svg,
+    &-outline-svg {
         width: 20px;
         height: 20px;
+    }
+
+    &-svg {
         fill: $white;
+    }
+
+    &-outline-svg {
+        transition: all 0.6s ease;
+        fill: $dark-grey;
     }
 
     &-primary {
@@ -101,6 +111,12 @@ p {
             background-color: $secondary !important;
             color: $white;
         }
+
+        &:hover {
+            .btn-outline-svg {
+                fill: $white;
+            }
+        }
     }
 
     &-secondary {
@@ -115,6 +131,12 @@ p {
         &:active,
         &:focus {
             background-color: $accent;
+        }
+
+        &:hover {
+            .btn-outline-svg {
+                fill: $white;
+            }
         }
     }
 
@@ -170,8 +192,8 @@ textarea.form-control {
     transition: all 0.5s ease !important;
 
     &:hover {
-        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px !important;
-        transform: translateY(-2px) !important;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        transform: translateY(-2px);
     }
 }
 

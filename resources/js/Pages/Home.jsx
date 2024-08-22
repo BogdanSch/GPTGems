@@ -76,7 +76,7 @@ export default function Home({ prompts }) {
                                         className="btn btn-outline-primary"
                                         href={route("prompts.index")}
                                     >
-                                        Check new prompts!
+                                        Check out new prompts!
                                     </Link>
                                 </div>
                             </div>

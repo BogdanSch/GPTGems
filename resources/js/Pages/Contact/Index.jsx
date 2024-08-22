@@ -47,7 +47,13 @@ const Contact = () => {
                                         acceptCharset="UTF-8"
                                     >
                                         <div className="row mb-3">
-                                            <div className="col-12 col-sm-6">
+                                            <div
+                                                className="col-12 col-sm-6"
+                                                data-aos="fade-up"
+                                                data-aos-duration="1000"
+                                                data-aos-easing="ease"
+                                                data-aos-delay="1000"
+                                            >
                                                 <InputLabel htmlFor="userFullName">
                                                     Your full name*
                                                 </InputLabel>
@@ -70,7 +76,13 @@ const Contact = () => {
                                                     className="mt-2"
                                                 />
                                             </div>
-                                            <div className="col-12 col-sm-6">
+                                            <div
+                                                className="col-12 col-sm-6"
+                                                data-aos="fade-up"
+                                                data-aos-duration="1000"
+                                                data-aos-easing="ease"
+                                                data-aos-delay="1000"
+                                            >
                                                 <InputLabel htmlFor="userEmail">
                                                     Your email address*
                                                 </InputLabel>
@@ -94,7 +106,13 @@ const Contact = () => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="mb-3">
+                                        <div
+                                            className="mb-3"
+                                            data-aos="fade-up"
+                                            data-aos-duration="1000"
+                                            data-aos-easing="ease"
+                                            data-aos-delay="1000"
+                                        >
                                             <InputLabel htmlFor="userSubject">
                                                 Your Message Subject*
                                             </InputLabel>
@@ -117,7 +135,13 @@ const Contact = () => {
                                                 className="mt-2"
                                             />
                                         </div>
-                                        <div className="mb-3">
+                                        <div
+                                            className="mb-3"
+                                            data-aos="fade-up"
+                                            data-aos-duration="1000"
+                                            data-aos-easing="ease"
+                                            data-aos-delay="1000"
+                                        >
                                             <InputLabel htmlFor="userMessage">
                                                 Your Message*
                                             </InputLabel>
@@ -141,6 +165,15 @@ const Contact = () => {
                                                 message={errors.message}
                                                 className="mt-2"
                                             />
+                                        </div>
+                                        <div className="mb-3">
+                                            <div
+                                                id="emailHelp"
+                                                className="form-text"
+                                            >
+                                                All the fields marked with *
+                                                are required to be filled in.
+                                            </div>
                                         </div>
                                         <PrimaryButton
                                             type="submit"
