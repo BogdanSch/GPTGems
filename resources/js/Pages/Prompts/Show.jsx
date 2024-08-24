@@ -5,6 +5,7 @@ import Authenticated from "@/Layouts/AuthenticatedLayout";
 import CopyPromptContentButton from "@/Components/Buttons/CopyPromptContentButton";
 import LikePromptButton from "@/Components/Buttons/LikePromptButton";
 import FlashMessage from "@/Components/FlashMessages/FlashMessage";
+import SharePromptButton from "@/Components/Buttons/SharePromptButton";
 
 export default function Show({ prompt }) {
     const { auth, csrf } = usePage().props;
@@ -56,6 +57,9 @@ export default function Show({ prompt }) {
                                             prompt={prompt}
                                         />
                                         <LikePromptButton prompt={promptData} />
+                                        <SharePromptButton
+                                            prompt={promptData}
+                                        />
                                     </div>
                                 </div>
                                 <div className="prompts__content mb-4">

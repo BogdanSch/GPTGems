@@ -4,6 +4,7 @@ import { Link } from "@inertiajs/react";
 import Pagination from "../Pagination/Pagination";
 import CopyPromptContentButton from "../Buttons/CopyPromptContentButton";
 import LikePromptButton from "../Buttons/LikePromptButton";
+import SharePromptButton from "../Buttons/SharePromptButton";
 
 export default function PromptsList({ prompts, search, showPagination }) {
     const handleLinkClick = (event) => {
@@ -48,6 +49,9 @@ export default function PromptsList({ prompts, search, showPagination }) {
                                         </h5>
                                         <div className="prompts__item-elements">
                                             <CopyPromptContentButton
+                                                prompt={prompt}
+                                            />
+                                            <SharePromptButton
                                                 prompt={prompt}
                                             />
                                             <LikePromptButton prompt={prompt} />

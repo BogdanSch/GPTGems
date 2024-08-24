@@ -1,31 +1,21 @@
 import { useEffect } from "react";
+import copyContentToClipboard from "@/Utils/copyContentToClipboard";
+import playButtonAnimation from "@/Utils/playButtonAnimation";
 
 const useCopyPromptContent = (prompts) => {
     useEffect(() => {
-        const copyContent = async (content) => {
-            try {
-                await navigator.clipboard.writeText(content);
-                console.log("Content copied to clipboard");
-            } catch (err) {
-                console.error("Failed to copy: ", err);
-            }
-        };
-
         const getFilteredValueFromElement = (element) => {
             return element.textContent.trim();
         };
 
-        const playAnimation = (button) => {
-            button.innerHTML = `<svg><use xlink:href='#clipboardChecked'></use></svg>`;
-            setTimeout(() => {
-                button.innerHTML = `<svg><use xlink:href='#clipboard'></use></svg>`;
-            }, 1500);
-        };
-
         const handleClick = (event, content, button) => {
             event.preventDefault();
-            copyContent(content);
-            playAnimation(button);
+            copyContentToClipboard(content);
+            playButtonAnimation(
+                button,
+                `<svg><use href="#clipboard"></use></svg>`,
+                `<svg><use href="#clipboardChecked"></use></svg>`
+            );
         };
 
         const promptItems = document.querySelectorAll(".prompts__item");
@@ -45,8 +35,9 @@ const useCopyPromptContent = (prompts) => {
             });
         }
 
-        const promptContentElement =
-            document.querySelector(".prompts__content-text");
+        const promptContentElement = document.querySelector(
+            ".prompts__content-text"
+        );
 
         if (promptContentElement) {
             const copyButton = document.querySelector(".prompts__item-copy");

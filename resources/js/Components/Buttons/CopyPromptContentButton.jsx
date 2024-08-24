@@ -10,7 +10,7 @@ export default function CopyPromptContentButton({ prompt }) {
             onClick={(event) => event.preventDefault()}
         >
             <svg>
-                <use xlinkHref="#clipboard"></use>
+                <use href="#clipboard"></use>
             </svg>
         </button>
     );
