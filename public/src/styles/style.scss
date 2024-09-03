@@ -95,10 +95,15 @@ $white-section: #eaeaea;
 $grey: #e1e1e1;
 $dark-grey: #4e4e4e;
 $dark-grey-1: #a7a7a7;
+$dark-grey-2: #303030;
 $dark: #111111;
+$graphite: #282828;
 $grey-transparent: rgba(54, 54, 54, 0.605);
 
+$ff-default: "Poppins", sans-serif;
+
 @import "templates/general.scss";
+@import "templates/theme/dark-theme.scss";
 @import "templates/modal.scss";
 @import "templates/partials/header.scss";
 @import "templates/partials/footer.scss";

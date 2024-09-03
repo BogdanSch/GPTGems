@@ -1,0 +1,59 @@
+html {
+    &.dark {
+        body {
+            background-color: $graphite;
+        }
+
+        .header,
+        .footer {
+            background: linear-gradient(to left, $accent-dark, $dark-grey);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: $white;
+        }
+
+        p,
+        label {
+            color: $white-1;
+        }
+
+        input,
+        textarea {
+            background-color: $dark-grey-2;
+        }
+
+        .btn {
+            color: $white;
+
+            &-light {
+                color: $dark-grey;
+            }
+
+            &-outline-light {
+                &:hover {
+                    color: $dark-grey;
+                }
+            }
+        }
+
+        .card {
+            background-color: $dark-grey;
+
+            svg {
+                fill: $white;
+            }
+        }
+
+        .prompts {
+            &__item {
+                background-color: $dark-grey-2;
+            }
+        }
+    }
+}

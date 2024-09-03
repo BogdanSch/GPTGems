@@ -89,7 +89,19 @@
     }
 }
 
+.page {
+    &__theme {
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+    }
 
+    &__svg {
+        width: 32px;
+        height: 32px;
+        fill: $white;
+    }
+}
 
 @media screen and (max-width: 992px) and (min-width: 769px) {
     .header {

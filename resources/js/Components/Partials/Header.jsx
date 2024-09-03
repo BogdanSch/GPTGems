@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from "react";
 import { Link, usePage, router } from "@inertiajs/react";
+
 import useActiveLinks from "@/Hooks/useActiveLinks";
 import DangerButton from "../Buttons/DangerButton";
+import SwitchWebsiteThemeButton from "../Buttons/SwitchWebsiteThemeButton";
 
 export default function Header() {
     const { auth, csrf } = usePage().props;
@@ -181,6 +183,9 @@ export default function Header() {
                                     </Link>
                                 </>
                             )}
+                        </div>
+                        <div className="page__action">
+                            <SwitchWebsiteThemeButton />
                         </div>
                     </div>
                 </div>
