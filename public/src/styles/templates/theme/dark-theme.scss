@@ -6,7 +6,7 @@ html {
 
         .header,
         .footer {
-            background: linear-gradient(to left, $accent-dark, $dark-grey);
+            background: linear-gradient(to left, $accent-700, $grey-600);
         }
 
         h1,
@@ -20,30 +20,35 @@ html {
 
         p,
         label {
-            color: $white-1;
+            color: $white-600;
         }
 
         input,
         textarea {
-            background-color: $dark-grey-2;
+            transition: all 0.7s ease;
+            background-color: $grey-700;
+
+            &:focus {
+                background-color: $grey-600;
+            }
         }
 
         .btn {
             color: $white;
 
             &-light {
-                color: $dark-grey;
+                color: $grey-600;
             }
 
             &-outline-light {
                 &:hover {
-                    color: $dark-grey;
+                    color: $grey-600;
                 }
             }
         }
 
         .card {
-            background-color: $dark-grey;
+            background-color: $grey-600;
 
             svg {
                 fill: $white;
@@ -52,7 +57,7 @@ html {
 
         .prompts {
             &__item {
-                background-color: $dark-grey-2;
+                background-color: $grey-700;
             }
         }
     }

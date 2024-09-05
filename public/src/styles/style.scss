@@ -10,14 +10,14 @@
 
 @mixin active-item {
     color: $white;
-    border-bottom: 1px solid $secondary-light;
+    border-bottom: 1px solid $secondary-300;
 }
 
 @mixin form-control() {
-    border: 1px solid $dark-grey-1;
+    border: 1px solid $grey-400;
     border-radius: 8px;
     padding: 8px 12px;
-    background-color: $accent-light-1;
+    background-color: $accent-100;
     color: $accent;
     transition: all 0.4s ease-out;
 
@@ -25,7 +25,7 @@
         border-color: transparent !important;
         outline: 0;
         box-shadow: 0 0 0 0.2rem $accent;
-        background-color: $white-1;
+        background-color: $white-600;
     }
 }
 
@@ -78,29 +78,33 @@
 }
 
 $accent: #3498db;
-$accent-dark: #106197;
-$accent-light: #6dd5fa;
-$accent-light-1: #e0f7ff;
+$accent-700: #106197;
+$accent-300: #6dd5fa;
+$accent-100: #e0f7ff;
 $sky-blue: #ddf1ff;
 $secondary: #ff6f61;
 $secondary-transparent: #ff6e614c;
-$secondary-light: #ffc6c2;
+$secondary-300: #ffc6c2;
 $purple: #8400ff;
 $purple-transparent: #8400ff50;
 $link-accent: #00ff1a;
 $red: #d81907;
 $white: #fdfdfd;
-$white-1: #ebebeb;
+$white-600: #ebebeb;
 $white-section: #eaeaea;
 $grey: #e1e1e1;
-$dark-grey: #4e4e4e;
-$dark-grey-1: #a7a7a7;
-$dark-grey-2: #303030;
+$grey-600: #4e4e4e;
+$grey-400: #a7a7a7;
+$grey-700: #303030;
+$grey-transparent: rgba(54, 54, 54, 0.605);
 $dark: #111111;
 $graphite: #282828;
-$grey-transparent: rgba(54, 54, 54, 0.605);
 
 $ff-default: "Poppins", sans-serif;
+$fw-normal: 500;
+$fw-bold: 600;
+$fw-extrabold: 700;
+$fw-extrabolder: 800;
 
 @import "templates/general.scss";
 @import "templates/theme/dark-theme.scss";

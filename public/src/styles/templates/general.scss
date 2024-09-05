@@ -60,7 +60,8 @@ h2 {
 }
 
 p {
-    color: $dark-grey;
+    color: $grey-600;
+    $fw-normal: $fw-normal;
     font-size: 1rem;
 
     &.error {
@@ -92,7 +93,7 @@ p {
 
     &-outline-svg {
         transition: all 0.6s ease;
-        fill: $dark-grey;
+        fill: $grey-600;
     }
 
     &-primary {
@@ -108,7 +109,7 @@ p {
 
     &-outline-primary {
         border: 1px solid $secondary !important;
-        color: $dark-grey;
+        color: $grey-600;
 
         &:hover,
         &:active,
@@ -130,7 +131,7 @@ p {
     }
 
     &-outline-pagination {
-        background-color: $accent-light;
+        background-color: $accent-300;
         color: $white;
 
         &:hover,
@@ -178,7 +179,7 @@ textarea.form-control {
         &:active,
         &:hover {
             color: $white;
-            background-color: $accent-dark !important;
+            background-color: $accent-700 !important;
         }
     }
 }

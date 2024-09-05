@@ -1,6 +1,6 @@
 .footer {
     position: relative;
-    background: linear-gradient(to right, $accent, $accent-light);
+    background: linear-gradient(to right, $accent, $accent-300);
     z-index: 1000;
 
     &__copyright,
@@ -25,7 +25,7 @@
 
                 &:hover {
                     transform: translateY(-4px) !important;
-                    color: $secondary-light;
+                    color: $secondary-300;
                 }
             }
         }
@@ -34,7 +34,7 @@
     &__item {
         a {
             transition: all 0.7s ease;
-            color: $white-1;
+            color: $white-600;
 
             &.active {
                 @include active-item();

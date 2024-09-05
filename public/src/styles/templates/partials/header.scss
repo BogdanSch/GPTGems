@@ -1,7 +1,7 @@
 .header {
     position: fixed;
     padding: 24px 0;
-    background: linear-gradient(to left, $accent, $accent-light);
+    background: linear-gradient(to left, $accent, $accent-300);
     z-index: 1000;
     top: 0;
     left: 0;
@@ -38,10 +38,10 @@
             }
 
             &:hover {
-                color: $secondary-light !important;
+                color: $secondary-300 !important;
 
                 svg {
-                    fill: $secondary-light !important;
+                    fill: $secondary-300 !important;
                 }
             }
         }
@@ -50,7 +50,7 @@
     &__item {
         a {
             transition: all 0.7s ease;
-            color: $white-1;
+            color: $white-600;
 
             &.active {
                 @include active-item();
