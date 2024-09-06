@@ -22,7 +22,7 @@
     }
 
     &__tag {
-        font-weight: 700;
+        font-weight: $fw-extrabold;
     }
 
     &__list {
@@ -117,12 +117,12 @@
 
             span {
                 font-size: 1.125rem;
-                font-weight: 700;
+                font-weight: $fw-extrabold;
             }
         }
 
         &-date {
-            font-weight: 600;
+            font-weight: $fw-bold;
         }
     }
 
@@ -141,7 +141,7 @@
     }
 
     &__date {
-        font-weight: 700;
+        font-weight: $fw-extrabold;
     }
 
     &__actions {

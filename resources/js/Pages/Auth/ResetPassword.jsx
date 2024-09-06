@@ -87,7 +87,6 @@ export default function ResetPassword({ token, email }) {
                                             className="mt-2"
                                         />
                                     </div>
-
                                     <div className="mb-4">
                                         <InputLabel
                                             htmlFor="password_confirmation"

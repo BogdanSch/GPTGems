@@ -4,9 +4,12 @@ html {
             background-color: $graphite;
         }
 
-        .header,
-        .footer {
+        .header {
             background: linear-gradient(to left, $accent-700, $grey-600);
+        }
+
+        .footer {
+            background: linear-gradient(to right, $accent-700, $grey-600);
         }
 
         h1,
@@ -19,7 +22,8 @@ html {
         }
 
         p,
-        label {
+        label,
+        .password__description {
             color: $white-600;
         }
 
@@ -58,6 +62,22 @@ html {
         .prompts {
             &__item {
                 background-color: $grey-700;
+            }
+        }
+
+        .profile {
+            &__section {
+                &:nth-child(2n) {
+                    &::before {
+                        background-color: $grey-700;
+                    }
+                }
+            }
+        }
+
+        .dropdown {
+            &-menu {
+                background: linear-gradient(to right, $accent-700, $grey-600);
             }
         }
     }

@@ -36,11 +36,11 @@ export default function ConfirmPassword() {
                     <div className="password__wrap">
                         <div className="card password__card py-5 px-4">
                             <div className="card-body">
-                                <div className="password__description mb-4">
+                                <p className="password__description mb-4">
                                     This is a secure area of the application.
                                     Please confirm your password before
                                     continuing.
-                                </div>
+                                </p>
                                 <form
                                     className="password__form"
                                     onSubmit={submitConfirmPassword}

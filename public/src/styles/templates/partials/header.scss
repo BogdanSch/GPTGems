@@ -24,7 +24,7 @@
         a {
             color: $white !important;
             @include flex-row();
-            font-weight: 600;
+            font-weight: $fw-bold;
             font-size: 1.5rem;
             column-gap: 20px;
             align-items: center;

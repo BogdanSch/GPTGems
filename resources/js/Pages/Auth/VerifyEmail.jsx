@@ -53,14 +53,14 @@ export default function VerifyEmail({ status }) {
                                             className="password__image"
                                             alt="Verify Your Email Image"
                                         />
-                                        <div className="password__description">
+                                        <p className="password__description">
                                             Thanks for signing up! Before
                                             getting started, could you verify
                                             your email address by clicking on
                                             the link we just emailed to you? If
                                             you didn't receive the email, we
                                             will gladly send you another.
-                                        </div>
+                                        </p>
                                     </div>
                                     {status === "verification-link-sent" && (
                                         <div

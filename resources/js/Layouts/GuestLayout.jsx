@@ -1,12 +1,16 @@
 import React, { useEffect } from "react";
+import { setThemeClass } from "@/Utils/websiteTheme";
 
 import "aos/dist/aos.css";
 import Aos from "aos";
 
 export default function Guest({ children }) {
     useEffect(() => {
+        const htmlBlock = document.documentElement;
         Aos.init();
-    }, []);
+        setThemeClass(htmlBlock);
+    }, [Aos, setThemeClass]);
+
     return (
         <div className="wrapper">
             <main className="main">{children}</main>
@@ -36,7 +40,7 @@ export default function Guest({ children }) {
                 </symbol>
                 <symbol id="arrowRight" viewBox="0 0 16 16">
                     <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
                     />
                 </symbol>

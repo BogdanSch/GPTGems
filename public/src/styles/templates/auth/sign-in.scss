@@ -8,11 +8,11 @@
 
     &__to-register {
         font-size: 1rem;
-        font-weight: 600;
+        font-weight: $fw-bold;
     }
 
     &__forget {
         font-size: 0.875rem;
-        font-weight: 600;
+        font-weight: $fw-bold;
     }
 }
