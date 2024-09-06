@@ -1,9 +1,14 @@
 "use strict";
 
-const DEFAULT_USER_THEME = "light";
+const getPreferredUserScheme = () => {
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        return "dark";
+    }
+    return "light";
+};
 
 const getSavedUserTheme = () => {
-    return localStorage.getItem("user-theme") || DEFAULT_USER_THEME;
+    return localStorage.getItem("user-theme") || getPreferredUserScheme();
 };
 
 export const setThemeClass = (htmlBlock) => {

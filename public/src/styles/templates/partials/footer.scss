@@ -1,7 +1,9 @@
 .footer {
     position: relative;
-    background: linear-gradient(to right, $accent, $accent-300);
+    left: 0;
+    bottom: 0;
     z-index: 1000;
+    background: linear-gradient(to right, $accent, $accent-300);
 
     &__copyright,
     &__item,

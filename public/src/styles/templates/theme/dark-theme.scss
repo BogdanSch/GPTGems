@@ -59,6 +59,18 @@ html {
             }
         }
 
+        .background-decoration {
+            &::after {
+                filter: grayscale(50%);
+            }
+
+            &-reverse {
+                &::before {
+                    filter: grayscale(50%);
+                }
+            }
+        }
+
         .prompts {
             &__item {
                 background-color: $grey-700;
