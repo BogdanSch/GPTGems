@@ -45,3 +45,7 @@ Route::get('/about', [AboutController::class, "index"])->name("about");
 Route::get('/contact', [ContactController::class, "index"])->name("contact");
 Route::post('/contact/send', [ContactController::class, "sendMailPost"])->name("contact.sendMail");
 Route::get('/contact/status', [ContactController::class, "displayStatus"])->name("contact.status");
+
+# Google Auth routes
+Route::get('/google-auth/redirect', [GoogleAuthController::class, 'redirect'])->name("google.redirect");
+Route::get('/google-auth/callback', [GoogleAuthController::class, 'callback'])->name("google.callback");

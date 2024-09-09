@@ -43,6 +43,7 @@ export default function ImagesSlider({
                             width="400"
                             src={image}
                             alt="Slider"
+                            isSliderImage={true}
                         />
                     </SwiperSlide>
                 );

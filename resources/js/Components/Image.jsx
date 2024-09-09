@@ -1,10 +1,16 @@
 import React, { useEffect, useRef } from "react";
 
-export default function Image({ className = "", src, ...props }) {
+export default function Image({
+    className = "",
+    isSliderImage,
+    src,
+    ...props
+}) {
     const imageRef = useRef(null);
+    const PLACEHOLDER_PATH = `https://placehold.co/600x400`;
 
     useEffect(() => {
-        const placeholderPath = `https://placehold.co/600x400`;
+        if (isSliderImage) return;
 
         function setupImage() {
             if (imageRef.current) {
@@ -12,19 +18,19 @@ export default function Image({ className = "", src, ...props }) {
                 const imageSrc = image.getAttribute("src");
 
                 image.setAttribute("data-img-src", imageSrc);
-                image.setAttribute("src", placeholderPath);
+                image.setAttribute("src", PLACEHOLDER_PATH);
             }
         }
 
-        setupImage();
-
-        function isInViewport(element, offset = 300) {
+        function isInViewport(element, scrollOffset = 300) {
             const rect = element.getBoundingClientRect();
             return (
-                rect.top >= -offset &&
-                rect.left >= -offset &&
-                rect.bottom <= document.documentElement.clientHeight + offset &&
-                rect.right <= document.documentElement.clientWidth + offset
+                rect.top >= -scrollOffset &&
+                rect.left >= -scrollOffset &&
+                rect.bottom <=
+                    document.documentElement.clientHeight + scrollOffset &&
+                rect.right <=
+                    document.documentElement.clientWidth + scrollOffset
             );
         }
 
@@ -40,9 +46,10 @@ export default function Image({ className = "", src, ...props }) {
             }
         }
 
+        setupImage();
         handleImageChange();
         window.addEventListener("scroll", handleImageChange);
-    });
+    }, [isSliderImage]);
 
     return (
         <img
