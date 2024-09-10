@@ -1,14 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\PromptController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\PromptController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\GoogleAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +45,5 @@ Route::get('/contact', [ContactController::class, "index"])->name("contact");
 Route::post('/contact/send', [ContactController::class, "sendMailPost"])->name("contact.sendMail");
 Route::get('/contact/status', [ContactController::class, "displayStatus"])->name("contact.status");
 
-# Google Auth routes
 Route::get('/google-auth/redirect', [GoogleAuthController::class, 'redirect'])->name("google.redirect");
 Route::get('/google-auth/callback', [GoogleAuthController::class, 'callback'])->name("google.callback");

@@ -36,6 +36,6 @@ class GoogleAuthController extends Controller
             Auth::login($user);
             return redirect()->route("home");
         }
-        return redirect()->route("home")->with("message", "There was an error while authenticating. Please, try again later!");
+        return redirect()->route("home")->with("message", "An error's occurred during authentication. Please try again later!");
     }
 }
