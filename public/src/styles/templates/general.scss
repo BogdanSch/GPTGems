@@ -79,7 +79,11 @@ p {
     border-radius: 12px;
     transition: all 0.6s ease;
     padding: 16px 32px;
-    display: inline-flex;
+    display: inline-flex !important;
+
+    &.full {
+        width: 100%;
+    }
 
     &-svg,
     &-outline-svg {

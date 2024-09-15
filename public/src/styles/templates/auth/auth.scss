@@ -1,0 +1,39 @@
+@import "./sign-in.scss";
+@import "./sign-up.scss";
+@import "./profile.scss";
+@import "./password.scss";
+
+.auth {
+    &-form {
+        &__separator {
+            position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 0;
+                display: block;
+                background-color: $grey-400;
+                width: 44%;
+                height: 2px;
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                right: 0;
+                display: block;
+                background-color: $grey-400;
+                width: 44%;
+                height: 2px;
+            }
+        }
+
+        &__list {
+            padding-left: 0;
+            list-style: none;
+        }
+    }
+}
