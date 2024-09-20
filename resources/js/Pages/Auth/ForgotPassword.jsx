@@ -2,6 +2,7 @@ import React from "react";
 import { Head, useForm } from "@inertiajs/react";
 
 import GuestLayout from "@/Layouts/GuestLayout";
+import Image from "@/Components/Image";
 import InputError from "@/Components/Inputs/InputError";
 import PrimaryButton from "@/Components/Buttons/PrimaryButton";
 
@@ -19,17 +20,23 @@ export default function ForgotPassword({ status }) {
         <GuestLayout>
             <Head title="Forgot Password" />
             <section
-                className="password"
+                className="password mb-5"
                 data-aos="zoom-out"
                 data-aos-easing="ease-in-out"
                 data-aos-duration="2000"
             >
                 <div className="container">
                     <div className="password__wrap">
-                        <div className="card password__card py-5 px-4">
+                        <div className="card password__card py-3 px-4">
                             <div className="card-body">
                                 <div className="text-content text-center full mb-5">
-                                    <h2 className="password__title">
+                                    <Image
+                                        src={"/images/forgot-password-icon.jpg"}
+                                        alt="Forgot Password Hint"
+                                        isSliderImage={false}
+                                        className="w-75"
+                                    />
+                                    <h2 className="password__title mt-4">
                                         Forgot Your Password
                                     </h2>
                                     <p className="password__description">

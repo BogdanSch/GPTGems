@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Head, Link, useForm } from "@inertiajs/react";
 
 import GuestLayout from "@/Layouts/GuestLayout";
+import ExternalServicesAuth from "@/Components/Partials/Auth/ExternalServicesAuth";
 import InputError from "@/Components/Inputs/InputError";
 import PrimaryButton from "@/Components/Buttons/PrimaryButton";
 
@@ -51,132 +52,140 @@ export default function Register() {
                                         </Link>
                                     </p>
                                 </div>
-                                <form onSubmit={submitRegistration}>
-                                    <div className="mb-3">
-                                        <label
-                                            htmlFor="name"
-                                            className="form-label"
-                                        >
-                                            Name:
-                                        </label>
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            className="form-control"
-                                            id="name"
-                                            placeholder="John Doe"
-                                            autoComplete="name"
-                                            onChange={(event) =>
-                                                setData(
-                                                    "name",
-                                                    event.target.value
-                                                )
-                                            }
-                                            value={data.name}
-                                            required
-                                        />
-                                        <InputError
-                                            message={errors.name}
-                                            className="mt-2"
-                                        />
-                                    </div>
-                                    <div className="mb-3">
-                                        <label
-                                            htmlFor="email"
-                                            className="form-label"
-                                        >
-                                            Email address:
-                                        </label>
-                                        <input
-                                            type="email"
-                                            name="email"
-                                            className="form-control"
-                                            id="email"
-                                            placeholder="name@example.com"
-                                            autoComplete="username"
-                                            onChange={(event) =>
-                                                setData(
-                                                    "email",
-                                                    event.target.value
-                                                )
-                                            }
-                                            value={data.email}
-                                            required
-                                        />
-                                        <InputError
-                                            message={errors.email}
-                                            className="mt-2"
-                                        />
-                                    </div>
-                                    <div className="mb-3">
-                                        <label
-                                            htmlFor="password"
-                                            className="form-label"
-                                        >
-                                            Password:
-                                        </label>
-                                        <input
-                                            type="password"
-                                            name="password"
-                                            className="form-control"
-                                            id="password"
-                                            placeholder="password123"
-                                            autoComplete="new-password"
-                                            onChange={(event) =>
-                                                setData(
-                                                    "password",
-                                                    event.target.value
-                                                )
-                                            }
-                                            value={data.password}
-                                            required
-                                        />
-                                        <InputError
-                                            message={errors.password}
-                                            className="mt-2"
-                                        />
-                                    </div>
-                                    <div className="mb-3">
-                                        <label
-                                            htmlFor="password"
-                                            className="form-label"
-                                        >
-                                            Confirm Password:
-                                        </label>
-                                        <input
-                                            type="password"
-                                            name="password_confirmation"
-                                            className="form-control"
-                                            id="password_confirmation"
-                                            placeholder="password123"
-                                            value={data.password_confirmation}
-                                            autoComplete="new-password"
-                                            onChange={(event) =>
-                                                setData(
-                                                    "password_confirmation",
-                                                    event.target.value
-                                                )
-                                            }
-                                            required
-                                        />
-                                        <InputError
-                                            message={
-                                                errors.password_confirmation
-                                            }
-                                            className="mt-2"
-                                        />
-                                    </div>
-                                    <div className="mb-3">
-                                        <div className="d-grid">
-                                            <PrimaryButton
-                                                disabled={processing}
-                                                type="submit"
-                                                isOutline={false}
+                                <form
+                                    onSubmit={submitRegistration}
+                                    className="auth-form"
+                                >
+                                    <div className="auth-form__content">
+                                        <div className="mb-3">
+                                            <label
+                                                htmlFor="name"
+                                                className="form-label"
                                             >
-                                                Register
-                                            </PrimaryButton>
+                                                Name:
+                                            </label>
+                                            <input
+                                                type="text"
+                                                name="name"
+                                                className="form-control"
+                                                id="name"
+                                                placeholder="John Doe"
+                                                autoComplete="name"
+                                                onChange={(event) =>
+                                                    setData(
+                                                        "name",
+                                                        event.target.value
+                                                    )
+                                                }
+                                                value={data.name}
+                                                required
+                                            />
+                                            <InputError
+                                                message={errors.name}
+                                                className="mt-2"
+                                            />
+                                        </div>
+                                        <div className="mb-3">
+                                            <label
+                                                htmlFor="email"
+                                                className="form-label"
+                                            >
+                                                Email address:
+                                            </label>
+                                            <input
+                                                type="email"
+                                                name="email"
+                                                className="form-control"
+                                                id="email"
+                                                placeholder="name@example.com"
+                                                autoComplete="username"
+                                                onChange={(event) =>
+                                                    setData(
+                                                        "email",
+                                                        event.target.value
+                                                    )
+                                                }
+                                                value={data.email}
+                                                required
+                                            />
+                                            <InputError
+                                                message={errors.email}
+                                                className="mt-2"
+                                            />
+                                        </div>
+                                        <div className="mb-3">
+                                            <label
+                                                htmlFor="password"
+                                                className="form-label"
+                                            >
+                                                Password:
+                                            </label>
+                                            <input
+                                                type="password"
+                                                name="password"
+                                                className="form-control"
+                                                id="password"
+                                                placeholder="password123"
+                                                autoComplete="new-password"
+                                                onChange={(event) =>
+                                                    setData(
+                                                        "password",
+                                                        event.target.value
+                                                    )
+                                                }
+                                                value={data.password}
+                                                required
+                                            />
+                                            <InputError
+                                                message={errors.password}
+                                                className="mt-2"
+                                            />
+                                        </div>
+                                        <div className="mb-3">
+                                            <label
+                                                htmlFor="password"
+                                                className="form-label"
+                                            >
+                                                Confirm Password:
+                                            </label>
+                                            <input
+                                                type="password"
+                                                name="password_confirmation"
+                                                className="form-control"
+                                                id="password_confirmation"
+                                                placeholder="password123"
+                                                value={
+                                                    data.password_confirmation
+                                                }
+                                                autoComplete="new-password"
+                                                onChange={(event) =>
+                                                    setData(
+                                                        "password_confirmation",
+                                                        event.target.value
+                                                    )
+                                                }
+                                                required
+                                            />
+                                            <InputError
+                                                message={
+                                                    errors.password_confirmation
+                                                }
+                                                className="mt-2"
+                                            />
+                                        </div>
+                                        <div className="mb-3">
+                                            <div className="d-grid">
+                                                <PrimaryButton
+                                                    disabled={processing}
+                                                    type="submit"
+                                                    isOutline={false}
+                                                >
+                                                    Register
+                                                </PrimaryButton>
+                                            </div>
                                         </div>
                                     </div>
+                                    <ExternalServicesAuth />
                                 </form>
                             </div>
                         </div>

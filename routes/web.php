@@ -7,7 +7,8 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\PromptController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\GoogleAuthController;
+use App\Http\Controllers\AuthServices\GoogleAuthController;
+use App\Http\Controllers\AuthServices\GithubAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +48,5 @@ Route::get('/contact/status', [ContactController::class, "displayStatus"])->name
 
 Route::get('/google-auth/redirect', [GoogleAuthController::class, 'redirect'])->name("google.redirect");
 Route::get('/google-auth/callback', [GoogleAuthController::class, 'callback'])->name("google.callback");
+Route::get('/github-auth/redirect', [GithubAuthController::class, 'redirect'])->name("github.redirect");
+Route::get('/github-auth/callback', [GithubAuthController::class, 'callback'])->name("github.callback");

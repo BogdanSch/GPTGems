@@ -2,10 +2,11 @@ import { useEffect } from "react";
 import { Head, Link, useForm } from "@inertiajs/react";
 
 import GuestLayout from "@/Layouts/GuestLayout";
+import ExternalServicesAuth from "@/Components/Partials/Auth/ExternalServicesAuth";
 import Checkbox from "@/Components/Checkbox";
 import InputError from "@/Components/Inputs/InputError";
 import PrimaryButton from "@/Components/Buttons/PrimaryButton";
-import SecondaryButton from "@/Components/Buttons/SecondaryButton";
+// import SecondaryButton from "@/Components/Buttons/SecondaryButton";
 
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -151,37 +152,15 @@ export default function Login({ status, canResetPassword }) {
                                             <div className="d-grid">
                                                 <PrimaryButton
                                                     disabled={processing}
-                                                    type="submit"
                                                     isOutline={false}
+                                                    type="submit"
                                                 >
                                                     Log in
                                                 </PrimaryButton>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="auth-form__separator mt-5 mb-5">
-                                        <div className="auth-form__separator-text text-center">
-                                            or
-                                        </div>
-                                    </div>
-                                    <div className="auth-form__social">
-                                        <ul className="auth-form__list">
-                                            <li className="auth-form__item">
-                                                <SecondaryButton
-                                                    href={route(
-                                                        "google.redirect"
-                                                    )}
-                                                    isLink={true}
-                                                    className="full"
-                                                >
-                                                    <svg className="btn-svg">
-                                                        <use xlinkHref="#googleIcon"></use>
-                                                    </svg>
-                                                    Continue with Google
-                                                </SecondaryButton>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <ExternalServicesAuth />
                                 </form>
                             </div>
                         </div>

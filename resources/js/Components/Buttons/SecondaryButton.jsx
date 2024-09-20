@@ -8,13 +8,7 @@ export default function SecondaryButton({
     ...props
 }) {
     const buttonClass = isOutline ? "btn-outline-secondary" : "btn-secondary";
-    return isLink ? (
-        <a
-            className={`btn ${buttonClass} ${className}`}
-            href={href}
-            {...props}
-        >{children}</a>
-    ) : (
+    return (
         <button
             {...props}
             className={`btn ${buttonClass} ${className}`}
