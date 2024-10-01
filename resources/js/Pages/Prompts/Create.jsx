@@ -3,8 +3,8 @@ import { Head, useForm } from "@inertiajs/react";
 
 import Authenticated from "@/Layouts/AuthenticatedLayout";
 import InputError from "@/Components/Inputs/InputError";
-import PrimaryButton from "@/Components/Buttons/PrimaryButton";
 import InputLabel from "@/Components/Inputs/InputLabel";
+import { PrimaryButton } from "@/Components/Buttons/";
 
 export default function Create() {
     const { data, setData, post, processing, errors, reset } = useForm({

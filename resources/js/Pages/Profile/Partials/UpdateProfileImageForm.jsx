@@ -2,9 +2,9 @@ import React from "react";
 import { usePage, useForm } from "@inertiajs/react";
 
 import Image from "@/Components/Image";
-import PrimaryButton from "@/Components/Buttons/PrimaryButton";
 import InputError from "@/Components/Inputs/InputError";
 import InputLabel from "@/Components/Inputs/InputLabel";
+import { PrimaryButton } from "@/Components/Buttons/";
 
 export default function UpdateProfileImageForm() {
     const { data, setData, post, processing, errors } = useForm({

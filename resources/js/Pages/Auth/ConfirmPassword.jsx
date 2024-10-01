@@ -4,8 +4,9 @@ import { Head, useForm } from "@inertiajs/react";
 import GuestLayout from "@/Layouts/GuestLayout";
 import InputError from "@/Components/Inputs/InputError";
 import InputLabel from "@/Components/Inputs/InputLabel";
-import PrimaryButton from "@/Components/Buttons/PrimaryButton";
 import TextInput from "@/Components/Inputs/TextInput";
+
+import { PrimaryButton } from "@/Components/Buttons/";
 
 export default function ConfirmPassword() {
     const { data, setData, post, processing, errors, reset } = useForm({

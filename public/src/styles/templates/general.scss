@@ -65,9 +65,16 @@ p {
     font-size: 1rem;
 
     &.error {
+        display: block;
         font-size: 0.875rem;
         line-height: 1.25rem;
-        color: $red;
+        color: $red-300 !important;
+        font-weight: $fw-bold;
+        background-color: $grey-transparent;
+        padding: 8px 12px;
+        border: 1px solid $red-300;
+        border-radius: 6px;
+        margin-top: 4px;
     }
 }
 

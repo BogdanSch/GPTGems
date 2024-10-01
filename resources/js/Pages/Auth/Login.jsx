@@ -3,10 +3,9 @@ import { Head, Link, useForm } from "@inertiajs/react";
 
 import GuestLayout from "@/Layouts/GuestLayout";
 import ExternalServicesAuth from "@/Components/Partials/Auth/ExternalServicesAuth";
-import Checkbox from "@/Components/Checkbox";
-import InputError from "@/Components/Inputs/InputError";
-import PrimaryButton from "@/Components/Buttons/PrimaryButton";
-// import SecondaryButton from "@/Components/Buttons/SecondaryButton";
+
+import { TextInput, InputLabel, InputError, Checkbox } from "@/Components/Inputs/";
+import { PrimaryButton } from "@/Components/Buttons/";
 
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -28,7 +27,7 @@ export default function Login({ status, canResetPassword }) {
 
     return (
         <GuestLayout>
-            <Head title="Log in" />
+            <Head title="Login" />
             {status && (
                 <div className="mb-4 font-medium text-sm text-green-600">
                     {status}
@@ -46,7 +45,7 @@ export default function Login({ status, canResetPassword }) {
                             <div className="card-body">
                                 <div className="text-content-full text-center mb-4">
                                     <h2 className="sign-in__title card-title text-center mb-2">
-                                        Log in
+                                        Login now
                                     </h2>
                                     <p className="sign-in__hint">
                                         New to GPTGems?{" "}
@@ -54,7 +53,7 @@ export default function Login({ status, canResetPassword }) {
                                             href={route("register")}
                                             className="sign-in__to-register sign-in__link"
                                         >
-                                            Sign up for a free account
+                                            Register for a free account
                                         </Link>
                                     </p>
                                 </div>
@@ -64,16 +63,12 @@ export default function Login({ status, canResetPassword }) {
                                 >
                                     <div className="auth-form__content">
                                         <div className="mb-3">
-                                            <label
-                                                htmlFor="email"
-                                                className="form-label"
-                                            >
+                                            <InputLabel htmlFor="email">
                                                 Email address:
-                                            </label>
-                                            <input
+                                            </InputLabel>
+                                            <TextInput
                                                 type="email"
                                                 name="email"
-                                                className="form-control"
                                                 id="email"
                                                 placeholder="name@example.com"
                                                 autoComplete="username"
@@ -92,16 +87,12 @@ export default function Login({ status, canResetPassword }) {
                                             />
                                         </div>
                                         <div className="mb-3">
-                                            <label
-                                                htmlFor="password"
-                                                className="form-label"
-                                            >
+                                            <InputLabel htmlFor="password">
                                                 Password:{" "}
-                                            </label>
-                                            <input
+                                            </InputLabel>
+                                            <TextInput
                                                 type="password"
                                                 name="password"
-                                                className="form-control"
                                                 id="password"
                                                 value={data.password}
                                                 placeholder="password123"
@@ -155,7 +146,7 @@ export default function Login({ status, canResetPassword }) {
                                                     isOutline={false}
                                                     type="submit"
                                                 >
-                                                    Log in
+                                                    Login
                                                 </PrimaryButton>
                                             </div>
                                         </div>

@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
+import { Head, useForm } from "@inertiajs/react";
+
 import GuestLayout from "@/Layouts/GuestLayout";
 import InputError from "@/Components/Inputs/InputError";
 import InputLabel from "@/Components/Inputs/InputLabel";
-import { Head, useForm } from "@inertiajs/react";
-import PrimaryButton from "@/Components/Buttons/PrimaryButton";
+import { PrimaryButton } from "@/Components/Buttons/";
 
 export default function ResetPassword({ token, email }) {
     const { data, setData, post, processing, errors, reset } = useForm({

@@ -5,7 +5,8 @@ import Authenticated from "@/Layouts/AuthenticatedLayout";
 import TextInput from "@/Components/Inputs/TextInput";
 import InputLabel from "@/Components/Inputs/InputLabel";
 import InputError from "@/Components/Inputs/InputError";
-import PrimaryButton from "@/Components/Buttons/PrimaryButton";
+
+import { PrimaryButton } from "@/Components/Buttons/";
 
 const Contact = () => {
     const { data, setData, post, processing, errors, reset } = useForm({

@@ -4,7 +4,7 @@ import { Transition } from "@headlessui/react";
 
 import InputError from "@/Components/Inputs/InputError";
 import InputLabel from "@/Components/Inputs/InputLabel";
-import PrimaryButton from "@/Components/Buttons/PrimaryButton";
+import { PrimaryButton } from "@/Components/Buttons/";
 
 export default function UpdateProfileInformation({ mustVerifyEmail, status }) {
     const { auth } = usePage().props;

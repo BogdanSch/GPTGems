@@ -3,8 +3,7 @@ import { router, Head, Link, useForm, usePage } from "@inertiajs/react";
 
 import GuestLayout from "@/Layouts/GuestLayout";
 import Image from "@/Components/Image";
-import PrimaryButton from "@/Components/Buttons/PrimaryButton";
-import DangerButton from "@/Components/Buttons/DangerButton";
+import { PrimaryButton, DangerButton } from "@/Components/Buttons/";
 
 export default function VerifyEmail({ status }) {
     const { csrf } = usePage().props;

@@ -4,8 +4,8 @@ import { Transition } from "@headlessui/react";
 
 import InputError from "@/Components/Inputs/InputError";
 import InputLabel from "@/Components/Inputs/InputLabel";
-import PrimaryButton from "@/Components/Buttons/PrimaryButton";
 import TextInput from "@/Components/Inputs/TextInput";
+import { PrimaryButton } from "@/Components/Buttons/";
 
 export default function UpdatePasswordForm() {
     const passwordInput = useRef();
@@ -48,7 +48,6 @@ export default function UpdatePasswordForm() {
         <>
             <div className="text-content full text-center">
                 <h2 className="prompts__title">Update Password</h2>
-
                 <p className="prompts__description mt-1">
                     Ensure your account is using a long, random password to stay
                     secure.
@@ -60,7 +59,7 @@ export default function UpdatePasswordForm() {
                         htmlFor="current_password"
                         value="Current Password:"
                     />
-                    <input
+                    <TextInput
                         id="current_password"
                         ref={currentPasswordInput}
                         value={data.current_password}
@@ -79,7 +78,7 @@ export default function UpdatePasswordForm() {
                 </div>
                 <div className="form-group mb-4">
                     <InputLabel htmlFor="password" value="New Password:" />
-                    <input
+                    <TextInput
                         id="password"
                         ref={passwordInput}
                         value={data.password}
@@ -98,7 +97,7 @@ export default function UpdatePasswordForm() {
                         htmlFor="password_confirmation"
                         value="Confirm Password:"
                     />
-                    <input
+                    <TextInput
                         id="password_confirmation"
                         value={data.password_confirmation}
                         onChange={(event) =>

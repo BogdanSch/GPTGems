@@ -3,8 +3,9 @@ import { Head, Link, useForm } from "@inertiajs/react";
 
 import GuestLayout from "@/Layouts/GuestLayout";
 import ExternalServicesAuth from "@/Components/Partials/Auth/ExternalServicesAuth";
-import InputError from "@/Components/Inputs/InputError";
-import PrimaryButton from "@/Components/Buttons/PrimaryButton";
+
+import { TextInput, InputLabel, InputError } from "@/Components/Inputs/";
+import { PrimaryButton } from "@/Components/Buttons/";
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -40,7 +41,7 @@ export default function Register() {
                             <div className="card-body">
                                 <div className="text-content-full text-center mb-4">
                                     <h2 className="sign-up__title card-title text-center mb-2">
-                                        Register
+                                        Register for free
                                     </h2>
                                     <p className="sign-up__hint">
                                         Already have an account?{" "}
@@ -48,7 +49,7 @@ export default function Register() {
                                             href={route("login")}
                                             className="sign-up__link sign-up__to-login"
                                         >
-                                            Sign in now
+                                            Login right now
                                         </Link>
                                     </p>
                                 </div>
@@ -58,13 +59,10 @@ export default function Register() {
                                 >
                                     <div className="auth-form__content">
                                         <div className="mb-3">
-                                            <label
-                                                htmlFor="name"
-                                                className="form-label"
-                                            >
+                                            <InputLabel htmlFor="name">
                                                 Name:
-                                            </label>
-                                            <input
+                                            </InputLabel>
+                                            <TextInput
                                                 type="text"
                                                 name="name"
                                                 className="form-control"
@@ -86,16 +84,12 @@ export default function Register() {
                                             />
                                         </div>
                                         <div className="mb-3">
-                                            <label
-                                                htmlFor="email"
-                                                className="form-label"
-                                            >
+                                            <InputLabel htmlFor="email">
                                                 Email address:
-                                            </label>
-                                            <input
+                                            </InputLabel>
+                                            <TextInput
                                                 type="email"
                                                 name="email"
-                                                className="form-control"
                                                 id="email"
                                                 placeholder="name@example.com"
                                                 autoComplete="username"
@@ -114,16 +108,12 @@ export default function Register() {
                                             />
                                         </div>
                                         <div className="mb-3">
-                                            <label
-                                                htmlFor="password"
-                                                className="form-label"
-                                            >
+                                            <InputLabel htmlFor="password">
                                                 Password:
-                                            </label>
-                                            <input
+                                            </InputLabel>
+                                            <TextInput
                                                 type="password"
                                                 name="password"
-                                                className="form-control"
                                                 id="password"
                                                 placeholder="password123"
                                                 autoComplete="new-password"
@@ -142,16 +132,12 @@ export default function Register() {
                                             />
                                         </div>
                                         <div className="mb-3">
-                                            <label
-                                                htmlFor="password"
-                                                className="form-label"
-                                            >
+                                            <InputLabel htmlFor="password">
                                                 Confirm Password:
-                                            </label>
-                                            <input
+                                            </InputLabel>
+                                            <TextInput
                                                 type="password"
                                                 name="password_confirmation"
-                                                className="form-control"
                                                 id="password_confirmation"
                                                 placeholder="password123"
                                                 value={

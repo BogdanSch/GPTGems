@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import PrimaryButton from "../Buttons/PrimaryButton";
+import { PrimaryButton } from "../Buttons/";
 
 export default function Modal({ id, title, children, showModal, hideModal }) {
     const modalRef = useRef(null);
